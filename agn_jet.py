@@ -1,12 +1,14 @@
 import numpy as np
 import proxmin
 import deblender
+from sys import argv
+
+objname = argv[1]
 
 # load data
 #import astropy
 import fitsio
 bands = ['g','r','i','z','y']
-objname = 'SDSSJ0838+0150'
 data_bands = []
 for b in bands:
     hdu = fitsio.FITS("%s/stamp-%s.fits" % (objname, b))
@@ -25,7 +27,7 @@ jet_sed = np.array([0.06598638046801182,0.2032376761774897,1.9325388133884376,0,
 
 # load peak position
 peaks = [[60,59], [63,48], [58,15], [26,38], [55,73]]
-constraints = ["cS"] * len(peaks)
+constraints = ["mS"] * len(peaks)
 
 # add jet component
 peaks = peaks + [peaks[0]]

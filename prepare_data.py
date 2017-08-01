@@ -40,9 +40,11 @@ def getDiffKernels(psf_bands, P0, thresh=5e-3):
     return kernels, diff_kernels, reconv_kernels, psf_error
 
 # get difference kernels for all PSFs
+from sys import argv
+objname = argv[1]
+
 import fitsio
 bands = ['g','r','i','z','y']
-objname = 'SDSSJ0231-0345'
 psf_bands = []
 for b in bands:
     psf = galsim.fits.read("%s/psf-%s.fits" % (objname, b))
@@ -71,6 +73,7 @@ for i in range(len(bands)):
     filename = "%s/psf-diff_kernel_%s.fits" % (objname, bands[i])
     fitsio.write(filename, diff_kernels[i])
 
+"""
 # make a bands-combined coadds for detection
 os.system("mkdir multiband-coadds")
 imgs = []
@@ -80,3 +83,4 @@ for b in bands:
 sum_imgs = np.sum(imgs, axis=0)
 filename = "multiband-coadds/%s.fits" % objname
 fitsio.write(filename, sum_imgs)
+"""
