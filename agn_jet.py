@@ -77,11 +77,11 @@ def plotComponents(A, S, Tx, Ty, ks=None):
     import matplotlib.pyplot as plt
     if ks is None:
         ks = range(len(S))
-
     for k in ks:
         component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
         plt.figure()
-        plt.imshow(np.ma.array(component, mask=component==0))
+        #plt.imshow(np.ma.array(component, mask=component==0))
+        plt.imshow(component)
         plt.show()
 
 # load data and psfs
@@ -106,29 +106,45 @@ weights = None
 #jet_sed = np.zeros(len(bands))
 #specdata = np.loadtxt('%s/spec_mag.csv' % (objname))
 jet_sed = np.array([0.06598638046801182,0.2032376761774897,1.9325388133884376,0,1.1942058574708945])
-jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
+#gal_sed = np.array([1.122,2.2425,5.318,7.689,10.508])
 
 # load peak position
 peaks = [[60-0.5,59+0.5], [63+0.75,48+0.5], [58,15], [26,38], [55-1,73-1]]
-constraints = ["mS"] * len(peaks)
+constraints = ["m"] * len(peaks)
 
 # add jet component
 peaks = peaks + [peaks[0]]
 constraints = constraints + [None]
 
-# restrict to inner 49 pixels
+# restrict to inner pixels
 shape = data[0].shape
 dx = (shape[0] - 49)/2
 dy = (shape[1] - 49)/2
 data = data[:,dx:-dx,dy:-dy]
+
 peaks = np.array(peaks) - np.array((dx,dy))
 inside = (peaks[:,0] > 0) & (peaks[:,1] > 0)
+#jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 peaks = peaks[inside]
 constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+
+# find SEDs
+print(peaks)
+
+
+#jet_sed = np.array([0.06,0.13,0.43,0.09,0.27])
+gal_sed = np.array([1.122,2.2425,5.318,7.689,10.508])
+#gal_sed = np.array([0.034,0.077,0.290,0.272,0.324])
+
+jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
+gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 
 # define constraints
 def prox_SED(A, step, jet_sed=None):
     A[:,-1] = jet_sed
+    for i in range(len(A[0])-1):
+   		 A[:,i] = gal_sed
+
     return proxmin.operators.prox_unity_plus(A, step, axis=0)
 
 from functools import partial
@@ -143,12 +159,12 @@ result = deblender.nmf.deblend(data,
     monotonicUseNearest=False,
     max_iter=1000,
     e_rel=[1e-6,1e-3],
-    l0_thresh=5e-2,
+    l0_thresh=np.array([5e-3,5e-3,5e-3,1e-1])[:,None],
     psf_thresh=5e-3,
     traceback=False,
     update_order=[1,0])
 A, S, model, P_, Tx, Ty, tr = result
 
-plotColorImage(data, contrast=10)
-plotColorImage(model, contrast=10)
-plotComponents(A, S, Tx, Ty, ks=[0,-1])
+plotColorImage(data, contrast=20)
+plotColorImage(model, contrast=20)
+plotComponents(A, S, Tx, Ty, ks=[-1])
