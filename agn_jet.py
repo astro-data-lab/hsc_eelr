@@ -73,16 +73,21 @@ def plotColorImage(images, filterIndices=None, xRange=None, yRange=None, contras
     plt.show()
     return colors
 
-def plotComponents(A, S, Tx, Ty, ks=None):
+def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5)):
     import matplotlib.pyplot as plt
     if ks is None:
         ks = range(len(S))
     for k in ks:
-        component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
-        plt.figure()
-        #plt.imshow(np.ma.array(component, mask=component==0))
-        plt.imshow(component)
+        #component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
+        component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
+        colors = imagesToRgb(component, filterIndices, xRange, yRange, contrast, adjustZero)
+        plt.figure(figsize=figsize)
+        plt.imshow(colors)
         plt.show()
+        #plt.figure()
+        #plt.imshow(np.ma.array(component, mask=component==0))
+        #plt.show()
+
 
 # load data and psfs
 data_bands = []
@@ -165,6 +170,7 @@ result = deblender.nmf.deblend(data,
     update_order=[1,0])
 A, S, model, P_, Tx, Ty, tr = result
 
-plotColorImage(data, contrast=20)
-plotColorImage(model, contrast=20)
-plotComponents(A, S, Tx, Ty, ks=[-1])
+contrast = 20
+plotColorImage(data, contrast=contrast)
+plotColorImage(model, contrast=contrast)
+plotComponents(A, S, Tx, Ty, ks=[0,-1], contrast=contrast)

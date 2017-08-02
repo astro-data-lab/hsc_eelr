@@ -81,14 +81,7 @@ for objname in dirs:
         filename = "%s/psf-diff_kernel_%s.fits" % (objname, bands[i])
         fitsio.write(filename, diff_kernels[i])
 
-    """
-    # make a bands-combined coadds for detection
-    os.system("mkdir multiband-coadds")
-    imgs = []
-    for b in bands:
-        hdu = fitsio.FITS("%s/stamp-%s.fits" % (objname, b))
-        imgs.append(hdu[0][:,:])
-    sum_imgs = np.sum(imgs, axis=0)
-    filename = "multiband-coadds/%s.fits" % objname
-    fitsio.write(filename, sum_imgs)
-    """
+    # use z-band for detection
+    os.system("mkdir -p detection-coadds")
+    b = 'z'
+    os.system("cp %s/stamp-%s.fits detection-coadds/%s-%s.fits" % (objname, b, objname, b))
