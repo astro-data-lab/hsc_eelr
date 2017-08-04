@@ -2,7 +2,11 @@ import numpy as np
 import proxmin
 import deblender
 from sys import argv
+from scipy.misc import imsave
 import fitsio
+import csv
+import math
+import matplotlib.pyplot as plt
 
 bands = ['g','r','i','z','y']
 objname = argv[1]
@@ -61,19 +65,37 @@ def imagesToRgb(images, filterIndices=None, xRange=None, yRange=None, contrast=1
     colors = colors.astype(np.uint8)
     return np.dstack(colors)
 
-def plotColorImage(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5)):
+def plotColorImage(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     """Display a collection of images or calexp's as an RGB image
 
     See `imagesToRgb` for more info.
     """
     import matplotlib.pyplot as plt
     colors = imagesToRgb(images, filterIndices, xRange, yRange, contrast, adjustZero)
-    plt.figure(figsize=figsize)
-    plt.imshow(colors)
-    plt.show()
+    if testing:
+		plt.figure(figsize=figsize)
+		plt.imshow(colors)
+		plt.show()
+    else:
+        	imsave("Test3/%s-A_Data.png" % objName, colors)
     return colors
 
-def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5)):
+def plotColorImage2(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
+    """Display a collection of images or calexp's as an RGB image
+
+    See `imagesToRgb` for more info.
+    """
+    import matplotlib.pyplot as plt
+    colors = imagesToRgb(images, filterIndices, xRange, yRange, contrast, adjustZero)
+    if testing:
+		plt.figure(figsize=figsize)
+		plt.imshow(colors)
+		plt.show()
+    else:
+        	imsave("Test3/%s-B_Model.png" % objName, colors)
+    return colors
+
+def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     import matplotlib.pyplot as plt
     if ks is None:
         ks = range(len(S))
@@ -81,96 +103,182 @@ def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRang
         #component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
         component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
         colors = imagesToRgb(component, filterIndices, xRange, yRange, contrast, adjustZero)
-        plt.figure(figsize=figsize)
-        plt.imshow(colors)
-        plt.show()
+	if testing:
+		plt.figure(figsize=figsize)
+		plt.imshow(colors)
+		plt.show()
+	else:
+        	imsave("Test3/%s-C_Jet.png" % objName, colors)
         #plt.figure()
         #plt.imshow(np.ma.array(component, mask=component==0))
         #plt.show()
 
+# load object-deblending parameters
+data = open("objParams.csv","r")
+reader = csv.reader(data)
+# stores object parameters 0:Name 1:Peaks 2:Peak Detection Multiplier 3:Peak Detection Band Weighting 
+objParams = []
+for row in reader:
+	temp_peaks = np.fromstring(row[1], dtype=int, sep=' ')
+	objParams.append([row[0],np.flip(temp_peaks.reshape((len(temp_peaks)/2, 2)),axis=1),int(row[2])])
+#print(objParams[14][1])
+obj_nums = np.arange(len(objParams))
 
-# load data and psfs
-data_bands = []
-for b in bands:
-    hdu = fitsio.FITS("%s/stamp-%s.fits" % (objname, b))
-    data_bands.append(hdu[0][:,:])
-    hdu.close()
-data = np.array(data_bands)
+# set the object number for testing------
+obj_nums = [21]
 
-psfs = []
-for b in bands:
-    hdu = fitsio.FITS("%s/psf-diff_kernel_%s.fits" % (objname, b))
-    psfs.append(hdu[0][:,:])
-    hdu.close()
-psfs = np.array(psfs)
+# process objects
+for o in obj_nums:
+	#try:
+	for d in range(1):
+		print(objParams[o][0], o)
+		# load data and psfs
+		path = objParams[o][0]
+		data_bands = []
+		for b in bands:
+		    hdu = fitsio.FITS("%s/stamp-%s.fits" % (path, b))
+		    data_bands.append(hdu[0][:,:])
+		    hdu.close()
+		data = np.array(data_bands)
 
-# need to get weights
-weights = None
+		psfs = []
+		for b in bands:
+		    hdu = fitsio.FITS("%s/psf-diff_kernel_%s.fits" % (path, b))
+		    psfs.append(hdu[0][:,:])
+		    hdu.close()
+		psfs = np.array(psfs)
 
-# load expected jet SED
-#jet_sed = np.zeros(len(bands))
-#specdata = np.loadtxt('%s/spec_mag.csv' % (objname))
-jet_sed = np.array([0.06598638046801182,0.2032376761774897,1.9325388133884376,0,1.1942058574708945])
-#gal_sed = np.array([1.122,2.2425,5.318,7.689,10.508])
+		# need to get weights
+		weights = None
 
-# load peak position
-peaks = [[60-0.5,59+0.5], [63+0.75,48+0.5], [58,15], [26,38], [55-1,73-1]]
-constraints = ["m"] * len(peaks)
+		# load peak position
+		peaks = objParams[o][1]
+		constraints = ["m"] * len(peaks)
 
-# add jet component
-peaks = peaks + [peaks[0]]
-constraints = constraints + [None]
+		# add jet component
+		shape = data[0].shape
+		peaks = np.concatenate((peaks, np.array([shape[0]/2,shape[1]/2])[None,:]),axis=0)
+		constraints = constraints + [None]
 
-# restrict to inner pixels
-shape = data[0].shape
-dx = (shape[0] - 49)/2
-dy = (shape[1] - 49)/2
-data = data[:,dx:-dx,dy:-dy]
+		# restrict to inner pixels
+		inner = 119
+		"""
+		dx = (shape[0] - inner)/2
+		dy = (shape[1] - inner)/2
+		data = data[:,dx:-dx,dy:-dy]
+		peaks = np.array(peaks) - np.array((dx,dy))
+		inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
+		peaks = peaks[inside]
+		constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+		"""
+		# find SEDs
+		# read central galaxy and jet colors from spectral data 
+		row_num = 0
+		with open('%s/spec_mag.csv' % (path), 'r') as f:
+			reader = csv.reader(f)
+			for row in reader:
+				row_num += 1
+				if row_num == 6:
+					SED_data = row
+		jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
+		gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
+		jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
+		gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
+		
+		center_index = 0
+		min_dist = 1000
+		color_sample_radius = 1
+		color_avg_p = 1 # for fancy color means
+		SEDs = np.zeros((len(peaks),len(jet_sed)))
+		for i in range(len(peaks) - 1):
+			# find index of central peak
+			curr_dist = np.absolute(peaks[i][0] - inner/2) + np.absolute(peaks[i][1] - inner/2)
+			if curr_dist < min_dist:
+				min_dist = curr_dist
+				center_index = i
+			# find observed color of peaks
+			count = 0
+			for ii in range(-color_sample_radius, color_sample_radius+1):
+				for jj in range(-color_sample_radius, color_sample_radius+1):
+					try:
+						SEDs[i] += data[:,peaks[i][1] + ii, peaks[i][0] + jj]**color_avg_p
+						count += 1
+					except:
+						pass
+			SEDs[i] /= count 
+			SEDs[i] **= (1/color_avg_p)
+			SEDs[i] = proxmin.operators.prox_unity_plus(SEDs[i], 1)
+			#SEDs[i] = None
+		SEDs[center_index] = gal_sed
+		SEDs[-1] = jet_sed
+		#print(center_index)
+		#print(SEDs)
 
-peaks = np.array(peaks) - np.array((dx,dy))
-inside = (peaks[:,0] > 0) & (peaks[:,1] > 0)
-#jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
-peaks = peaks[inside]
-constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+		# create thresholds
+		gal_t = 5e-4
+		jet_t = 1.8e-2
+		l1_thresh = np.ones(len(peaks))*gal_t
+		l1_thresh[-1] = jet_t
 
-# find SEDs
-print(peaks)
+		# define constraints
+		def prox_SED(A, step, SEDs=None):
+		    	for i in range(len(A[0])):
+				if not math.isnan(SEDs[i][0]):
+					A[:,i] = SEDs[i]
+			return proxmin.operators.prox_unity_plus(A, step, axis=0)
 
+		from functools import partial
+		prox_A = partial(prox_SED, SEDs=SEDs)
+		
+		# define masks for localizing jet/galaxies
+		radii = np.ones(len(peaks))*500
+		radii[-1] = 30
+		masks = np.zeros((len(peaks),data.shape[1]*data.shape[2]))
+		k = 0.5
+		for i in range(masks.shape[0]):
+			temp = ((np.arange(data.shape[1]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[2]) - peaks[i][1])**2)[None,:]			
+			masks[i] = (1/(1 + np.exp(k*(temp**0.5 - radii[i])))).T.ravel()
 
-#jet_sed = np.array([0.06,0.13,0.43,0.09,0.27])
-gal_sed = np.array([1.122,2.2425,5.318,7.689,10.508])
-#gal_sed = np.array([0.034,0.077,0.290,0.272,0.324])
+		def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
+			S *= masks			
+			if l0_thresh is None and l1_thresh is None:            
+				return proxmin.operators.prox_plus(S, step)        
+			else:
+				# L0 has preference            
+				if l0_thresh is not None:                
+					if l1_thresh is not None:                    
+						return proxmin.operators.prox_hard(S, step, thresh=l0_thresh)
+				else:                
+					return proxmin.operators.prox_soft_plus(S, step, thresh=l1_thresh)
+		
+		prox_S = partial(prox_Jet, masks=masks, l1_thresh=l1_thresh[:,None])
+		
+		# run deblender
+		result = deblender.nmf.deblend(data,
+		    peaks=peaks, weights=weights,
+		    psf=psfs,
+		    constraints=constraints,
+		    prox_A=prox_A,
+		    #prox_gA=None,
+		    prox_S=prox_S,
+		    monotonicUseNearest=False,
+		    max_iter=1000,
+		    e_rel=[1e-6,1e-3],
+		    #l0_thresh=np.array([5e-3,5e-3,5e-3,5e-1])[:,None],
+		    l1_thresh=l1_thresh[:,None],
+		    traceback=False,
+		    update_order=[1,0])
+		A, S, model, P_, Tx, Ty, tr = result
+	
+		testing = False
+		testing = True # comment out to write to files
+		contrast = 20
+		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+		plotColorImage2(model, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+"""
+	except Exception, e:
+		print("FAILED: " + str(e))
+		pass
+"""
 
-jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
-gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
-
-# define constraints
-def prox_SED(A, step, jet_sed=None):
-    A[:,-1] = jet_sed
-    for i in range(len(A[0])-1):
-   		 A[:,i] = gal_sed
-
-    return proxmin.operators.prox_unity_plus(A, step, axis=0)
-
-from functools import partial
-prox_A = partial(prox_SED, jet_sed=jet_sed)
-
-# run deblender
-result = deblender.nmf.deblend(data,
-    peaks=peaks, weights=weights,
-    psf=psfs,
-    constraints=constraints,
-    prox_A=prox_A,
-    monotonicUseNearest=False,
-    max_iter=1000,
-    e_rel=[1e-6,1e-3],
-    l0_thresh=np.array([5e-3,5e-3,5e-3,1e-1])[:,None],
-    psf_thresh=5e-3,
-    traceback=False,
-    update_order=[1,0])
-A, S, model, P_, Tx, Ty, tr = result
-
-contrast = 20
-plotColorImage(data, contrast=contrast)
-plotColorImage(model, contrast=contrast)
-plotComponents(A, S, Tx, Ty, ks=[0,-1], contrast=contrast)
