@@ -1,87 +1,125 @@
 import numpy as np
-import galsim
-import os
+import os, fitsio
 from sys import argv
-import fitsio
+import deblender
+from deblender.psf_match import matchPSFs
 
-bands = ['g','r','i','z','y']
+def imagesToRgb(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False):
+    """Convert a collection of images or calexp's to an RGB image
 
-def getDiffKernel(P, P0, nx=50, ny=50):
-    PD = galsim.Convolve(P, galsim.Deconvolve(P0))
-    PDimg = PD.drawImage(nx=nx,ny=ny, scale=pixel_scale, method='no_pixel')
-    return PDimg
+    This requires either an array of images or a list of calexps.
+    If filter indices is not specified, it uses the first three images in opposite order
+    (for example if images=[g, r, i], i->R, r->G, g->B).
+    xRange and yRange can be passed to slice an image.
+    """
+    B = len(images)
+    channels = ['R','G','B']
 
-def getDiffKernels(psf_bands, P0, thresh=5e-3):
-    kernels = []
-    diff_kernels = []
-    reconv_kernels = []
-    psf_error = 0
+    if filterWeights is None:
+        filterWeights = np.array([np.zeros(N) for c in channels])
+        filterWeights[0,2] = 1 # R: 100% i
+        filterWeights[1,1] = 1 # G: 100% r
+        filterWeights[2,0] = 1 # B: 100% g
+    if yRange is None:
+        ySlice = slice(None, None)
+    elif not isinstance(yRange, slice):
+        ySlice = slice(yRange[0], yRange[1])
+    else:
+        ySlice = yRange
+    if xRange is None:
+        xSlice = slice(None, None)
+    elif not isinstance(xRange, slice):
+        xSlice = slice(xRange[0], xRange[1])
+    else:
+        xSlice = xRange
 
-    for i in range(len(psf_bands)):
-        P = psf_bands[i]
-        ny,nx = P.image.array.shape
+    # Select the subset of 3 images to use for the RGB image
+    images = images[:,ySlice, xSlice]
+    _,ny,nx = images.shape
+    images = np.dot(filterWeights,images.reshape(B,-1)).reshape(-1,ny,nx)
 
-        PDimg = getDiffKernel(P, P0, nx=nx, ny=ny)
-        kernels.append(P.image.array)
-        diff_kernels.append(PDimg.array)
+    # Map intensity to [0,255]
+    intensity = np.arcsinh(contrast*np.sum(images, axis=0)/3)
+    if adjustZero:
+        # Adjust the colors so that zero is the lowest flux value
+        intensity = (intensity-np.min(intensity))/(np.max(intensity)-np.min(intensity))*255
+    else:
+        maxIntensity = np.max(intensity)
+        if maxIntensity > 0:
+            intensity = intensity/(maxIntensity)*255
+            intensity[intensity<0] = 0
 
-        # just for testing
-        P0img = P0.drawImage(nx=nx,ny=ny, scale=pixel_scale, method='no_pixel')
-        P0FromImage = galsim.InterpolatedImage(P0img)
+    # Use the absolute value to normalize the pixel intensities
+    pixelIntensity = np.sum(np.abs(images), axis=0)
+    # Prevent division by zero
+    zeroPix = pixelIntensity==0
+    pixelIntensity[zeroPix] = 1
 
-        # truncate difference kernel below 3e-3
-        # to make the more compact
-        mask = np.abs(PDimg.array) < thresh
-        PDimg.array[mask] = 0
+    # Calculate the RGB colors
+    pixelIntensity = np.broadcast_to(pixelIntensity, (3, pixelIntensity.shape[0], pixelIntensity.shape[1]))
+    intensity = np.broadcast_to(intensity, (3, intensity.shape[0], intensity.shape[1]))
+    zeroPix = np.broadcast_to(zeroPix, (3, zeroPix.shape[0], zeroPix.shape[1]))
+    colors = images/pixelIntensity*intensity
+    colors[colors<0] = 0
+    colors[zeroPix] = 0
+    colors = colors.astype(np.uint8)
+    return np.dstack(colors)
 
-        PDFromImage = galsim.InterpolatedImage(PDimg)
-        P0PD = galsim.Convolve(P0FromImage, PDFromImage)
-        P0PDimg = P0PD.drawImage(nx=nx,ny=ny, scale=pixel_scale, method='no_pixel')
-        reconv_kernels.append(P0PDimg.array)
-        error = ((reconv_kernels[i]-kernels[i])**2).sum()
-        psf_error = max(psf_error, error)
-    return kernels, diff_kernels, reconv_kernels, psf_error
+def plotColorImage(images, filterWeights=None, title=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5)):
+    """Display a collection of images or calexp's as an RGB image
+
+    See `imagesToRgb` for more info.
+    """
+    import matplotlib.pyplot as plt
+    colors = imagesToRgb(images, filterWeights, xRange, yRange, contrast, adjustZero)
+    plt.figure(figsize=figsize)
+    plt.imshow(colors)
+    if title is not None:
+        plt.title(title)
+    plt.show()
+
 
 # get difference kernels for all PSFs
+if __name__ == "__main__":
 
-if len(argv) == 2:
-    objname = argv[1]
-    dirs = [objname]
-else:
-    from glob import glob
-    dirs = glob('SDSS*')
+    if len(argv) == 2:
+        objname = argv[1]
+        dirs = [objname]
+    else:
+        from glob import glob
+        dirs = glob('SDSS*')
 
-for objname in dirs:
-    print objname,
-    psf_bands = []
-    for b in bands:
-        psf = galsim.fits.read("%s/psf-%s.fits" % (objname, b))
-        psf_bands.append(galsim.InterpolatedImage(psf))
-
-    # reference kernel
+    bands = ['g','r','i','z','y']
+    B = len(bands)
     pixel_scale = 1.
-    psf_thresh = 5e-3
-    fwhms = np.arange(1., 3.2, 0.2)
-    psf_errors = []
-    for fwhm in fwhms:
-        P0 = galsim.Gaussian(fwhm=fwhm)
-        kernels, diff_kernels, reconv_kernels, psf_error = getDiffKernels(psf_bands, P0, thresh=psf_thresh)
-        psf_errors.append(psf_error)
+    radius_cut = 10.
+    fwhm = 1.7
 
-    # get kernels with FWHM that has smallest pixelation errors
-    min_psf = np.argmin(psf_errors)
-    print "best overall PSF error: %r at FWHM = %.1f" % (psf_errors[min_psf], fwhms[min_psf])
-    fwhm = fwhms[min_psf]
-    P0 = galsim.Gaussian(fwhm=fwhm)
-    #P0img = P0.drawImage(nx=nx,ny=ny, scale=pixel_scale, method='no_pixel')
-    kernels, diff_kernels, reconv_kernels, psf_error = getDiffKernels(psf_bands, P0)
+    contrast = 1e5
+    filterWeights = np.zeros((3, len(bands)))
+    filterWeights[0,4] = 1
+    filterWeights[0,3] = 0.666
+    filterWeights[1,3] = 0.333
+    filterWeights[1,2] = 1
+    filterWeights[1,1] = 0.333
+    filterWeights[2,1] = 0.666
+    filterWeights[2,0] = 1
 
-    # save difference kernels
-    for i in range(len(bands)):
-        filename = "%s/psf-diff_kernel_%s.fits" % (objname, bands[i])
-        fitsio.write(filename, diff_kernels[i])
+    for objname in dirs:
+        print objname
+        psf_bands = []
+        for b in range(B):
+            psf = fitsio.FITS("%s/psf-%s.fits" % (objname, bands[b]))
+            psf_bands.append(psf[0].read())
+            psf.close()
 
-    # use z-band for detection
-    os.system("mkdir -p detection-coadds")
-    b = 'z'
-    os.system("cp %s/stamp-%s.fits detection-coadds/%s-%s.fits" % (objname, b, objname, b))
+        kernels, diff_kernels, reconv_kernels, psf_error = deblender.psf_match.matchPSFs(psf_bands, fwhm=fwhm, pixel_scale=pixel_scale, radius_cut=radius_cut)
+
+        plotColorImage(kernels, filterWeights=filterWeights, contrast=contrast, title=objname)
+        plotColorImage(reconv_kernels, filterWeights=filterWeights, contrast=contrast, title=objname+" model")
+        plotColorImage(kernels - reconv_kernels, filterWeights=filterWeights, contrast=contrast, title=objname)
+
+        # save difference kernels
+        for i in range(len(bands)):
+            filename = "%s/psf-diff_kernel_%s.fits" % (objname, bands[i])
+            fitsio.write(filename, diff_kernels[i], clobber=True)
