@@ -24,7 +24,7 @@ def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contras
 		plt.imshow(colors)
 		plt.show()
     else:
-        	imsave("Test3/%s-A_Data.png" % objName, colors)
+        	imsave("Test4/%s-A_Data.png" % objName, colors)
     return colors
 
 def plotColorImage2(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
@@ -39,7 +39,7 @@ def plotColorImage2(images, filterWeights=None, xRange=None, yRange=None, contra
 		plt.imshow(colors)
 		plt.show()
     else:
-        	imsave("Test3/%s-B_Model.png" % objName, colors)
+        	imsave("Test4/%s-B_Model.png" % objName, colors)
     return colors
 
 def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
@@ -55,7 +55,7 @@ def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRang
 		plt.imshow(colors)
 		plt.show()
 	else:
-        	imsave("Test3/%s-C_Jet.png" % objName, colors)
+        	imsave("Test4/%s-C_Jet.png" % objName, colors)
         #plt.figure()
         #plt.imshow(np.ma.array(component, mask=component==0))
         #plt.show()
@@ -72,7 +72,7 @@ for row in reader:
 obj_nums = np.arange(len(objParams))
 
 # set the object number for testing------
-obj_nums = [18]
+obj_nums = [15]
 
 # process objects
 for o in obj_nums:
@@ -119,17 +119,26 @@ for o in obj_nums:
 		peaks = np.concatenate((peaks, np.array([shape[0]/2,shape[1]/2])[None,:]),axis=0)
 		constraints = constraints + [None]
 
-		# restrict to inner pixels
+		# reshape if necessary
 		inner = 119
-		"""
-		dx = (shape[0] - inner)/2
-		dy = (shape[1] - inner)/2
-		data = data[:,dx:-dx,dy:-dy]
-		peaks = np.array(peaks) - np.array((dx,dy))
-		inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
-		peaks = peaks[inside]
-		constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
-		"""
+		s_index = 1
+		print(data.shape)
+		if data.shape[1] < 119:
+			s_index = 2
+		if data.shape[2] < 119:
+			s_index = 1
+
+		# restrict to inner pixels
+		if inner < 119:
+			print(inner)
+			dx = (shape[0] - inner)/2
+			dy = (shape[1] - inner)/2
+			data = data[:,dx:-dx,dy:-dy]
+			peaks = np.array(peaks) - np.array((dx,dy))
+			inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
+			peaks = peaks[inside]
+			constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+			
 		# find SEDs
 		# read central galaxy and jet colors from spectral data
 		row_num = 0
@@ -192,10 +201,10 @@ for o in obj_nums:
 		# define masks for localizing jet/galaxies
 		radii = np.ones(len(peaks))*500
 		radii[-1] = 30
-		masks = np.zeros((len(peaks),data.shape[1]*data.shape[2]))
+		masks = np.zeros((len(peaks),data.shape[s_index]*data.shape[s_index]))
 		k = 0.5
 		for i in range(masks.shape[0]):
-			temp = ((np.arange(data.shape[1]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[2]) - peaks[i][1])**2)[None,:]
+			temp = ((np.arange(data.shape[s_index]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[s_index]) - peaks[i][1])**2)[None,:]
 			masks[i] = (1/(1 + np.exp(k*(temp**0.5 - radii[i])))).T.ravel()
 
 		def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
