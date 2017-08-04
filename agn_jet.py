@@ -7,71 +7,18 @@ import fitsio
 import csv
 import math
 import matplotlib.pyplot as plt
+from plotting import imagesToRgb
 
 bands = ['g','r','i','z','y']
 objname = argv[1]
 
-def imagesToRgb(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False):
-    """Convert a collection of images or calexp's to an RGB image
-
-    This requires either an array of images or a list of calexps.
-    If filter indices is not specified, it uses the first three images in opposite order
-    (for example if images=[g, r, i], i->R, r->G, g->B).
-    xRange and yRange can be passed to slice an image.
-    """
-    if len(images)<3:
-        raise ValueError("Expected either an array of 3 or more images")
-    if filterIndices is None:
-        filterIndices = [3,2,1]
-    if yRange is None:
-        ySlice = slice(None, None)
-    elif not isinstance(yRange, slice):
-        ySlice = slice(yRange[0], yRange[1])
-    else:
-        ySlice = yRange
-    if xRange is None:
-        xSlice = slice(None, None)
-    elif not isinstance(xRange, slice):
-        xSlice = slice(xRange[0], xRange[1])
-    else:
-        xSlice = xRange
-    # Select the subset of 3 images to use for the RGB image
-    images = images[filterIndices,ySlice, xSlice]
-
-    # Map intensity to [0,255]
-    intensity = np.arcsinh(contrast*np.sum(images, axis=0)/3)
-    if adjustZero:
-        # Adjust the colors so that zero is the lowest flux value
-        intensity = (intensity-np.min(intensity))/(np.max(intensity)-np.min(intensity))*255
-    else:
-        maxIntensity = np.max(intensity)
-        if maxIntensity > 0:
-            intensity = intensity/(maxIntensity)*255
-            intensity[intensity<0] = 0
-
-    # Use the absolute value to normalize the pixel intensities
-    pixelIntensity = np.sum(np.abs(images), axis=0)
-    # Prevent division by zero
-    zeroPix = pixelIntensity==0
-    pixelIntensity[zeroPix] = 1
-
-    # Calculate the RGB colors
-    pixelIntensity = np.broadcast_to(pixelIntensity, (3, pixelIntensity.shape[0], pixelIntensity.shape[1]))
-    intensity = np.broadcast_to(intensity, (3, intensity.shape[0], intensity.shape[1]))
-    zeroPix = np.broadcast_to(zeroPix, (3, zeroPix.shape[0], zeroPix.shape[1]))
-    colors = images/pixelIntensity*intensity
-    colors[colors<0] = 0
-    colors[zeroPix] = 0
-    colors = colors.astype(np.uint8)
-    return np.dstack(colors)
-
-def plotColorImage(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
+def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     """Display a collection of images or calexp's as an RGB image
 
     See `imagesToRgb` for more info.
     """
     import matplotlib.pyplot as plt
-    colors = imagesToRgb(images, filterIndices, xRange, yRange, contrast, adjustZero)
+    colors = imagesToRgb(images, filterWeights, xRange, yRange, contrast, adjustZero)
     if testing:
 		plt.figure(figsize=figsize)
 		plt.imshow(colors)
@@ -80,13 +27,13 @@ def plotColorImage(images, filterIndices=None, xRange=None, yRange=None, contras
         	imsave("Test3/%s-A_Data.png" % objName, colors)
     return colors
 
-def plotColorImage2(images, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
+def plotColorImage2(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     """Display a collection of images or calexp's as an RGB image
 
     See `imagesToRgb` for more info.
     """
     import matplotlib.pyplot as plt
-    colors = imagesToRgb(images, filterIndices, xRange, yRange, contrast, adjustZero)
+    colors = imagesToRgb(images, filterWeights, xRange, yRange, contrast, adjustZero)
     if testing:
 		plt.figure(figsize=figsize)
 		plt.imshow(colors)
@@ -95,14 +42,14 @@ def plotColorImage2(images, filterIndices=None, xRange=None, yRange=None, contra
         	imsave("Test3/%s-B_Model.png" % objName, colors)
     return colors
 
-def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
+def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     import matplotlib.pyplot as plt
     if ks is None:
         ks = range(len(S))
     for k in ks:
         #component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
         component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
-        colors = imagesToRgb(component, filterIndices, xRange, yRange, contrast, adjustZero)
+        colors = imagesToRgb(component, filterWeights, xRange, yRange, contrast, adjustZero)
 	if testing:
 		plt.figure(figsize=figsize)
 		plt.imshow(colors)
@@ -116,7 +63,7 @@ def plotComponents(A, S, Tx, Ty, ks=None, filterIndices=None, xRange=None, yRang
 # load object-deblending parameters
 data = open("objParams.csv","r")
 reader = csv.reader(data)
-# stores object parameters 0:Name 1:Peaks 2:Peak Detection Multiplier 3:Peak Detection Band Weighting 
+# stores object parameters 0:Name 1:Peaks 2:Peak Detection Multiplier 3:Peak Detection Band Weighting
 objParams = []
 for row in reader:
 	temp_peaks = np.fromstring(row[1], dtype=int, sep=' ')
@@ -172,7 +119,7 @@ for o in obj_nums:
 		constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
 		"""
 		# find SEDs
-		# read central galaxy and jet colors from spectral data 
+		# read central galaxy and jet colors from spectral data
 		row_num = 0
 		with open('%s/spec_mag.csv' % (path), 'r') as f:
 			reader = csv.reader(f)
@@ -184,7 +131,7 @@ for o in obj_nums:
 		gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
 		jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 		gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
-		
+
 		center_index = 0
 		min_dist = 1000
 		color_sample_radius = 1
@@ -205,7 +152,7 @@ for o in obj_nums:
 						count += 1
 					except:
 						pass
-			SEDs[i] /= count 
+			SEDs[i] /= count
 			SEDs[i] **= (1/color_avg_p)
 			SEDs[i] = proxmin.operators.prox_unity_plus(SEDs[i], 1)
 			#SEDs[i] = None
@@ -229,30 +176,30 @@ for o in obj_nums:
 
 		from functools import partial
 		prox_A = partial(prox_SED, SEDs=SEDs)
-		
+
 		# define masks for localizing jet/galaxies
 		radii = np.ones(len(peaks))*500
 		radii[-1] = 30
 		masks = np.zeros((len(peaks),data.shape[1]*data.shape[2]))
 		k = 0.5
 		for i in range(masks.shape[0]):
-			temp = ((np.arange(data.shape[1]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[2]) - peaks[i][1])**2)[None,:]			
+			temp = ((np.arange(data.shape[1]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[2]) - peaks[i][1])**2)[None,:]
 			masks[i] = (1/(1 + np.exp(k*(temp**0.5 - radii[i])))).T.ravel()
 
 		def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
-			S *= masks			
-			if l0_thresh is None and l1_thresh is None:            
-				return proxmin.operators.prox_plus(S, step)        
+			S *= masks
+			if l0_thresh is None and l1_thresh is None:
+				return proxmin.operators.prox_plus(S, step)
 			else:
-				# L0 has preference            
-				if l0_thresh is not None:                
-					if l1_thresh is not None:                    
+				# L0 has preference
+				if l0_thresh is not None:
+					if l1_thresh is not None:
 						return proxmin.operators.prox_hard(S, step, thresh=l0_thresh)
-				else:                
+				else:
 					return proxmin.operators.prox_soft_plus(S, step, thresh=l1_thresh)
-		
+
 		prox_S = partial(prox_Jet, masks=masks, l1_thresh=l1_thresh[:,None])
-		
+
 		# run deblender
 		result = deblender.nmf.deblend(data,
 		    peaks=peaks, weights=weights,
@@ -269,16 +216,23 @@ for o in obj_nums:
 		    traceback=False,
 		    update_order=[1,0])
 		A, S, model, P_, Tx, Ty, tr = result
-	
+
 		testing = False
 		testing = True # comment out to write to files
 		contrast = 20
-		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
-		plotColorImage2(model, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
-		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+        filterWeights = np.zeros((3, len(bands)))
+        filterWeights[0,4] = 1
+        filterWeights[0,3] = 0.666
+        filterWeights[1,3] = 0.333
+        filterWeights[1,2] = 1
+        filterWeights[1,1] = 0.333
+        filterWeights[2,1] = 0.666
+        filterWeights[2,0] = 1
+		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), filterWeights=filterWeights, testing=testing)
+		plotColorImage2(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
 """
 	except Exception, e:
 		print("FAILED: " + str(e))
 		pass
 """
-
