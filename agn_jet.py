@@ -125,7 +125,7 @@ for row in reader:
 obj_nums = np.arange(len(objParams))
 
 # set the object number for testing------
-obj_nums = [21]
+obj_nums = [18]
 
 # process objects
 for o in obj_nums:
@@ -147,14 +147,26 @@ for o in obj_nums:
 		    psfs.append(hdu[0][:,:])
 		    hdu.close()
 		psfs = np.array(psfs)
-
-		# need to get weights
-		weights = None
-
+		
+		# find weights
+		weights = np.ones_like(data)
+		band_weights = np.zeros(data.shape[0])
+		for i in range(data.shape[0]):
+			within = data[i] < 100000
+			for t in range(25):
+				std = np.std(data[i][within])
+				mean = np.mean(data[i][within])
+				within = np.bitwise_and(within, (data[i] < mean + 3*std))
+				within = np.bitwise_and(within, (data[i] > mean - 3*std))
+			band_weights[i] = std
+		band_weights = proxmin.operators.prox_unity_plus(band_weights, 1)
+		weights *= band_weights[:,None,None]
+		#print(band_weights)
+		
 		# load peak position
 		peaks = objParams[o][1]
 		constraints = ["m"] * len(peaks)
-
+	
 		# add jet component
 		shape = data[0].shape
 		peaks = np.concatenate((peaks, np.array([shape[0]/2,shape[1]/2])[None,:]),axis=0)
@@ -276,6 +288,7 @@ for o in obj_nums:
 		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
 		plotColorImage2(model, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
 		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+
 """
 	except Exception, e:
 		print("FAILED: " + str(e))
