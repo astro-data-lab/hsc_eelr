@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from plotting import imagesToRgb
 
 bands = ['g','r','i','z','y']
-objname = argv[1]
 
 def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
     """Display a collection of images or calexp's as an RGB image
@@ -22,24 +21,9 @@ def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contras
     if testing:
 		plt.figure(figsize=figsize)
 		plt.imshow(colors)
-		plt.show()
+		plt.title(objName)
     else:
-        	imsave("Test4/%s-A_Data.png" % objName, colors)
-    return colors
-
-def plotColorImage2(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
-    """Display a collection of images or calexp's as an RGB image
-
-    See `imagesToRgb` for more info.
-    """
-    import matplotlib.pyplot as plt
-    colors = imagesToRgb(images, filterWeights, xRange, yRange, contrast, adjustZero)
-    if testing:
-		plt.figure(figsize=figsize)
-		plt.imshow(colors)
-		plt.show()
-    else:
-        	imsave("Test4/%s-B_Model.png" % objName, colors)
+        	imsave("Test6/%s.png" % objName, colors)
     return colors
 
 def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, testing=True):
@@ -53,9 +37,9 @@ def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRang
 	if testing:
 		plt.figure(figsize=figsize)
 		plt.imshow(colors)
-		plt.show()
+		plt.title(objName)
 	else:
-        	imsave("Test4/%s-C_Jet.png" % objName, colors)
+        	imsave("Test6/%s.png" % objName, colors)
         #plt.figure()
         #plt.imshow(np.ma.array(component, mask=component==0))
         #plt.show()
@@ -72,7 +56,9 @@ for row in reader:
 obj_nums = np.arange(len(objParams))
 
 # set the object number for testing------
-obj_nums = [15]
+obj_nums = [8]
+extra_center = False #Enable color gradient correction for the central galaxy
+extra_center = True
 
 # process objects
 for o in obj_nums:
@@ -95,6 +81,54 @@ for o in obj_nums:
 		    hdu.close()
 		psfs = np.array(psfs)
 		
+
+		# reshape if necessary
+		inner = 59
+		s_index = 1
+		if data.shape[1] < 119:
+			s_index = 2
+		if data.shape[2] < 119:
+			s_index = 1
+		
+		# load peak positions
+		peaks = objParams[o][1]
+		constraints = ["m"] * len(peaks)
+	
+		# add extra component for center galaxy (Inner galaxy=0, Outer galaxy=1)
+		center_index = 0
+		min_dist = 1000		
+		for i in range(len(peaks)):
+			# find index of central peak
+			curr_dist = np.absolute(peaks[i][0] - 59) + np.absolute(peaks[i][1] - 59)
+			if curr_dist < min_dist:
+				min_dist = curr_dist
+				center_index = i
+		# interchange center peak with first index
+		temp = peaks[0].copy()
+		peaks[0] = peaks[center_index]
+		peaks[center_index] = temp
+		temp = constraints[0]
+		constraints[0] = constraints[center_index]
+		constraints[center_index] = temp
+		if extra_center:
+			peaks = np.concatenate((np.array(peaks[0])[None,:], peaks),axis=0)
+			constraints = [constraints[0]] + constraints
+
+		# add jet component (Jet=-1)
+		shape = data[0].shape
+		peaks = np.concatenate((peaks, np.array([shape[0]/2,shape[1]/2])[None,:]),axis=0)
+		constraints = constraints + [None]
+
+		# restrict to inner pixels
+		if inner < 119:
+			dx = (shape[0] - inner)/2
+			dy = (shape[1] - inner)/2
+			data = data[:,dx:-dx,dy:-dy]
+			peaks = np.array(peaks) - np.array((dx,dy))
+			inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
+			peaks = peaks[inside]
+			constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+		
 		# find weights
 		weights = np.ones_like(data)
 		band_weights = np.zeros(data.shape[0])
@@ -109,36 +143,7 @@ for o in obj_nums:
 		band_weights = proxmin.operators.prox_unity_plus(band_weights, 1)
 		weights *= band_weights[:,None,None]
 		#print(band_weights)
-		
-		# load peak position
-		peaks = objParams[o][1]
-		constraints = ["m"] * len(peaks)
 	
-		# add jet component
-		shape = data[0].shape
-		peaks = np.concatenate((peaks, np.array([shape[0]/2,shape[1]/2])[None,:]),axis=0)
-		constraints = constraints + [None]
-
-		# reshape if necessary
-		inner = 119
-		s_index = 1
-		print(data.shape)
-		if data.shape[1] < 119:
-			s_index = 2
-		if data.shape[2] < 119:
-			s_index = 1
-
-		# restrict to inner pixels
-		if inner < 119:
-			print(inner)
-			dx = (shape[0] - inner)/2
-			dy = (shape[1] - inner)/2
-			data = data[:,dx:-dx,dy:-dy]
-			peaks = np.array(peaks) - np.array((dx,dy))
-			inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
-			peaks = peaks[inside]
-			constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
-			
 		# find SEDs
 		# read central galaxy and jet colors from spectral data
 		row_num = 0
@@ -148,22 +153,16 @@ for o in obj_nums:
 				row_num += 1
 				if row_num == 6:
 					SED_data = row
-		jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
+		jet_sed = np.array([ 0.0194308, 0.05984675,  0.5690685,   0.,          0.35165396])
+#np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
 		gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
 		jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 		gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 
-		center_index = 0
-		min_dist = 1000
 		color_sample_radius = 1
 		color_avg_p = 1 # for fancy color means
 		SEDs = np.zeros((len(peaks),len(jet_sed)))
-		for i in range(len(peaks) - 1):
-			# find index of central peak
-			curr_dist = np.absolute(peaks[i][0] - inner/2) + np.absolute(peaks[i][1] - inner/2)
-			if curr_dist < min_dist:
-				min_dist = curr_dist
-				center_index = i
+		for i in range(1,len(peaks) - 1):
 			# find observed color of peaks
 			count = 0
 			for ii in range(-color_sample_radius, color_sample_radius+1):
@@ -177,34 +176,55 @@ for o in obj_nums:
 			SEDs[i] **= (1/color_avg_p)
 			SEDs[i] = proxmin.operators.prox_unity_plus(SEDs[i], 1)
 			#SEDs[i] = None
-		SEDs[center_index] = gal_sed
+		SEDs[0] = gal_sed
 		SEDs[-1] = jet_sed
 		#print(center_index)
 		#print(SEDs)
 
 		# create thresholds
 		gal_t = 5e-4
-		jet_t = 1.8e-2
+		jet_t = 1e-2
 		l1_thresh = np.ones(len(peaks))*gal_t
 		l1_thresh[-1] = jet_t
-
+		
 		# define constraints
-		def prox_SED(A, step, SEDs=None):
-		    	for i in range(len(A[0])):
-				if not math.isnan(SEDs[i][0]):
-					A[:,i] = SEDs[i]
+		fiber_mask = np.zeros(data.shape[s_index]**2)
+		radius = 6
+		k = 1 # apodization cutoff slope
+		temp = ((np.arange(data.shape[s_index]) - data.shape[s_index]/2)**2)[:,None] + ((np.arange(data.shape[s_index]) - data.shape[s_index]/2)**2)[None,:]
+		fiber_mask = (1/(1 + np.exp(k*(temp**0.5 - radius)))).T.ravel()
+		fiber_mask = fiber_mask/fiber_mask.sum()
+		
+		def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, it=10):
+			if extra_center and (step < 0.0005):
+				S = Xs[1]
+				model = np.dot(A[:,0:2], S[0:2,:])
+				model *= fiber_mask[None,:]
+				fiber_sum = proxmin.operators.prox_unity_plus(model.sum(axis=1), 1)
+				A -= (fiber_sum - SEDs[0])[:,None]
+				#print(fiber_sum)
+			    	for i in range(2, len(A[0])):
+					if not math.isnan(SEDs[i][0]):
+						A[:,i] = SEDs[i]	
+			else:
+				#print("SET")
+				for i in range(1,len(A[0])):
+					if not math.isnan(SEDs[i][0]):
+						A[:,i] = SEDs[i]
 			return proxmin.operators.prox_unity_plus(A, step, axis=0)
 
 		from functools import partial
-		prox_A = partial(prox_SED, SEDs=SEDs)
+		prox_A = partial(prox_SED, SEDs=SEDs, extra_center=extra_center)
 
 		# define masks for localizing jet/galaxies
-		radii = np.ones(len(peaks))*500
-		radii[-1] = 30
-		masks = np.zeros((len(peaks),data.shape[s_index]*data.shape[s_index]))
-		k = 0.5
+		radii = np.ones(len(peaks))*50
+		if extra_center:
+			radii[1] = 20
+		radii[-1] = 50
+		masks = np.zeros((len(peaks),data.shape[s_index]**2))
+		k = 0.5 # apodization cutoff slope
 		for i in range(masks.shape[0]):
-			temp = ((np.arange(data.shape[s_index]) - peaks[i][0])**2)[:,None] + ((np.arange(data.shape[s_index]) - peaks[i][1])**2)[None,:]
+			temp = ((np.arange(data.shape[s_index]) - data.shape[s_index]/2)**2)[:,None] + ((np.arange(data.shape[s_index]) - data.shape[s_index]/2)**2)[None,:]
 			masks[i] = (1/(1 + np.exp(k*(temp**0.5 - radii[i])))).T.ravel()
 
 		def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
@@ -221,13 +241,15 @@ for o in obj_nums:
 
 		prox_S = partial(prox_Jet, masks=masks, l1_thresh=l1_thresh[:,None])
 
+		#print(peaks)
+		#print(SEDs)
 		# run deblender
 		result = deblender.nmf.deblend(data,
 		    peaks=peaks, weights=weights,
 		    psf=psfs,
 		    constraints=constraints,
 		    prox_A=prox_A,
-		    #prox_gA=None,
+		    #prox_gA=prox_gA,
 		    prox_S=prox_S,
 		    monotonicUseNearest=False,
 		    max_iter=1000,
@@ -250,9 +272,17 @@ for o in obj_nums:
         	filterWeights[1,1] = 0.333
         	filterWeights[2,1] = 0.666
         	filterWeights[2,0] = 1
-		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), filterWeights=filterWeights, testing=testing)
-		plotColorImage2(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
-		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o)), testing=testing)
+		plotColorImage(data, contrast=contrast, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-A_Data"), filterWeights=filterWeights, testing=testing)
+		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-B_Model"), testing=testing)
+		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-F_Jet"), testing=testing)
+		plotComponents(A, S, Tx, Ty, ks=[0], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-D_Main"), testing=testing)
+		plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-E_Peak"), testing=testing)
+		# model central galaxy
+		model = np.zeros_like(data)
+		for i in range(2):
+			model += A[:,i,None,None]*S[None,i,:,:]
+		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-C_Galaxy"), testing=testing)
+		plt.show()
 """
 	except Exception, e:
 		print("FAILED: " + str(e))
