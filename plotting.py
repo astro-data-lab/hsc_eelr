@@ -4,9 +4,10 @@ from sys import argv
 import deblender
 from scipy.misc import imsave
 import matplotlib.pyplot as plt
+import proxmin
 
-def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,objName="NONAME",o=0, folderName=None, extra_center=False):
-	# display results
+def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,objName="NONAME",o=0, folderName=None, extra_center=False, ks=[-1]):
+	# display results	
 	A, S, model, P_, Tx, Ty, tr = result
 	plotColorImage(data, contrast=contrast, objName=(objName + "_" + str(o) + "-A_Data"), filterWeights=filterWeights, writeFile=writeFile, folderName=folderName)
 
@@ -24,7 +25,7 @@ def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,ob
 	if extra_center:
 		plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-E_Peak"), writeFile=writeFile, folderName=folderName)
 
-	plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-F_Jet"), writeFile=writeFile, folderName=folderName)
+	plotComponents(A, S, Tx, Ty, ks=ks, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-F_Jet"), writeFile=writeFile, folderName=folderName)
 	if not writeFile:
 		plt.show()
 

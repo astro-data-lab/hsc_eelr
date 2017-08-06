@@ -6,7 +6,7 @@ import fitsio
 import csv
 import math
 import matplotlib.pyplot as plt
-from plotting import displayResults
+from plotting import displayResults, plotColorImage
 from functools import partial
 import traceback
 
@@ -26,21 +26,19 @@ def loadData(objParams, dimension=119):
 	peaks = objParams[1]
 	constraints = ["m"] * len(peaks)
 
-	# reshape if necessary
-	if data.shape[1] < data.shape[2]:
-		data = data[:,:,:data.shape[1]]
-	if data.shape[1] > data.shape[2]:
-		data = data[:,:data.shape[2],:]
 	# restrict to inner pixels
-	if dimension < 119:
-		dx = (data.shape[1] - dimension)/2
-		dy = (data.shape[1] - dimension)/2
-		data = data[:,dx:-dx,dy:-dy]
-		peaks = np.array(peaks) - np.array((dx,dy))
-		inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < dimension) & (peaks[:,1] < dimension)
-		peaks = peaks[inside]
-		constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
-
+	dx = (data.shape[1] - dimension)/2
+	dy = (data.shape[1] - dimension)/2
+	data = data[:,dx:-dx,dy:-dy]
+	# reshape if necessary
+	new_dim = np.minimum(data.shape[1], data.shape[2])
+	new_dim = new_dim - ((new_dim + 1) % 2)
+	data = data[:,:new_dim,:new_dim]
+	peaks = np.array(peaks) - np.array((dx,dy))
+	inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < data.shape[1]) & (peaks[:,1] < data.shape[1])
+	peaks = peaks[inside]
+	constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+	
 	psfs = []
 	for b in bands:
 	    hdu = fitsio.FITS("%s/psf-diff_kernel_%s.fits" % (path, b))
@@ -58,7 +56,11 @@ def loadData(objParams, dimension=119):
 			if row_num == 6:
 				SED_data = row
 	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
-	gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
+	gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])])
+	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
+	jet_sed[4] = 0.35
+	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
+	jet_sed[4] = 0.35
 	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 	gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 	return data, psfs, peaks, constraints, jet_sed, gal_sed
@@ -89,56 +91,6 @@ def processData(peaks, constraints, data, extra_center=False):
 	constraints = constraints + [None]
 	return peaks, constraints
 
-def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5):
-	
-	# define constraints
-	fiber_mask = np.zeros(data.shape[1]**2)
-	temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
-	fiber_mask = (1/(1 + np.exp(fiber_slope*(temp**0.5 - fiber_radius)))).T.ravel()
-	fiber_mask = fiber_mask/fiber_mask.sum()
-		
-	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, it=10):
-		if extra_center and (step < 0.0005):
-			S = Xs[1]
-			model = np.dot(A[:,0:2], S[0:2,:])
-			model *= fiber_mask[None,:]
-			fiber_sum = proxmin.operators.prox_unity_plus(model.sum(axis=1), 1)
-			A[:,0:2] -= (fiber_sum - SEDs[0])[:,None]
-		    	for i in range(2, len(A[0])):
-				if not math.isnan(SEDs[i][0]):
-					A[:,i] = SEDs[i]	
-		else:
-			for i in range(1,len(A[0])):
-				if not math.isnan(SEDs[i][0]):
-					A[:,i] = SEDs[i]
-		return proxmin.operators.prox_unity_plus(A, step, axis=0)
-	prox_A = partial(prox_SED, SEDs=SEDs, extra_center=extra_center)
-
-	# define masks for localizing jet/galaxies
-	radii = np.ones(len(peaks))*galaxy_radius
-	if extra_center:
-		radii[1] = extra_radius
-	radii[-1] = jet_radius
-	masks = np.zeros((len(peaks),data.shape[1]**2))
-	for i in range(masks.shape[0]):
-		temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
-		masks[i] = (1/(1 + np.exp(general_slope*(temp**0.5 - radii[i])))).T.ravel()
-
-	def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
-		S *= masks
-		if l0_thresh is None and l1_thresh is None:
-			return proxmin.operators.prox_plus(S, step)
-		else:
-			# L0 has preference
-			if l0_thresh is not None:
-				if l1_thresh is not None:
-					return proxmin.operators.prox_hard(S, step, thresh=l0_thresh)
-			else:
-				return proxmin.operators.prox_soft_plus(S, step, thresh=l1_thresh)
-
-	prox_S = partial(prox_Jet, masks=masks, l1_thresh=l1_thresh[:,None])
-	return prox_A, prox_S
-
 def defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, color_others=True):
 	# find weights
 	weights = np.ones_like(data)
@@ -167,6 +119,66 @@ def defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=1, color
 	l1_thresh[-1] = jet_t
 	return weights, SEDs, l1_thresh
 
+def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5):
+	
+	# define constraints
+	fiber_mask = np.zeros(data.shape[1]**2)
+	temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
+	fiber_mask = (1/(1 + np.exp(fiber_slope*(temp**0.5 - fiber_radius)))).T.ravel()
+	fiber_mask = fiber_mask/fiber_mask.sum()
+		
+	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, it=10):
+		if extra_center and (step < 0.0005):
+			S = Xs[1]
+			model = np.dot(A[:,0:2], S[0:2,:])
+			model *= fiber_mask[None,:]
+			fiber_sum = proxmin.operators.prox_unity_plus(model.sum(axis=1), 1)
+			A[:,0:2] -= (fiber_sum - SEDs[0])[:,None]
+		    	for i in range(2, len(A[0])):
+				if not math.isnan(SEDs[i][0]):
+					A[:,i] = SEDs[i]	
+			if use_absolute:
+				model = np.dot(A[:,0:2], S[0:2,:])
+				model *= fiber_mask[None,:]
+				fiber_sum = model.sum(axis=1)
+		
+				model = np.dot(A[:,-1:], S[-1:,:])
+				model *= fiber_mask[None,:]
+				fiber_sum = model.sum(axis=1)
+		else:
+			for i in range(0,len(A[0])):
+				if not math.isnan(SEDs[i][0]):
+					A[:,i] = SEDs[i]
+		
+
+		return proxmin.operators.prox_unity_plus(A, step, axis=0)
+	prox_A = partial(prox_SED, SEDs=SEDs, extra_center=extra_center)
+
+	# define masks for localizing jet/galaxies
+	radii = np.ones(len(peaks))*galaxy_radius
+	if extra_center:
+		radii[1] = extra_radius
+	radii[-1] = jet_radius
+	masks = np.zeros((len(peaks),data.shape[1]**2))
+	for i in range(masks.shape[0]):
+		temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
+		masks[i] = (1/(1 + np.exp(general_slope*(temp**0.5 - radii[i])))).T.ravel()
+
+	def prox_Jet(S, step, l0_thresh=None, l1_thresh=None, masks=None):
+		S *= masks
+		if l0_thresh is None and l1_thresh is None:
+			return proxmin.operators.prox_plus(S, step)
+		else:
+			# L0 has preference
+			if l0_thresh is not None:
+				if l1_thresh is not None:
+					return proxmin.operators.prox_hard(S, step, thresh=l0_thresh)
+			else:
+				return proxmin.operators.prox_soft_plus(S, step, thresh=l1_thresh)
+
+	prox_S = partial(prox_Jet, masks=masks, l1_thresh=l1_thresh[:,None])
+	return prox_A, prox_S
+
 def colorSample(data, x, y, color_sample_radius=1, color_avg_p=1):
 	count = 0
 	color = np.zeros(len(bands))
@@ -184,6 +196,7 @@ def colorSample(data, x, y, color_sample_radius=1, color_avg_p=1):
 
 def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
 	"""
+	objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
 	dimension=119, 			Final Image will be dimension x dimension
 	extra_center=False, 		Include extra component on central galaxy to correct for a color gradient
 	color_sample_radius=1, 		When sampling colors from the original image, a (2*color_sample_radius + 1) x " box is used
@@ -210,6 +223,8 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	weights, SEDs, l1_thresh = defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=color_sample_radius, color_avg_p=color_avg_p, gal_t=gal_t, jet_t=jet_t, color_others=color_others)
 	
 	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope)
+	
+	print(SEDs)
 
 	# run deblender
 	result = deblender.nmf.deblend(data,
@@ -224,6 +239,8 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	    l1_thresh=l1_thresh[:,None],
 	    traceback=traceback,
 	    update_order=update_order)
+	A, S, model, P_, Tx, Ty, tr = result
+	
 	return result, data
 
 # load stored object-deblending parameters
@@ -235,7 +252,7 @@ for row in reader:
 	objParams.append([row[0],np.flip(temp_peaks.reshape((len(temp_peaks)/2, 2)),axis=1),int(row[2])])
 
 # set the object number for testing------
-full = True
+full = False
 if full:
 	obj_nums = np.arange(len(objParams))
 else:
@@ -262,7 +279,7 @@ for object_index in obj_nums:
 		filterWeights[2,0] = 1
 		displayResults(data,result,
 			writeFile=full, 
-			folderName="Test7", 
+			folderName="Test8", 
 			objName=objName, filterWeights=filterWeights, extra_center=extra_center, o=object_index)
 	except Exception, e:
 		print("FAILED: " + str(e))

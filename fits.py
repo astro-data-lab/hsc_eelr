@@ -18,14 +18,13 @@ with open('objNames.csv', 'r') as f:
 # read data to be potentially changed
 objParams = [None] * numObjects
 count = 0
-with open('objParams.csv', 'r') as f:
+with open('objParams2.csv', 'r') as f:
 	reader = csv.reader(f)
 	for row in reader:
 		if count < numObjects:
 			objParams[count] = row
 			count += 1
-
-objData = open('objParams.csv','w+')
+objData = open('objParams2.csv','w+')
 
 # so that the data isn't lost
 try: 
@@ -52,13 +51,13 @@ try:
 		12,14,12,14, 14,10,10,9, 8,12,12,14,
 		12,12,14,12, 10,10,10,20, 16,12,14,10]
 
-		start_num = 5
-		nrows = 1
-		ncols = 1
+		start_num = 0
+		nrows = 7
+		ncols = 12
 
 		fig, axs = plt.subplots(nrows=nrows, ncols=ncols, figsize=(14,12))
 		for r in range(nrows):
-			for c in range(ncols):		
+			for c in range(ncols):	
 				obj = start_num + c + r*ncols
 				if obj != 12:
 					path = obj_names[obj]
@@ -88,8 +87,8 @@ try:
 					average *= mults[obj]
 
 					extent = 3
-					check_range = 2
-					region_mult = 0.8
+					check_range = 5
+					region_mult = 1
 					for i in range(len(total)):
 						for j in range(len(total[0])):
 							max = -100
@@ -107,18 +106,11 @@ try:
 								for ii in range(-check_range,check_range+1):
 									for jj in range(-check_range,check_range+1):
 										try:
-											surround = surround + total[i+ii][j+jj]
-											num_surround += 1	
-										except:
-											pass
-								for ii in [-extent, extent]:
-									for jj in [-extent, extent]:
-										try:
 											region = np.minimum(region, total[i+ii][j+jj])
 											num_region += 1	
 										except:
 											pass
-								if (surround/(num_surround/6) > average) & (max > (region_mult*average + region/num_region)):
+								if (max > (region_mult*average + region/num_region)):
 									peaks.append(np.array([i,j]))
 
 					peaks = np.array(peaks)
@@ -141,7 +133,8 @@ try:
 					objParams[obj].append(peak_string)
 					objParams[obj].append(mults[obj])
 					objParams[obj].append(weights_string)
-except:
+except Exception, e:
+	print(e)
 	pass
 # rewrite data
 for i in range(numObjects):
