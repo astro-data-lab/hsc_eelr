@@ -56,14 +56,14 @@ for row in reader:
 obj_nums = np.arange(len(objParams))
 
 # set the object number for testing------
-obj_nums = [8]
+#obj_nums = [8]
 extra_center = False #Enable color gradient correction for the central galaxy
 extra_center = True
 
 # process objects
 for o in obj_nums:
-	#try:
-	for d in range(1):
+	try:
+	#for d in range(1):
 		print(objParams[o][0], o)
 		# load data and psfs
 		path = objParams[o][0]
@@ -121,8 +121,8 @@ for o in obj_nums:
 
 		# restrict to inner pixels
 		if inner < 119:
-			dx = (shape[0] - inner)/2
-			dy = (shape[1] - inner)/2
+			dx = (shape[s_index-1] - inner)/2
+			dy = (shape[s_index-1] - inner)/2
 			data = data[:,dx:-dx,dy:-dy]
 			peaks = np.array(peaks) - np.array((dx,dy))
 			inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < inner) & (peaks[:,1] < inner)
@@ -153,8 +153,7 @@ for o in obj_nums:
 				row_num += 1
 				if row_num == 6:
 					SED_data = row
-		jet_sed = np.array([ 0.0194308, 0.05984675,  0.5690685,   0.,          0.35165396])
-#np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
+		jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
 		gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
 		jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 		gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
@@ -201,7 +200,7 @@ for o in obj_nums:
 				model = np.dot(A[:,0:2], S[0:2,:])
 				model *= fiber_mask[None,:]
 				fiber_sum = proxmin.operators.prox_unity_plus(model.sum(axis=1), 1)
-				A -= (fiber_sum - SEDs[0])[:,None]
+				A[:,0:2] -= (fiber_sum - SEDs[0])[:,None]
 				#print(fiber_sum)
 			    	for i in range(2, len(A[0])):
 					if not math.isnan(SEDs[i][0]):
@@ -261,7 +260,7 @@ for o in obj_nums:
 		A, S, model, P_, Tx, Ty, tr = result
 
 		testing = False
-		testing = True # comment out to write to files
+		#testing = True # comment out to write to files
 		contrast = 20
 
         	filterWeights = np.zeros((3, len(bands)))
@@ -276,15 +275,16 @@ for o in obj_nums:
 		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-B_Model"), testing=testing)
 		plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-F_Jet"), testing=testing)
 		plotComponents(A, S, Tx, Ty, ks=[0], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-D_Main"), testing=testing)
-		plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-E_Peak"), testing=testing)
+		if extra_center:
+			plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-E_Peak"), testing=testing)
 		# model central galaxy
 		model = np.zeros_like(data)
 		for i in range(2):
 			model += A[:,i,None,None]*S[None,i,:,:]
-		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-C_Galaxy"), testing=testing)
-		plt.show()
-"""
+		if extra_center:
+			plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(str(objParams[o][0])[:-1] + "_" + str(o) + "-C_Galaxy"), testing=testing)
+		#plt.show()
 	except Exception, e:
 		print("FAILED: " + str(e))
 		pass
-"""
+

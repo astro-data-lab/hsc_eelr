@@ -2,6 +2,31 @@ import numpy as np
 import os, fitsio
 from sys import argv
 import deblender
+from scipy.misc import imsave
+import matplotlib.pyplot as plt
+
+def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,objName="NONAME",o=0, folderName=None, extra_center=False):
+	# display results
+	A, S, model, P_, Tx, Ty, tr = result
+	plotColorImage(data, contrast=contrast, objName=(objName + "_" + str(o) + "-A_Data"), filterWeights=filterWeights, writeFile=writeFile, folderName=folderName)
+
+	plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-B_Model"), writeFile=writeFile, folderName=folderName)
+
+	# model central galaxy
+	model = np.zeros_like(data)
+	for i in range(2):
+		model += A[:,i,None,None]*S[None,i,:,:]
+	if extra_center:
+		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-C_Galaxy"), writeFile=writeFile, folderName=folderName)
+
+	plotComponents(A, S, Tx, Ty, ks=[0], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-D_Main"), writeFile=writeFile, folderName=folderName)
+
+	if extra_center:
+		plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-E_Peak"), writeFile=writeFile, folderName=folderName)
+
+	plotComponents(A, S, Tx, Ty, ks=[-1], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-F_Jet"), writeFile=writeFile, folderName=folderName)
+	if not writeFile:
+		plt.show()
 
 def imagesToRgb(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False):
     """Convert a collection of images or calexp's to an RGB image
@@ -64,15 +89,30 @@ def imagesToRgb(images, filterWeights=None, xRange=None, yRange=None, contrast=1
     colors = colors.astype(np.uint8)
     return np.dstack(colors)
 
-def plotColorImage(images, filterWeights=None, title=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5)):
+def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, writeFile=False, folderName=None):
     """Display a collection of images or calexp's as an RGB image
 
     See `imagesToRgb` for more info.
     """
-    import matplotlib.pyplot as plt
     colors = imagesToRgb(images, filterWeights, xRange, yRange, contrast, adjustZero)
-    plt.figure(figsize=figsize)
-    plt.imshow(colors)
-    if title is not None:
-        plt.title(title)
-    plt.show()
+    if not writeFile:
+		plt.figure(figsize=figsize)
+		plt.imshow(colors)
+		plt.title(objName)
+    else:
+        	imsave("%s/%s.png" % (folderName, objName), colors)
+    return colors
+
+def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, writeFile=False, folderName=None):
+    if ks is None:
+        ks = range(len(S))
+    for k in ks:
+        #component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
+        component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
+        colors = imagesToRgb(component, filterWeights, xRange, yRange, contrast, adjustZero)
+	if not writeFile:
+		plt.figure(figsize=figsize)
+		plt.imshow(colors)
+		plt.title(objName)
+	else:
+        	imsave("%s/%s.png" % (folderName, objName), colors)
