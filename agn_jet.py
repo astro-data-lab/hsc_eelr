@@ -12,7 +12,7 @@ import traceback
 
 bands = ['g','r','i','z','y']
 
-def loadData(objParams, dimension=119):
+def loadData(objParams, dimension=119, galaxy_constraint = "M"):
 	# load data and psfs
 	path = objParams[0]
 	data_bands = []
@@ -24,7 +24,7 @@ def loadData(objParams, dimension=119):
 
 	# load peak positions
 	peaks = objParams[1]
-	constraints = ["m"] * len(peaks)
+	constraints = [galaxy_constraint] * len(peaks)
 
 	# restrict to inner pixels
 	dx = (data.shape[1] - dimension)/2
@@ -55,12 +55,11 @@ def loadData(objParams, dimension=119):
 			row_num += 1
 			if row_num == 6:
 				SED_data = row
+	#gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])])
 	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
-	gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])])
-	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
-	jet_sed[4] = 0.35
-	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
-	jet_sed[4] = 0.35
+	gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
+	# manually overriding found y-band value (seems to often be corrupted by galaxy H-alpha)
+	#jet_sed = np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
 	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 	gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 	return data, psfs, peaks, constraints, jet_sed, gal_sed
@@ -127,7 +126,7 @@ def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fib
 	fiber_mask = (1/(1 + np.exp(fiber_slope*(temp**0.5 - fiber_radius)))).T.ravel()
 	fiber_mask = fiber_mask/fiber_mask.sum()
 		
-	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, it=10):
+	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, use_absolute=False):
 		if extra_center and (step < 0.0005):
 			S = Xs[1]
 			model = np.dot(A[:,0:2], S[0:2,:])
@@ -194,38 +193,20 @@ def colorSample(data, x, y, color_sample_radius=1, color_avg_p=1):
 	color = proxmin.operators.prox_unity_plus(color, 1)
 	return color
 
-def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
-	"""
-	objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
-	dimension=119, 			Final Image will be dimension x dimension
-	extra_center=False, 		Include extra component on central galaxy to correct for a color gradient
-	color_sample_radius=1, 		When sampling colors from the original image, a (2*color_sample_radius + 1) x " box is used
-	color_avg_p=1, 			For averaging in the color sampling, the l_(color_avg_p) norm is used
-	gal_t=5e-4, 			Threshold the galaxy components
-	jet_t=1e-2, 			Threshold the jet component
-	fiber_radius=6, 		Radius (px) of spectroscopic fiber (for color gradient constraints)
-	fiber_slope=1, 			Slope of logistic apodization for fiber mask (for color gradient constraints)
-	galaxy_radius=50, 		Extent of galaxies involved
-	extra_radius=20, 		Extent of extra peak component for color gradients
-	jet_radius=40, 			Jet Extent
-	general_slope=0.5, 		Logistic Apodization slope for the above
-	color_others=True,		Fix other galaxies' colors at their color in the original image
-	monotonicUseNearest=False, 	---Deblender parameters---
-	max_iter=1000, 
-	e_rel=[1e-6,1e-3], 
-	traceback=False, 
-	update_order=[1,0]
-	"""
-	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension)
+def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, galaxy_constraint="M", monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
+	
+	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension, galaxy_constraint=galaxy_constraint)
 
 	peaks, constraints = processData(peaks, constraints, data, extra_center=extra_center)
 
 	weights, SEDs, l1_thresh = defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=color_sample_radius, color_avg_p=color_avg_p, gal_t=gal_t, jet_t=jet_t, color_others=color_others)
 	
 	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope)
-	
+
 	print(SEDs)
 
+	print(colorSample(data,9,32))
+	print(colorSample(data,32,9))
 	# run deblender
 	result = deblender.nmf.deblend(data,
 	    peaks=peaks, weights=weights,
@@ -240,6 +221,7 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	    traceback=traceback,
 	    update_order=update_order)
 	A, S, model, P_, Tx, Ty, tr = result
+
 	
 	return result, data
 
@@ -266,8 +248,32 @@ for object_index in obj_nums:
 		result, data = deblend(objParams[object_index], 
 			extra_center=extra_center, 
 			max_iter=1000,
-			dimension=59)
-
+			galaxy_radius=40,
+			jet_radius=40,
+			galaxy_constraint="M",
+			dimension=69)
+		"""
+		objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
+		dimension=119, 			Final Image will be dimension x dimension
+		extra_center=False, 		Include extra component on central galaxy to correct for a color gradient
+		color_sample_radius=1, 		When sampling colors from the original image, a (2*color_sample_radius + 1) x " box is used
+		color_avg_p=1, 			For averaging in the color sampling, the l_(color_avg_p) norm is used
+		gal_t=5e-4, 			Threshold the galaxy components
+		jet_t=1e-2, 			Threshold the jet component
+		fiber_radius=6, 		Radius (px) of spectroscopic fiber (for color gradient constraints)
+		fiber_slope=1, 			Slope of logistic apodization for fiber mask (for color gradient constraints)
+		galaxy_radius=50, 		Extent of galaxies involved
+		extra_radius=20, 		Extent of extra peak component for color gradients
+		jet_radius=40, 			Jet Extent
+		general_slope=0.5, 		Logistic Apodization slope for the above
+		color_others=True,		Fix other galaxies' colors at their color in the original image
+		galaxy_constraint="M",		Deblending constraint for other galaxies
+		monotonicUseNearest=False, 	---Deblender parameters---
+		max_iter=1000, 
+		e_rel=[1e-6,1e-3], 
+		traceback=False, 
+		update_order=[1,0]
+		"""
 		objName = str(objParams[object_index][0])[:-1]
 		filterWeights = np.zeros((3, len(bands)))
 		filterWeights[0,4] = 1
@@ -279,7 +285,7 @@ for object_index in obj_nums:
 		filterWeights[2,0] = 1
 		displayResults(data,result,
 			writeFile=full, 
-			folderName="Test8", 
+			folderName="Test10", 
 			objName=objName, filterWeights=filterWeights, extra_center=extra_center, o=object_index)
 	except Exception, e:
 		print("FAILED: " + str(e))
