@@ -5,20 +5,32 @@ import deblender
 from scipy.misc import imsave
 import matplotlib.pyplot as plt
 import proxmin
+from deblender.nmf import get_model
 
-def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,objName="NONAME",o=0, folderName=None, extra_center=False, ks=[-1]):
+def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,objName="NONAME",o=0, folderName=None, extra_center=False, ks=[-1], use_psfs=False):
 	# display results	
 	A, S, model, P_, Tx, Ty, tr = result
+	gal_t=0
+	ravelS = []
+	for i in range(S.shape[0]):
+		ravelS.append(S[i].ravel())
+	ravelS = np.array(ravelS)
+
 	plotColorImage(data, contrast=contrast, objName=(objName + "_" + str(o) + "-A_Data"), filterWeights=filterWeights, writeFile=writeFile, folderName=folderName)
 
 	plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-B_Model"), writeFile=writeFile, folderName=folderName)
-
-	# model central galaxy
-	model = np.zeros_like(data)
-	for i in range(2):
-		model += A[:,i,None,None]*S[None,i,:,:]
+	if use_psfs:
+		# model central galaxy
+        	center_model = get_model(A[:,0:2], ravelS[0:2,], Tx, Ty, P_, shape=(S.shape[1],S.shape[2]))
+		under = center_model < gal_t
+		center_model[under] = 0
+	else:	
+		# model central galaxy
+		center_model = np.zeros_like(data)
+		for i in range(2):
+			center_model += A[:,i,None,None]*S[None,i,:,:]
 	if extra_center:
-		plotColorImage(model, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-C_Galaxy"), writeFile=writeFile, folderName=folderName)
+		plotColorImage(center_model, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-C_Galaxy"), writeFile=writeFile, folderName=folderName)
 
 	plotComponents(A, S, Tx, Ty, ks=[0], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-D_Main"), writeFile=writeFile, folderName=folderName)
 
@@ -26,6 +38,8 @@ def displayResults(data,result,contrast=20,filterWeights=None,writeFile=False,ob
 		plotComponents(A, S, Tx, Ty, ks=[1], contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-E_Peak"), writeFile=writeFile, folderName=folderName)
 
 	plotComponents(A, S, Tx, Ty, ks=ks, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-F_Jet"), writeFile=writeFile, folderName=folderName)
+	if use_psfs:
+		plotComponents(A, S, Tx, Ty, ks=ks, contrast=contrast, filterWeights=filterWeights, objName=(objName + "_" + str(o) + "-G_PJet"), writeFile=writeFile, folderName=folderName, use_psfs=True, ravelS=ravelS, P=P_)
 	if not writeFile:
 		plt.show()
 
@@ -104,12 +118,19 @@ def plotColorImage(images, filterWeights=None, xRange=None, yRange=None, contras
         	imsave("%s/%s.png" % (folderName, objName), colors)
     return colors
 
-def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, writeFile=False, folderName=None):
+def plotComponents(A, S, Tx, Ty, ks=None, filterWeights=None, xRange=None, yRange=None, contrast=1, adjustZero=False, figsize=(5,5), objName=None, writeFile=False, folderName=None, use_psfs=False, ravelS=None, P=None):
     if ks is None:
         ks = range(len(S))
     for k in ks:
         #component = deblender.nmf.get_peak_model(A[:,k], S[k].flatten(), Tx[k], Ty[k], shape=(S[k].shape))[0]
-        component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
+	if use_psfs:
+		# need to fix for when k != -1
+		if k == -1:
+			component = get_model(A[:,k:], ravelS[k:,], Tx, Ty, P, shape=(S.shape[1],S.shape[2]))
+		else:
+			component = get_model(A[:,k:k+1], ravelS[k:k+1,], Tx, Ty, P, shape=(S.shape[1],S.shape[2]))
+	else:	
+        	component = deblender.nmf.get_peak_model(A, S.reshape(len(S),-1), Tx, Ty, shape=(S[k].shape),k=k)
         colors = imagesToRgb(component, filterWeights, xRange, yRange, contrast, adjustZero)
 	if not writeFile:
 		plt.figure(figsize=figsize)

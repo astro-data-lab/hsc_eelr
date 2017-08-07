@@ -58,8 +58,9 @@ def loadData(objParams, dimension=119, galaxy_constraint = "M"):
 	#gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])])
 	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
 	gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
-	# manually overriding found y-band value (seems to often be corrupted by galaxy H-alpha)
-	#jet_sed = np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
+	
+	# manually overriding found y-band value (seems to often be corrupted by galaxy lines)
+	jet_sed = np.array([0.08,0.17,0.55,0,0])#colorSample(data,32,9, color_sample_radius=0)#np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
 	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 	gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 	return data, psfs, peaks, constraints, jet_sed, gal_sed
@@ -158,6 +159,7 @@ def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fib
 	if extra_center:
 		radii[1] = extra_radius
 	radii[-1] = jet_radius
+	radii[0] = 40
 	masks = np.zeros((len(peaks),data.shape[1]**2))
 	for i in range(masks.shape[0]):
 		temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
@@ -203,10 +205,8 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	
 	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope)
 
-	print(SEDs)
+	#print(SEDs)
 
-	print(colorSample(data,9,32))
-	print(colorSample(data,32,9))
 	# run deblender
 	result = deblender.nmf.deblend(data,
 	    peaks=peaks, weights=weights,
@@ -221,7 +221,6 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	    traceback=traceback,
 	    update_order=update_order)
 	A, S, model, P_, Tx, Ty, tr = result
-
 	
 	return result, data
 
@@ -236,9 +235,9 @@ for row in reader:
 # set the object number for testing------
 full = False
 if full:
-	obj_nums = np.arange(len(objParams))
+	obj_nums = [35]#np.arange(len(objParams))
 else:
-	obj_nums = [8]
+	obj_nums = [1]
 
 # process objects
 for object_index in obj_nums:
@@ -248,10 +247,11 @@ for object_index in obj_nums:
 		result, data = deblend(objParams[object_index], 
 			extra_center=extra_center, 
 			max_iter=1000,
-			galaxy_radius=40,
-			jet_radius=40,
+			galaxy_radius=15,
+			general_slope=1,
+			jet_radius=50,
 			galaxy_constraint="M",
-			dimension=69)
+			dimension=85)
 		"""
 		objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
 		dimension=119, 			Final Image will be dimension x dimension
@@ -285,8 +285,8 @@ for object_index in obj_nums:
 		filterWeights[2,0] = 1
 		displayResults(data,result,
 			writeFile=full, 
-			folderName="Test10", 
-			objName=objName, filterWeights=filterWeights, extra_center=extra_center, o=object_index)
+			folderName="Test13", 
+			objName=objName, filterWeights=filterWeights, extra_center=extra_center, o=object_index, ks=[-1], use_psfs=False)
 	except Exception, e:
 		print("FAILED: " + str(e))
 		if not full:
