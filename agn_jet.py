@@ -12,7 +12,7 @@ import traceback
 
 bands = ['g','r','i','z','y']
 
-def loadData(objParams, dimension=119, galaxy_constraint = "M"):
+def loadData(objParams, dimension=119, galaxy_constraint = "M", bleed=None):
 	# load data and psfs
 	path = objParams[0]
 	data_bands = []
@@ -55,12 +55,15 @@ def loadData(objParams, dimension=119, galaxy_constraint = "M"):
 			row_num += 1
 			if row_num == 6:
 				SED_data = row
-	#gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])])
-	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
-	gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
+	if bleed is None:
+		bleed = np.array([0,0,0,0,0])
+	gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])]) + bleed
+	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])]) - bleed
+	print(jet_sed)
+	#gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
 	
 	# manually overriding found y-band value (seems to often be corrupted by galaxy lines)
-	jet_sed = np.array([0.08,0.17,0.55,0,0])#colorSample(data,32,9, color_sample_radius=0)#np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
+	#jet_sed = np.array([0.08,0.17,0.55,0,0])#colorSample(data,32,9, color_sample_radius=0)#np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
 	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
 	gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 	return data, psfs, peaks, constraints, jet_sed, gal_sed
@@ -195,9 +198,9 @@ def colorSample(data, x, y, color_sample_radius=1, color_avg_p=1):
 	color = proxmin.operators.prox_unity_plus(color, 1)
 	return color
 
-def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, galaxy_constraint="M", monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
+def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, galaxy_constraint="M", bleed=None, monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
 	
-	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension, galaxy_constraint=galaxy_constraint)
+	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension, galaxy_constraint=galaxy_constraint, bleed=bleed)
 
 	peaks, constraints = processData(peaks, constraints, data, extra_center=extra_center)
 
@@ -205,7 +208,7 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	
 	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope)
 
-	#print(SEDs)
+	print(SEDs)
 
 	# run deblender
 	result = deblender.nmf.deblend(data,
@@ -251,6 +254,7 @@ for object_index in obj_nums:
 			general_slope=1,
 			jet_radius=50,
 			galaxy_constraint="M",
+			bleed=np.array([0,0,0,0,0]),
 			dimension=85)
 		"""
 		objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
@@ -268,6 +272,7 @@ for object_index in obj_nums:
 		general_slope=0.5, 		Logistic Apodization slope for the above
 		color_others=True,		Fix other galaxies' colors at their color in the original image
 		galaxy_constraint="M",		Deblending constraint for other galaxies
+		bleed=None,			How much of the galaxy's spectrum the jet took on in the spectral splitting
 		monotonicUseNearest=False, 	---Deblender parameters---
 		max_iter=1000, 
 		e_rel=[1e-6,1e-3], 
