@@ -56,9 +56,18 @@ def imagesToRgb(images, filterWeights=None, xRange=None, yRange=None, contrast=1
 
     if filterWeights is None:
         filterWeights = np.array([np.zeros(B) for c in channels])
+	"""
         filterWeights[0,3] = 1 # R: 100% z
         filterWeights[1,2] = 1 # G: 100% i
         filterWeights[2,1] = 1 # B: 100% r
+	"""
+	filterWeights[0,4] = 1
+	filterWeights[0,3] = 0.666
+	filterWeights[1,3] = 0.333
+	filterWeights[1,2] = 1
+	filterWeights[1,1] = 0.333
+	filterWeights[2,1] = 0.666
+	filterWeights[2,0] = 1
     if yRange is None:
         ySlice = slice(None, None)
     elif not isinstance(yRange, slice):

@@ -12,7 +12,7 @@ import traceback
 
 bands = ['g','r','i','z','y']
 
-def loadData(objParams, dimension=119, galaxy_constraint = "M", bleed=None):
+def loadData(objParams, dimension=119, galaxy_constraint = "M", p_buffer=15):
 	# load data and psfs
 	path = objParams[0]
 	data_bands = []
@@ -35,9 +35,13 @@ def loadData(objParams, dimension=119, galaxy_constraint = "M", bleed=None):
 	new_dim = new_dim - ((new_dim + 1) % 2)
 	data = data[:,:new_dim,:new_dim]
 	peaks = np.array(peaks) - np.array((dx,dy))
-	inside = (peaks[:,0] > 0) & (peaks[:,1] > 0) & (peaks[:,0] < data.shape[1]) & (peaks[:,1] < data.shape[1])
-	peaks = peaks[inside]
-	constraints = [constraints[i] for i in range(len(constraints)) if inside[i] == 1]
+	projected = (peaks[:,0] > -p_buffer) & (peaks[:,1] > -p_buffer) & (peaks[:,0] < data.shape[1] + p_buffer) & (peaks[:,1] < data.shape[1] + p_buffer)
+	peaks = peaks[projected]
+	for i in range(peaks.shape[0]):
+		peaks[i][0] = np.minimum(np.maximum(peaks[i][0], 0), data.shape[1] - 1)
+		peaks[i][1] = np.minimum(np.maximum(peaks[i][1], 0), data.shape[1] - 1)
+
+	constraints = [constraints[i] for i in range(len(constraints)) if projected[i] == 1]
 	
 	psfs = []
 	for b in bands:
@@ -55,17 +59,14 @@ def loadData(objParams, dimension=119, galaxy_constraint = "M", bleed=None):
 			row_num += 1
 			if row_num == 6:
 				SED_data = row
-	if bleed is None:
-		bleed = np.array([0,0,0,0,0])
-	gal_sed = np.array([float(SED_data[25]),float(SED_data[26]),float(SED_data[27]),float(SED_data[28]),float(SED_data[29])]) + bleed
-	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])]) - bleed
-	print(jet_sed)
+	#load given colors
+	gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
+	jet_sed = np.array([float(SED_data[30]),float(SED_data[31]),float(SED_data[32]),float(SED_data[33]),float(SED_data[34])])
+	
 	#gal_sed = np.array([float(SED_data[35]),float(SED_data[36]),float(SED_data[37]),float(SED_data[38]),float(SED_data[39])])
 	
 	# manually overriding found y-band value (seems to often be corrupted by galaxy lines)
 	#jet_sed = np.array([0.08,0.17,0.55,0,0])#colorSample(data,32,9, color_sample_radius=0)#np.array([0.08094098, 0.11424346, 0.48816309, 0.1028126, 0.21383987])
-	jet_sed = proxmin.operators.prox_unity_plus(jet_sed, 1)
-	gal_sed = proxmin.operators.prox_unity_plus(gal_sed, 1)
 	return data, psfs, peaks, constraints, jet_sed, gal_sed
 
 def processData(peaks, constraints, data, extra_center=False):
@@ -94,7 +95,7 @@ def processData(peaks, constraints, data, extra_center=False):
 	constraints = constraints + [None]
 	return peaks, constraints
 
-def defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, color_others=True):
+def defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, color_others=True, close_color=False, raise_gal_y=False, crush_jet_y=1, objName=""):
 	# find weights
 	weights = np.ones_like(data)
 	band_weights = np.zeros(data.shape[0])
@@ -114,15 +115,53 @@ def defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=1, color
 		SEDs[i] = colorSample(data, peaks[i][1], peaks[i][0],color_sample_radius=color_sample_radius,color_avg_p=color_avg_p)
 		if not color_others:
 			SEDs[i] = None
+	
+	# Color corrections:
+	bleed = np.array([0.,0.,0.,0.,0.])
+	# Given galaxy y-band can be too small if spectral data stops early
+	if raise_gal_y:	
+		gal_sed[4] = np.maximum(gal_sed[3], gal_sed[4])
+	# don't expect jet to have much y-band flux at all (Galaxy H-alpha is messing with it at these z-values)
+	bleed[4] = jet_sed[4]
+	gal_sed2 = gal_sed + bleed
+	jet_sed2 = jet_sed - bleed
+	pal = np.zeros_like(data)
+	gradient = np.linspace(0,2,data.shape[1])
+	pal += gradient[None,:,None]*gal_sed[:,None,None]
+	pal += (1 - gradient[None,:,None])*gal_sed2[:,None,None]
+	#plotColorImage(pal, objName=(objName + "_0GColors"), folderName="Test25", writeFile=True)
+
+	pal = np.zeros_like(data)
+	pal += gradient[None,:,None]*jet_sed[:,None,None]
+	pal += (1 - gradient[None,:,None])*jet_sed2[:,None,None]
+	#plotColorImage(pal, objName=(objName + "_0JColors"), folderName="Test25", writeFile=True)
+
+	bleed[4] = (1 - crush_jet_y)*jet_sed[4]
+	gal_sed += bleed
+	jet_sed -= bleed
 	SEDs[0] = gal_sed
 	SEDs[-1] = jet_sed
+	for i in range(SEDs.shape[0]):
+		SEDs[i] = proxmin.operators.prox_unity_plus(SEDs[i], 1)
 	
+	if close_color:
+		min_dist = 10000
+		min_index = 0
+		for i in range(1,SEDs.shape[0]-1):
+			#curr_dist = ((SEDs[0] - SEDs[i])**2).sum()
+			curr_dist = ((SEDs[0,0:4] - SEDs[i,0:4])**2).sum() # y-band is messed up
+			if curr_dist < min_dist:
+				min_dist = curr_dist
+				min_index = i
+		pull = 1 # < 1 to trust the spectral data somewhat
+		SEDs[0] += (SEDs[min_index] - SEDs[0])*pull
+
 	# create thresholds
 	l1_thresh = np.ones(len(peaks))*gal_t
 	l1_thresh[-1] = jet_t
 	return weights, SEDs, l1_thresh
 
-def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5):
+def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fiber_radius=6, fiber_slope=1, galaxy_radius=50, central_radius=None, extra_radius=20, jet_radius=40, general_slope=0.5, color_give=None):
 	
 	# define constraints
 	fiber_mask = np.zeros(data.shape[1]**2)
@@ -130,17 +169,39 @@ def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fib
 	fiber_mask = (1/(1 + np.exp(fiber_slope*(temp**0.5 - fiber_radius)))).T.ravel()
 	fiber_mask = fiber_mask/fiber_mask.sum()
 		
-	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, use_absolute=False):
+	if color_give is None:
+		color_give = np.zeros(5)
+
+	def prox_SED(A, step, SEDs=None, Xs=None, extra_center=False, use_absolute=False, color_give=None):
 		if extra_center and (step < 0.0005):
 			S = Xs[1]
+			b = A.shape[0]
+			k = A.shape[1]
+			# record power of each component going through fiber
+			spec_mag = np.zeros((k,b)) # flux from each component through fiber
+			for i in range(k):
+				model = np.dot(A[:, i:(i+1)], S[i:(i+1), :])
+				model *= fiber_mask[None, :]
+				fiber_sum = model.sum(axis=1)
+				spec_mag[i] = fiber_sum
 			model = np.dot(A[:,0:2], S[0:2,:])
 			model *= fiber_mask[None,:]
+			#print(model.shape)
 			fiber_sum = proxmin.operators.prox_unity_plus(model.sum(axis=1), 1)
-			A[:,0:2] -= (fiber_sum - SEDs[0])[:,None]
+	
+			# color flexibility in bands specified by color_give
+			push_back = 1/(1 + color_give)
+			galaxy_below = A[:,0].T < SEDs[0]
+			push_back[galaxy_below] = 1 # if the galaxy has below expected flux, force
+			A[:,0:2] -= ((fiber_sum - SEDs[0])*push_back)[:,None]
+			A[:,0] = proxmin.operators.prox_unity_plus(A[:,0], 1)
+			A[:,1] = proxmin.operators.prox_unity_plus(A[:,1], 1)
+			
 		    	for i in range(2, len(A[0])):
 				if not math.isnan(SEDs[i][0]):
 					A[:,i] = SEDs[i]	
 			if use_absolute:
+				# Todo (really should be in prox_S)
 				model = np.dot(A[:,0:2], S[0:2,:])
 				model *= fiber_mask[None,:]
 				fiber_sum = model.sum(axis=1)
@@ -149,20 +210,27 @@ def defineConstraints(data, peaks, SEDs, extra_center=False, l1_thresh=None, fib
 				model *= fiber_mask[None,:]
 				fiber_sum = model.sum(axis=1)
 		else:
-			for i in range(0,len(A[0])):
+			for i in range(1,len(A[0])):
 				if not math.isnan(SEDs[i][0]):
 					A[:,i] = SEDs[i]
-		
+
+			# color flexibility in bands specified by color_give
+			push_back = 1/(1 + color_give)
+			galaxy_below = A[:,0].T < SEDs[0]
+			push_back[galaxy_below] = 1 # if the galaxy has below expected flux, force
+			A[:,0] += (SEDs[0,:].T - A[:,0])*push_back
 
 		return proxmin.operators.prox_unity_plus(A, step, axis=0)
-	prox_A = partial(prox_SED, SEDs=SEDs, extra_center=extra_center)
+	prox_A = partial(prox_SED, SEDs=SEDs, extra_center=extra_center, color_give=color_give)
 
 	# define masks for localizing jet/galaxies
 	radii = np.ones(len(peaks))*galaxy_radius
 	if extra_center:
 		radii[1] = extra_radius
 	radii[-1] = jet_radius
-	radii[0] = 40
+	if central_radius is None:
+		central_radius = galaxy_radius
+	radii[0] = central_radius
 	masks = np.zeros((len(peaks),data.shape[1]**2))
 	for i in range(masks.shape[0]):
 		temp = ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[:,None] + ((np.arange(data.shape[1]) - data.shape[1]/2)**2)[None,:]
@@ -195,20 +263,46 @@ def colorSample(data, x, y, color_sample_radius=1, color_avg_p=1):
 				pass
 	color /= count
 	color **= (1/color_avg_p)
-	color = proxmin.operators.prox_unity_plus(color, 1)
 	return color
 
-def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, galaxy_constraint="M", bleed=None, monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0]):
+def deblend(objParams, readParams=False, dimension=119, extra_center=False, color_sample_radius=1, color_avg_p=1, gal_t=5e-4, jet_t=1e-2, fiber_radius=6, fiber_slope=1, galaxy_radius=50, central_radius=None, extra_radius=20, jet_radius=40, general_slope=0.5, color_others=True, color_give=None, close_color = False, raise_gal_y=False, crush_jet_y=1, galaxy_constraint="M", p_buffer=15, monotonicUseNearest=False, max_iter=1000, e_rel=[1e-6,1e-3], traceback=False, update_order=[1,0], objName=""):
 	
-	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension, galaxy_constraint=galaxy_constraint, bleed=bleed)
+	if readParams:
+		dimension=objParams[2]			#Final Image will be dimension x dimension
+		extra_center=objParams[3]		#Include extra component on central galaxy to correct for a color gradient
+		color_sample_radius=objParams[4]	#When sampling colors from the original image, a (2*color_sample_radius + 1) x " box is used
+		color_avg_p=objParams[5]		#For averaging in the color sampling, the l_(color_avg_p) norm is used
+		gal_t=objParams[6]			#Threshold the galaxy components
+		jet_t=objParams[7]			#Threshold the jet component
+		p_buffer=objParams[8]	
+		fiber_radius=objParams[9]		#Radius (px) of spectroscopic fiber (for color gradient constraints)
+		fiber_slope=objParams[10]		#Slope of logistic apodization for fiber mask (for color gradient constraints)
+		galaxy_radius=objParams[11] 		#Extent of galaxies involved
+		central_radius=objParams[12]		#Extent of central galaxy, None: same as others
+		extra_radius=objParams[13]		#Extent of extra peak component for color gradients
+		jet_radius=objParams[14] 		#Jet Extent
+		general_slope=objParams[15]		#Logistic Apodization slope for the above
+		color_others=objParams[16]		#Fix other galaxies' colors at their color in the original image
+		color_give=objParams[17]		#Allow for flexibility in fitting A to SEDs
+		close_color=objParams[18]		#Set Central Galaxy Color to the other galaxy in the image closest in color-space
+		raise_gal_y=objParams[19]		#Force Galaxy's y-band to be greater than or equal to r-band (cases where spectral data stops before y-bnad)
+		crush_jet_y=objParams[20]		#Force Jet's y-band to be 0 (when H-alpha is picked up as jet color)
+		galaxy_constraint=objParams[21]		#Deblending constraint for galaxies
+		monotonicUseNearest=objParams[22] 	#---Deblender parameters---
+		max_iter=objParams[23]
+		e_rel=objParams[24]
+		traceback=objParams[25]
+		update_order=objParams[26]	
+
+	data, psfs, peaks, constraints, jet_sed, gal_sed = loadData(objParams, dimension=dimension, galaxy_constraint=galaxy_constraint, p_buffer=p_buffer)
 
 	peaks, constraints = processData(peaks, constraints, data, extra_center=extra_center)
 
-	weights, SEDs, l1_thresh = defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=color_sample_radius, color_avg_p=color_avg_p, gal_t=gal_t, jet_t=jet_t, color_others=color_others)
+	weights, SEDs, l1_thresh = defineParameters(data, peaks, jet_sed, gal_sed, color_sample_radius=color_sample_radius, color_avg_p=color_avg_p, gal_t=gal_t, jet_t=jet_t, color_others=color_others, close_color=close_color, raise_gal_y=raise_gal_y, crush_jet_y=crush_jet_y, objName=objName)
 	
-	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope)
-
-	print(SEDs)
+	prox_A, prox_S = defineConstraints(data, peaks, SEDs, extra_center=extra_center, l1_thresh=l1_thresh, fiber_radius=fiber_radius, fiber_slope=fiber_slope, galaxy_radius=galaxy_radius, central_radius=central_radius, extra_radius=extra_radius, jet_radius=jet_radius, general_slope=general_slope, color_give=color_give)
+	
+	#print(SEDs)	
 
 	# run deblender
 	result = deblender.nmf.deblend(data,
@@ -225,61 +319,95 @@ def deblend(objParams, dimension=119, extra_center=False, color_sample_radius=1,
 	    update_order=update_order)
 	A, S, model, P_, Tx, Ty, tr = result
 	
+	#print(A.T)
+	
 	return result, data
 
 # load stored object-deblending parameters
-read_data = open("objParams.csv","r")
+read_data = open("objParams3.csv","r")
 reader = csv.reader(read_data)
 objParams = []
+count = 0
 for row in reader:
 	temp_peaks = np.fromstring(row[1], dtype=int, sep=' ')
-	objParams.append([row[0],np.flip(temp_peaks.reshape((len(temp_peaks)/2, 2)),axis=1),int(row[2])])
+	types = "ibifffifffffffbzbbfsbizby"
+	if count > 0:
+		row_data = [row[0],np.flip(temp_peaks.reshape((len(temp_peaks)/2, 2)),axis=1)]
+		for i in range(len(types)):
+			curr = types[i:i+1]
+			if curr == "i":
+				row_data.append(int(row[i+4]))
+			if curr == "b":
+				row_data.append(bool(int(row[i+4])))
+			if curr == "f":
+				row_data.append(float(row[i+4]))
+			if curr == "s":
+				row_data.append(str(row[i+4]))
+			if curr == "y":
+				row_data.append(np.fromstring(row[i+4], dtype=int, sep=' '))
+			if curr == "z":
+				row_data.append(np.fromstring(row[i+4], dtype=float, sep=' '))
+		objParams.append(row_data)
+	count += 1
 
 # set the object number for testing------
 full = False
 if full:
-	obj_nums = [35]#np.arange(len(objParams))
+	obj_nums = np.arange(len(objParams))
 else:
-	obj_nums = [1]
+	obj_nums = [14]
 
 # process objects
 for object_index in obj_nums:
 	try:
-		print(objParams[object_index][0], object_index)
+		objName = str(objParams[object_index][0])[:-1]
+		print("OBJECT: {0}, #{1}, {2}x{2} for {3} iterations".format(objName, object_index, objParams[object_index][2], objParams[object_index][23]))
 		extra_center=True
 		result, data = deblend(objParams[object_index], 
+			readParams=True,
 			extra_center=extra_center, 
 			max_iter=1000,
 			galaxy_radius=15,
+			central_radius=40,
+			extra_radius=15,
 			general_slope=1,
-			jet_radius=50,
+			jet_radius=20,
+			jet_t=1e-3,
 			galaxy_constraint="M",
-			bleed=np.array([0,0,0,0,0]),
+			p_buffer=15,
+			color_give=np.array([0.,0.,0.,0.,0.]),
+			close_color=True,
+			objName=objName,
 			dimension=85)
 		"""
 		objParams,			objParams[0]: Object Name objParams[1]: Nx2 numpy array of image peaks
+		readParams,			Tell deblender to take object parameters from sheet instead of those passed
 		dimension=119, 			Final Image will be dimension x dimension
 		extra_center=False, 		Include extra component on central galaxy to correct for a color gradient
 		color_sample_radius=1, 		When sampling colors from the original image, a (2*color_sample_radius + 1) x " box is used
 		color_avg_p=1, 			For averaging in the color sampling, the l_(color_avg_p) norm is used
 		gal_t=5e-4, 			Threshold the galaxy components
 		jet_t=1e-2, 			Threshold the jet component
+		p_buffer=15,			Range where peaks are projected onto trimmed image
 		fiber_radius=6, 		Radius (px) of spectroscopic fiber (for color gradient constraints)
 		fiber_slope=1, 			Slope of logistic apodization for fiber mask (for color gradient constraints)
 		galaxy_radius=50, 		Extent of galaxies involved
+		central_radius=None, 		Extent of central galaxy, None: same as others
 		extra_radius=20, 		Extent of extra peak component for color gradients
 		jet_radius=40, 			Jet Extent
 		general_slope=0.5, 		Logistic Apodization slope for the above
 		color_others=True,		Fix other galaxies' colors at their color in the original image
+		color_give=None,		Allow for flexibility in fitting A to SEDs
+		close_color=False,		Set Central Galaxy Color to the other galaxy in the image closest in color-space
+		raise_gal_y=False,		#Force Galaxy's y-band to be greater than or equal to r-band (cases where spectral data stops before y-bnad)
+		crush_jet_y=1,			#Multiplier of Jet's y-band (when H-alpha is picked up as jet color)
 		galaxy_constraint="M",		Deblending constraint for other galaxies
-		bleed=None,			How much of the galaxy's spectrum the jet took on in the spectral splitting
 		monotonicUseNearest=False, 	---Deblender parameters---
 		max_iter=1000, 
 		e_rel=[1e-6,1e-3], 
 		traceback=False, 
 		update_order=[1,0]
 		"""
-		objName = str(objParams[object_index][0])[:-1]
 		filterWeights = np.zeros((3, len(bands)))
 		filterWeights[0,4] = 1
 		filterWeights[0,3] = 0.666
@@ -290,7 +418,7 @@ for object_index in obj_nums:
 		filterWeights[2,0] = 1
 		displayResults(data,result,
 			writeFile=full, 
-			folderName="Test13", 
+			folderName="Test25", 
 			objName=objName, filterWeights=filterWeights, extra_center=extra_center, o=object_index, ks=[-1], use_psfs=False)
 	except Exception, e:
 		print("FAILED: " + str(e))
