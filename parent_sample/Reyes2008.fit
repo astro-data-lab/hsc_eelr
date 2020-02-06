@@ -1,0 +1,3120 @@
+SIMPLE  =                    T / Standard FITS Format                           BITPIX  =                    8 / Character data                                 NAXIS   =                    0 / No Image --- just extension(s)                 EXTEND  =                    T / There are standard extensions                  ORIGIN  = 'xml2fits_v1.95'     / Converted from XML-Astrores to FITS                                     e-mail: question@simbad.u-strasbg.fr                   COMMENT  ARG='-rm'                                                              LONGSTRN= 'OGIP 1.0'           / Long string convention (&/CONTINUE) may be usedDATE    = '2019-07-19'         / Written on 2019-07-19:20:34:53 (GMT)                                        by: apache@vizier.u-strasbg.fr                              **********************************************************                          EXCERPT from catalogues stored in VizieR (CDS)                                             with the following conditions:                                   **********************************************************                                                                                                      VizieR Astronomical Server vizier.u-strasbg.fr                                  Date: 2019-07-19T20:34:53 [V1.99+ (14-Oct-2013)]                                Explanations and Statistics of UCDs: See LINK below                             In case of problem, please report to: cds-question@unistra.fr                                                                                          INFO    = 'votable-version=1.99+ (14-Oct-2013)' / #                             INFO    = '-ref=VIZ5d32295f5205' / #                                            INFO    = '-out.max=unlimited' / #                                              Q-PARAMS=                   39 / Number of queryParameters (followed by list)            -oc.form=dec                                                                    -out.max=unlimited                                                              #out.form=FITS (binary) Table                                                   -out.all=2                                                                      -nav=cat:J/AJ/136/2373&tab:{J/AJ/136/2373/table1}&key:source=J/AJ/136/2         373&HTTPPRM:&                                                                   -c.eq=J2000                                                                     -c.r= 2                                                                         -c.u=arcmin                                                                     -c.geom=r                                                                       -source=J/AJ/136/2373/table1                                                    -order=I                                                                        -out=RAJ2000                                                                    -out=DEJ2000                                                                    -out=z                                                                          -out=LO3g                                                                       -out=LO3np                                                                      -out=Plate                                                                      -out=Fiber                                                                      -out=MJD                                                                        -out=Tcode                                                                      -out=S20cm                                                                      -out.all=2                                                                      -out=e_S20cm                                                                    -out=umag                                                                       -out=e_umag                                                                     -out=gmag                                                                       -out=e_gmag                                                                     -out=rmag                                                                       -out=e_rmag                                                                     -out=imag                                                                       -out=e_imag                                                                     -out=zmag                                                                       -out=e_zmag                                                                     -out=Sloan                                                                      Sloan=Sloan                                                                     -out=SimbadName                                                                 -out=NED                                                                        NED=NED                                                                         -out.all=2                                                                      #                                                                               #RESOURCE=yCat_51362373                                                         #Name: J/AJ/136/2373                                                            #Title: Type 2 quasars from SDSS (Reyes+, 2008)                                 #Coosys J2000: eq_FK5 J2000                                                                                                                            END                                                                                                                                                             XTENSION= 'BINTABLE'           / Binary Table Extension                         BITPIX  =                    8 / binary data                                    NAXIS   =                    2 / Simple 2-D matrix                              NAXIS1  =                  129 / Number of bytes per record                     NAXIS2  =                  887 / Number of records                              PCOUNT  =                    0 / Get rid of random parameters                   GCOUNT  =                    1 / Only one group (isn't it obvious?)             TFIELDS =                   25 / Number of data fields (columns)                CDS-CAT = 'J/AJ/136/2373'      / Catalogue designation in CDS nomenclature               Type 2 quasars from SDSS (Reyes+, 2008)                                EXTNAME = 'J_AJ_136_2373_table1' / Identification of the table                  CDS-NAME= 'J/AJ/136/2373/table1' / Table name in METAtab                                 Catalog of 887 optically-selected type 2 quasars                       UCD__1  = 'meta.record'        / ................................byte#0         TDISP1  = 'I8      '           / Display Fortran Format                         TFORM1  = 'J       '           / 32-bit integer                                 TTYPE1  = 'recno   '           / Record number assigned by the VizieR team.                                      Should Not be used for identification. (link)  UCD__2  = 'pos.eq.ra;meta.main' / ...............................byte#4         TDISP2  = 'F10.6   '           / Display Fortran Format                         TFORM2  = 'D       '           / 64-bit floating-point (double precision)       TTYPE2  = 'RAJ2000 '           / Right ascension in decimal degrees (J2000)                                      (link)                                         TUNIT2  = 'deg     '           / degree                                         UCD__3  = 'pos.eq.dec;meta.main' / ..............................byte#12        TDISP3  = 'F10.6   '           / Display Fortran Format                         TFORM3  = 'D       '           / 64-bit floating-point (double precision)       TTYPE3  = 'DEJ2000 '           / Declination in decimal degrees (J2000)         TUNIT3  = 'deg     '           / degree                                         UCD__4  = 'src.redshift'       / ................................byte#20        TDISP4  = 'F7.4    '           / Display Fortran Format                         TFORM4  = 'E       '           / 32-bit floating-point (simple precision)       TTYPE4  = 'z       '           / Redshift                                       UCD__5  = 'phys.luminosity'    / ................................byte#24        TDISP5  = 'F5.2    '           / Display Fortran Format                         TFORM5  = 'E       '           / 32-bit floating-point (simple precision)       TTYPE5  = 'LO3g    '           / Gaussian fit [OIII] 5007 luminosity            TUNIT5  = '[Lsun]  '           / log[ solar luminosity ]                        UCD__6  = 'phys.luminosity'    / ................................byte#28        TDISP6  = 'F5.2    '           / Display Fortran Format                         TFORM6  = 'E       '           / 32-bit floating-point (simple precision)       TTYPE6  = 'LO3np   '           / Non-parametric fit [OIII] 5007 luminosity      TUNIT6  = '[Lsun]  '           / log[ solar luminosity ]                        UCD__7  = 'meta.id;instr.plate' / ...............................byte#32        TDISP7  = 'I4      '           / Display Fortran Format                         TFORM7  = 'I       '           / 16-bit (short) integer                         TTYPE7  = 'Plate   '           / SDSS Spectroscopic plate number                UCD__8  = 'meta.id;meta.main'  / ................................byte#34        TDISP8  = 'I3      '           / Display Fortran Format                         TFORM8  = 'I       '           / 16-bit (short) integer                         TTYPE8  = 'Fiber   '           / SDSS Fiber ID                                  UCD__9  = 'time.epoch'         / ................................byte#36        TDISP9  = 'I5      '           / Display Fortran Format                         TFORM9  = 'J       '           / 32-bit integer                                 TTYPE9  = 'MJD     '           / SDSS Modified Juilian Date                     TUNIT9  = 'd       '           / day                                            UCD__10 = 'src.class'          / ................................byte#40        TDISP10 = 'A5      '           / Display Fortran Format                         TFORM10 = '5A      '           / Ascii string                                   TTYPE10 = 'Tcode   '           / Target Code (1)                                UCD__11 = 'phot.flux.density;em.radio.750-1500MHz' / ............byte#45        TDISP11 = 'F8.2    '           / Display Fortran Format                         TFORM11 = 'D       '           / 64-bit floating-point (double precision)       TTYPE11 = 'S20cm   '           / ? Peak 20cm flux in units of mJy/beam (2)      TUNIT11 = 'mJy     '           / milliJansky(10-26W/m2/Hz)                      UCD__12 = 'stat.error'         / ................................byte#53        TDISP12 = 'F6.3    '           / Display Fortran Format                         TFORM12 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE12 = 'e_S20cm '           / ? Mean-Square of S20cm (2)                     TUNIT12 = 'mJy     '           / milliJansky(10-26W/m2/Hz)                      UCD__13 = 'phot.mag;em.opt.U'  / ................................byte#57        TDISP13 = 'F5.2    '           / Display Fortran Format                         TFORM13 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE13 = 'umag    '           / SDSS u-band PSF magnitude (3)                  TUNIT13 = 'mag     '           / magnitude                                      UCD__14 = 'stat.error;phot.mag;em.opt.U' / ......................byte#61        TDISP14 = 'F5.2    '           / Display Fortran Format                         TFORM14 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE14 = 'e_umag  '           / The 1{sigma} uncertainty in umag               TUNIT14 = 'mag     '           / magnitude                                      UCD__15 = 'phot.mag;em.opt.B'  / ................................byte#65        TDISP15 = 'F5.2    '           / Display Fortran Format                         TFORM15 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE15 = 'gmag    '           / SDSS g-band PSF magnitude (3)                  TUNIT15 = 'mag     '           / magnitude                                      UCD__16 = 'stat.error;phot.mag;em.opt.B' / ......................byte#69        TDISP16 = 'F5.2    '           / Display Fortran Format                         TFORM16 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE16 = 'e_gmag  '           / The 1{sigma} uncertainty in gmag               TUNIT16 = 'mag     '           / magnitude                                      UCD__17 = 'phot.mag;em.opt.R'  / ................................byte#73        TDISP17 = 'F5.2    '           / Display Fortran Format                         TFORM17 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE17 = 'rmag    '           / SDSS r-band PSF magnitude (3)                  TUNIT17 = 'mag     '           / magnitude                                      UCD__18 = 'stat.error;phot.mag;em.opt.R' / ......................byte#77        TDISP18 = 'F5.2    '           / Display Fortran Format                         TFORM18 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE18 = 'e_rmag  '           / The 1{sigma} uncertainty in rmag               TUNIT18 = 'mag     '           / magnitude                                      UCD__19 = 'phot.mag;em.opt.I'  / ................................byte#81        TDISP19 = 'F5.2    '           / Display Fortran Format                         TFORM19 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE19 = 'imag    '           / SDSS i-band PSF magnitude (3)                  TUNIT19 = 'mag     '           / magnitude                                      UCD__20 = 'stat.error;phot.mag;em.opt.I' / ......................byte#85        TDISP20 = 'F5.2    '           / Display Fortran Format                         TFORM20 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE20 = 'e_imag  '           / The 1{sigma} uncertainty in imag               TUNIT20 = 'mag     '           / magnitude                                      UCD__21 = 'phot.mag;em.opt.I'  / ................................byte#89        TDISP21 = 'F5.2    '           / Display Fortran Format                         TFORM21 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE21 = 'zmag    '           / SDSS z-band PSF magnitude (3)                  TUNIT21 = 'mag     '           / magnitude                                      UCD__22 = 'stat.error;phot.mag;em.opt.I' / ......................byte#93        TDISP22 = 'F5.2    '           / Display Fortran Format                         TFORM22 = 'E       '           / 32-bit floating-point (simple precision)       TTYPE22 = 'e_zmag  '           / The 1{sigma} uncertainty in zmag               TUNIT22 = 'mag     '           / magnitude                                      UCD__23 = 'meta.ref.url'       / ................................byte#97        TDISP23 = 'A5      '           / Display Fortran Format                         TFORM23 = '5A      '           / Ascii string                                   TTYPE23 = 'Sloan   '           / Display the SDSS data for this quasar (link)   UCD__24 = 'meta.id '           / ................................byte#102       TDISP24 = 'A24     '           / Display Fortran Format                         TFORM24 = '24A     '           / Ascii string                                   TTYPE24 = 'SimbadName'         / Simbad column added by the CDS                 UCD__25 = 'meta.ref.url'       / ................................byte#126       TDISP25 = 'A3      '           / Display Fortran Format                         TFORM25 = '3A      '           / Ascii string                                   TTYPE25 = 'NED     '           / NED column added by the CDS                    END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ?çá*Š O?å~“T7?ÇzA£×Aë…®^  Í'`ï          >“uA­\)>¸QìAªÌÍ=LÌÍA¤Qì=#×
+AÂ<õÂAž£×=áG®SloanSDSS J000259.08+004018.1NED   ?îé Þ=gQ¿ðt<bW$>‰­CA\Aff!  ÍO`ï  @ æfffff>PA¯p¤>LÌÍA¥p¤<õÂAš{<£×
+A–¸R<£×
+A’zá<õÂSloanSDSS J000351.82-010141.9NED   ?ó×óAÃx¿ëôü~â?$›¦AáHA33 Ñ  ÍO`ï          >¬A²õÃ>£×
+A¯33=áG®A¨=q=uÂA¡…=#×
+AŸÂ>¸SloanSDSS J000453.45-005038.3NED   ?ýì<€¡?ñž35‡¹%>î¾àAG®AG®É  ÍO`ï          =¬1A®ff>W
+=A®ff=\)A¢Qì<õÂAG®<õÂA™…=\)SloanSDSS J000728.82+010604.1NED   @`“‡|¿ò´a?†?©?A{A{ ¾ Æ  É`ï  ?òzáG®>n˜A©33>™šA§p¤=uÂAŸ×
+<õÂAšQì=#×
+A˜\=uÂSloanSDSS J001000.73-011008.4NED   @f ¿çÂ?î¨)ÞÆá>ÑœàA
+¸RA
+\Z  ÍO`ï          =ï²A¯¸>™™šA¨ÌÍ=uÂAž¸R<õÂA™…<£×
+A—ë…=uÂSloanSDSS J001111.97+005626.3NED   @åó£¡r4@/ÈzÎ£~}=Ì˜_A\A¸Rð|  Ì`ï          ÿÿÿÿA¥Â=¸QìAš=q<£×
+A”  <£×
+A
+=<£×
+AŒáH<õÂSloanSDSS J001126.94+155329.7NED   @5×ˆ±ØÀ#”¶©ÔJ‡>*ÍŸA£×AÌÍŒ  Ëª`ï          >¬A£\)=\)A—™š<£×
+A‘G®<£×
+AŽzá<£×
+A…<õÂSloanSDSS J001206.30-094725.5NED   	@H¬ÀF|À#mÚÎî>¸QìA	™šA	ë…y}  ÐI`ï          >“uA ff=LÌÍA›®<£×
+A•ë…<#×
+A”Qì<£×
+A’(ö<õÂSloanSDSS J002016.87-093244.7NED   
+@`c^J7¿ÐO2Ì¬-y?žíA™šAÂ¯   Í&`ï  ?÷®záG®>333AªÌÍ>™šA¨(ö=#×
+A¡ë…<õÂAž\<õÂAœáH=£×
+SloanSDSS J002122.58-001517.5NED   @†61ÓX0À%X}®øÖ'>›dZA
+=qA
+ff •  Ë±`ï  ?ò\(õÂ>
+=qAž=q=LÌÍAœ¸R<£×
+A˜zá<£×
+A—…<£×
+A”  =#×
+SloanSDSS J002531.45-104022.2NED   @vØnÁ~ºÀ!¤¸:žI¢>ATÊA=qA=qZ  Ë±`ï          >hsA­ë…>aG®A (ö<£×
+A•…<#×
+AÌÍ<£×
+AŽzá<õÂSloanSDSS J002727.85-084918.2NED   @ÝtGèU@-”-fáæ!>OªÎAë…AÂñ %  Ì	`ï          ÿÿÿÿA§®=£×
+A×
+<£×
+A•™š<#×
+A’(ö<#×
+AÂ<£×
+SloanSDSS J002751.90+144721.8NED   @vŠ—&ÈØ¿æ‘+ÝxÝ>ÕéâA£×AÌÍ°   Ëë`ï          >\)A±33>ž¸RAªQì=LÌÍA¤=q<õÂAŸ
+=<õÂAœff=\)SloanSDSS J002827.77-004218.7NED   @á’Št2¿ÏQ¬šþ>žß¤AG®Ap¤° "  Ëë`ï          >.{A½¸?G®A«¸>#×
+Ažzá=£×
+Aš=q=\)A˜  =áG®SloanSDSS J002852.87-001433.6NED   @ Š?mÖ%¿Ú4Á¨¬[>†s‚AÌÍAÌÍˆ  ÊQ`ï          >C–A¦zá=£×
+A {<£×
+A™33<#×
+A–ÌÍ<£×
+A’õÃ<õÂSloanSDSS J003304.80-002425.1NED   @ ¡–Õ:‰P¿ß{Lw¿³>Í„MA®A  ?   ÎÂ`ï          >IºA®\>W
+=Aª£×=LÌÍA¥¸<õÂA (ö<õÂA
+==£×
+SloanSDSS J003315.74-002906.9NED   @ øhY_V¿è11eÓ™o>1ø¡AffA
+=ˆ û  ÊQ`ï  @1Ê=p£×
+>¥ãA¥×
+=¸QìAšáH<£×
+A’Qì<£×
+AŽzá<£×
+AŽ\<£×
+SloanSDSS J003356.44-004521.6NED   @"xJÍSò?æÃXëk|ö?Á¾A
+=A
+=>ý  Í-`ï          >™šAº¸R>Ü(öA®ff=uÂA¦áH=#×
+AŸp¤=#×
+A
+==\)SloanSDSS J003656.30+004240.8NED   @$W—7‚À#À<pRH¹=Â\AõÃAG®7  Ë´`ï          >2-Až£×=LÌÍA’  <£×
+Ap¤<£×
+AˆáH<#×
+A‡p¤<£×
+SloanSDSS J004113.74-095231.6NED   @%p"»ìª¸@/·§ÑRä=ð£×A{A{£¥  Êœ`ï          ÿÿÿÿA—33<£×
+AŽõÃ<£×
+Aˆ¸R<#×
+A…Â<£×
+A…¸<£×
+SloanSDSS J004252.55+153246.7NED   @%Õ”¯O„¿ë¥X®ÕâN?¼A(öAÌÍ= ‡  Í3`ï          >PA²{>¨õÃA¬ÌÍ=\)A¥Â=#×
+A =q<õÂAžff=¸QìSloanSDSS J004340.11-005150.1NED   @&vr|ÝA?ãBÆt¾¾? ‰ A=qAp¤³±  Ëç`ï          >Ÿ¾Aµ33?p£×A¯Â=¸QìA¤£×=#×
+Ažff<õÂA›\)=\)SloanSDSS J004412.88+003606.6NED   @'ØutÔã?æ!j‘ž
+>ðA¸AÂŠL  Ê¤`ï  @\(õÂ\>™šA£p¤=uÂAš{<£×
+A“
+=<#×
+A  <£×
+AŽff<£×
+SloanSDSS J004741.47+004129.5NED   @)ïGzÐ÷¿äÎï´ÿh?:CþA õÃA!¸´2  Ëé`ï  @333333>‡+A¨{>\)A¤ff<õÂAŸ…<õÂAŸ¸=#×
+A—33=LÌÍSloanSDSS J005009.81-003900.5NED   @)ÒX*@?ô\\9E>Èr°A	p¤A	™š<  Ío`ï          >JA­™š>8QìAªQì=#×
+A¤(ö=#×
+A £×=#×
+AžQì=¸QìSloanSDSS J005138.59+011511.0NED   @*AFJ{Å¿ô7Xâd>
+	AõÃA	G®Ø Y  Î“`ï  @áG®zá>PA£¸=£×
+A›33<£×
+A“Â<£×
+Azá<£×
+AŽõÃ<õÂSloanSDSS J005230.60-011548.4NED   @,.W”â’?ábÐü­|>÷ÎÙA  A¸´$  Ëé`ï  @ ¨õÂ\)>PA°£×>€  A«33=LÌÍA¤{=#×
+Aœ{<õÂA\)=£×
+SloanSDSS J005621.72+003235.8NED   @-Y³Ð|„¿Òl@²×(?¿A(öAzá; «  Í(`ï          >&éyAµë…>õÂA®=q=\)A¦=q=#×
+A £×=#×
+A×
+=¸QìSloanSDSS J005813.75-001654.2NED   @/;Oag"@-r˜ïg_>@ƒA\A¸R¥   Êm`ï          ÿÿÿÿA£ë…=£×
+A˜áH<£×
+Azá<£×
+AŒzá<#×
+AŠõÃ<£×
+SloanSDSS J010205.73+144325.7NED   @/¢÷ÁQ?ß5\wëø>NóMA
+=A
+=ž†  Í(`ï          >
+=qA³×
+>æffA¥
+==¸QìA…=¸QìA˜£×=uÂA—¸=\)SloanSDSS J010315.95+002915.6NED    @/ç©Œ%›?å—
+Ò‘> ù	AõÃA¸žµ  Í(`ï          >záA©™š=ÌÌÍA¤\<õÂAžff=LÌÍAœff=uÂA—®=\)SloanSDSS J010348.58+003935.0NED   !@0†˜Ú¿ó¬_H5:Ó>‡»0Aë…Aë…Ú ü  Î²`ï          >“uA¨Qì=áG®A¤\=#×
+Aœzá<£×
+Aš{<£×
+A–{=#×
+SloanSDSS J010405.17-011346.5NED   "@0Y1$”òâ?óÎV™:>QÑNAë…A=qž—  Í(`ï          >‡+A®=q>”záA¥×
+=#×
+AœQì<õÂA™…<£×
+A—ë…=LÌÍSloanSDSS J010523.62+011321.4NED   #@0‡„—‘øë?Ä-A™†õi?1A(öA(öŒ*  Êh`ï          >záA¶zá?
+=Aª=q=uÂA¤Qì=#×
+AžõÃ<õÂAž\>¸SloanSDSS J010607.05+000927.5NED   $@0õÙb¶®¿ì¼”pdìé?+ÔAë…Aë…ž 7  Í(`ï  @Që…¸R>¸RAªõÃ=õÂA¨Qì=#×
+A =q<£×
+Aœ\<õÂAš\=\)SloanSDSS J010750.47-005352.9NED   %@12ø%r?ñ‘UƒïÌL>ºxlAáHA\)žk  Í(`ï          >W
+=A­\)>™šA¦ff<õÂA\)<£×
+A™×
+<õÂA–¸R=LÌÍSloanSDSS J010847.78+010552.7NED   &@2kÚæ;J¸?ñ£Gq~à9>Ò A33A\)Û
+  Ï	`ï  ?û…¸Që…>“uA¨zá=áG®A£×
+<õÂAšQì<£×
+A›™š<£×
+A–(ö=#×
+SloanSDSS J011341.11+010608.5NED   '@2Ÿ•¡¥x#?„äQô×6ƒ>Ç8A33A\)· ã  Ëê`ï          >hsA±¸>B\A©33=#×
+A {<£×
+Aš=q<£×
+A”áH=#×
+SloanSDSS J011429.61+000036.7NED   (@3Ÿ²D[‘¿¿U`ûó?XyA¸RA¸RÛ '  Ï	`ï          >‡+A°{>W
+=A­®=\)A¨\=LÌÍAŸ¸<õÂA¢Qì>¸SloanSDSS J011829.71-000716.6NED   )@3æêòQÀ$ß¼w¯c> 7AffAáH•  ËÃ`ï  ?ùÂ\(õÃ> ÄœA áH=uÂA˜zá<£×
+A‘Â<£×
+AŽ\<£×
+AŒ£×<£×
+SloanSDSS J011935.64-102613.2NED   *@3ö¢ü»?À<âì1?"×A  A\)Üÿ  Ñâ`ï          > ÄœA¹¸?#×
+A®{=uÂA£p¤<õÂAœ{<õÂA˜(ö=uÂSloanSDSS J011950.72+000736.6NED   +@4­á7^j?óÝâ†éÃe>êW¨A
+=A
+=8	  Í†`ï          >™šAª(ö>¸Aª  =#×
+A¤  <õÂAŸë…<õÂAŸ\)=¸QìSloanSDSS J012007.19+011430.0NED   ,@4"[¶È¿íYáÕÑÿR?Û#A™šAë…¸ ó  Ëñ`ï          >t¼A®ff>#×
+Aª=q=LÌÍA¥ë…=#×
+AŸÂ<õÂA¤(ö>LÌÍSloanSDSS J012032.20-005501.9NED   -@4¤ˆXvéÀ%‰R÷}JÆ>I 'A…A…•  ËÃ`ï  @ffffff>
+=qA§
+==õÂA˜ÌÍ<£×
+A‘¸<£×
+A®<£×
+A‹p¤<£×
+SloanSDSS J012234.25-104605.5NED   .@4ì<~Mlj?çÉ6!ƒ®>ÌIºA=qA=q¸ò  Ëñ`ï  @&®záG®>záA«…=õÂAªÌÍ=LÌÍA¥¸=#×
+A¸<õÂA›Â=£×
+SloanSDSS J012341.46+004435.9NED   /@6[‰ÇÄ7s¿ïxÃ7!Ô?6
+¦A\)A  7   Í`ï  @	¸Që…>‡+A­G®>\)A¥Â=\)A¸=\)A™…=LÌÍA”(ö=LÌÍSloanSDSS J012925.82-005900.2NED   0@7êH7Y?Âª¸¥Î[B>Ö8†A\A33 Å  Êl`ï          >Oß;A¹p¤?:áHA¬\=uÂA¤ÌÍ=#×
+Až(ö<õÂAœÌÍ=ÌÌÍSloanSDSS J013401.80+000845.0NED   1@7‘nßÉˆD?ÎY…6f?OvAzáAÌÍº  Ëë`ï          >MÒòA²ff>k…A«…=LÌÍA¥ë…=#×
+A
+=<£×
+A ¸R>™šSloanSDSS J013416.34+001413.5NED   2@8ìô`_Ô¿ºñ"ÕŽl&>I 'Ap¤A=qº ž  Ëë`ï  @Bª=p£×
+>PA¦£×=\)Až¸R<£×
+A•¸<£×
+A’\<£×
+A‘Â<õÂSloanSDSS J013942.14-000618.9NED   3@9Z”ºõ«AÀ#‚RD Á>©*A…A®— f  Ë±`ï  @™™™™™š>/ A£ë…=áG®A™™š>…¸A”zá>£×
+A®>\)A\)>æffSloanSDSS J014124.92-094516.3NED   4@9§ü…à¿@-`h¶CMD>Çy§A{Aë…ªN  Êª`ï          ÿÿÿÿA¤Qì=\)AžÌÍ<£×
+A–áH<£×
+A“×
+<£×
+A‘×
+<õÂSloanSDSS J014237.48+144117.9NED   5@:d×ðí=¿á?-¥­»?XA®AQì» ë  Ëê`ï          >t¼A¸=q?
+=qA¬zá=uÂA¦£×=#×
+AŸ®<õÂAœzá=£×
+SloanSDSS J014401.31-003220.3NED   6@:¦Ç¯>½?ëOzsÃ‚?v`A£×@ýÂ»Ì  Ëê`ï  ?ü(õÂ\)>¥ãA¸  >áG®A´áH=õÂA«G®=uÂA£…=LÌÍAžÌÍ=áG®SloanSDSS J014612.80+005112.4NED   7@:À¶Õ@+½¶\ï;>J	AáHA33­à  Êl`ï          ÿÿÿÿA§®=¸QìAŸ¸<õÂA˜=q<õÂA•…<£×
+A“×
+=#×
+SloanSDSS J014700.02+135213.7NED   8@;b²YTG¿é¡ìŠR‡? \A£×AÂ¼!  Ëç`ï  ?ù™™™™™š>záA³×
+>Â\A«Â=LÌÍA¤{=#×
+AœÌÍ<£×
+AœõÃ=\)SloanSDSS J014932.52-004803.6NED   9@;à°ß×ƒh?®ô¯™žB>×>«Ap¤AG®4ß  Î²`ï          >hsA®ÌÍ>aG®A«¸=LÌÍA¤£×<õÂAŸÂ<õÂAœQì=£×
+SloanSDSS J015130.64+000331.4NED   :@<kÃa@N¿ò™òûÛÅ>wYAë…Aë…’ :  ÊQ`ï          >záA¬ÌÍ>™šA£Â<õÂAš  <£×
+A•Â<#×
+A’ff<õÂSloanSDSS J015341.04-010945.0NED   ;@<oGø¥99À!è‡BOGÅ>&µA™šAÂ™û  ËÈ`ï  ?øÌÌÌÌÌÍ>Ÿ¾A¥
+==£×
+A›G®<£×
+A”zá<£×
+A=q<£×
+AŽ\<õÂSloanSDSS J015344.33-085715.0NED   <@<©cüç¾?Ê¥q&TWW>îËûA
+=A…4A  Î²`ï          >Ÿ¾A©
+==õÂA¥ë…<õÂAžÌÍ<£×
+AšõÃ<£×
+A™¸=uÂSloanSDSS J015438.80+001229.4NED   =@=REbàŸ¿ìO,ù]N>Ø7µA
+=A…¼   Ëç`ï          >
+=qA¬=q=õÂAª\>.{A£ë…=LÌÍA›33=\)Až(ö=áG®SloanSDSS J015716.92-005304.7NED   >@=ŽÙ7&~H¿ìRÚ\ÀkÄ?…AffAáH¼   Ëç`ï          >™šA±G®>aG®A®(ö=\)A¦£×=#×
+AŸp¤<õÂA›™š=£×
+SloanSDSS J015813.92-005306.4NED   ?@=Ìpdìé¢@-Oþ°t§q>£SøA=qA=q«C  Ê¼`ï          ÿÿÿÿA²¸R>ž¸RA¬=q=uÂA¢  <õÂA¢(ö=LÌÍAžQì=¸QìSloanSDSS J015911.66+143922.5NED   @@=öû]ñ¬O?µ÷¤ç«uc>Û=A\)A…3  ÎÅ`ï          >VA¬ff>#×
+A©™š=#×
+A¤=q<õÂA \<õÂAŸ¸=ÌÌÍSloanSDSS J015951.54+000508.8NED   A@>™K|1D@)“–Ð‘}j=¯ìWAÂAë…« Š  Ê¼`ï          ÿÿÿÿAœ\=uÂA”=q<õÂAŽ£×<#×
+AŠáH<#×
+A‰¸<£×
+SloanSDSS J020223.71+124717.7NED   B@?»m e1?ò@{ÊL è>ñA AÌÍAp¤2É  ÎÉ`ï  ?õp£×
+=q>‡+A¬(ö>\)A¨ÌÍ=#×
+A£×
+<õÂAš{<£×
+A›™š=uÂSloanSDSS J020655.71+010826.6NED   C@@Yàs¢wÀ$•?Ç~?
+CþAë…Aff› ‡  ËÃ`ï          > ÄœA©33=áG®A§™š=LÌÍA£¸<õÂA™p¤<£×
+A¢ff>™šSloanSDSS J021047.00-100153.0NED   D@@à;?½?Õù©	‘ë>ÊŒA…A×
+1í  Í©`ï          >VA®ff>8QìA«×
+=LÌÍA¤=q<õÂA =q<õÂA™š=£×
+SloanSDSS J021500.43+002036.0NED   E@A(±€Ÿ×À!åLW `h>múDAQìA£×œ Ã  ËÂ`ï          >™šA¦ÌÍ=£×
+A®<õÂA—ë…<£×
+A”zá<£×
+A’áH<õÂSloanSDSS J021716.30-085652.3NED   F@A>Ö¡aä÷¿ó“9æ4M&>ÀA‰A=qAë…¿ [  Ëñ`ï  ?ýp£×
+=q>OßA³p¤>¸QìAªzá=uÂAë…<£×
+A˜ÌÍ<£×
+A”ÌÍ=#×
+SloanSDSS J021757.82-011324.4NED   G@A?.3ï¿ËÔµ·}ßç>° ÅA£×AõÃ–:  Ê`ï  ?úáG®zá>Ÿ¾A«…>™šA£®<õÂAš¸R<£×
+A˜áH<£×
+A”õÃ=#×
+SloanSDSS J021758.18-001302.7NED   H@AR\O$Ñ¿èŸæ­Ó;>¾‘ A	ÂA	ë…¿ <  Ëñ`ï          >“uA§®>\)A¤£×=#×
+AŸÂ<õÂAœ£×<õÂA˜õÃ=uÂSloanSDSS J021834.42-004610.3NED   I@Aª•b»W‰?î^¥õ>ÌÙèAQìAG®–s  Ê`ï          >\)Až\=#×
+AšQì<õÂA–(ö<£×
+A“™š<£×
+A\<õÂSloanSDSS J022119.84+005628.5NED   J@AÇˆ6p½?è>‡­Yd>×Á¾A£×AG®Ÿ   Ëî`ï          >n˜A¬=q>¸A§ë…=#×
+AŸp¤<£×
+A›p¤<õÂA™¸=uÂSloanSDSS J022214.12+004527.5NED   K@Aì_¢?Æ7Po³Õ%>Š=qAffA\Ÿð  Ëî`ï          >¥ãA¨Qì=áG®A¡×
+<£×
+A™Â<£×
+A—33<£×
+A”=q=#×
+SloanSDSS J022322.59+001024.9NED   L@B`§¥óÔ?ñëÑ¹kÞÔ>¹ÀìA33A33Ÿ\  Ëî`ï          >‡+A®õÃ>B\A¨ÌÍ=#×
+AŸ™š<£×
+Aœ  <õÂA˜£×=uÂSloanSDSS J022701.22+010712.2NED   M@CîB€6ÂÀ c–«I?=Í;A	G®A	™šÆt  ÊÄ`ï  @      >¥ãAœ\<õÂA‘…<#×
+AŒ¸R<£×
+Aˆ£×<#×
+A‡p¤<£×
+SloanSDSS J023224.25-081140.2NED   N@CFGzéÀ
+ð·¥|Ì>žžA…AzáÇ¬  ÊÅ`ï  ?ñ™™™™™š>™šA®£×>B\A©p¤=#×
+Ažzá<£×
+Až(ö<õÂAš{=uÂSloanSDSS J023411.77-074538.4NED   O@C’³ÿû¬?ëpMŸ®'>SŽóA¸RA33˜z  Êm`ï  @Që…¸R>bNA£®=\)Aš  <£×
+A‘
+=<#×
+AŽzá<#×
+AG®<£×
+SloanSDSS J023635.06+005126.8NED   P@Cæc\£?±RgÙ>ÝäA	p¤A	™š.ë  Ío`ï          >OßA°=q>…¸A¬õÃ=uÂA¥®<õÂAŸ¸<õÂAœQì=£×
+SloanSDSS J023911.34+000359.7NED   Q@D	Ú¾že™¿ÙÆ%rP—P>ÚîcA¸RA
+=æ ‘  Ï `ï  ?ò\(õÂ>Ÿ¾A±Â>uÂA«Â=LÌÍA¤  =LÌÍAœ\<õÂAš  =LÌÍSloanSDSS J024018.48-002409.8NED   R@Db=ƒH?óá QŽP0>Üú­AffA
+=æ	  Ï `ï          >n˜A¼zá?^¸RA°£×=ÌÌÍA©Â=uÂA ÌÍ=#×
+A áH=õÂSloanSDSS J024023.22+011432.7NED   S@DÆê¿>¶?³ØYÈÉ2>O—A®AQì'¯  ÌG`ï          >záA¨¸R=áG®A¡33<£×
+A˜zá<£×
+A—…<£×
+A–¸R=LÌÍSloanSDSS J024612.96+000439.0NED   T@E*$_ZÙj¿¿x˜hY^??æAÌÍAzáÄ:  ËÏ`ï          >VA±™š>uÂA¬ÌÍ=uÂA¦Qì=#×
+AŸ…<õÂA\)=ÌÌÍSloanSDSS J024919.01-000722.5NED   U@E5n¼Õ¯À ï—ŠûYH>‰QƒA¸RAáHÉ(  Ê½`ï  @áG®zá>C–A¸zá?fffA¥p¤=LÌÍA™\)<£×
+A™33<õÂA”áH=LÌÍSloanSDSS J024940.18-082804.8NED   V@E8•BB?Åq~à9ab>Ðå`A\)A  ™*  ÊŸ`ï  ?ø(õÂ\)>
+=qA°ÌÍ>£×
+A®¸R=¸QìA¤  =#×
+A\)<õÂA™ë…=\)SloanSDSS J024946.09+001003.1NED   W@EÛEà´á?ìXòþ0Kß>>vÉAáHA33Ä  ËÏ`ï  ?ñp£×
+=q>¬A©\)>B\A¥®=ÌÌÍAœQì=\)A˜(ö=áG®Aµ\)?.{SloanSDSS J025451.13+005309.0NED   X@Eþî`ž½¿ïòQÁ“³¥?3aA	¸A	ÂÄ +  ËÏ`ï          >t¼A®\>B\A«Â=\)A¤Qì=#×
+Až\<õÂA\)=ÌÌÍSloanSDSS J025558.00-005954.0NED   Y@F ÞÂ9$ÌÀ ¤ÞŠL>íBÄA£×AÌÍÉ j  Ê½`ï  ?ÿ\(õÂ\>¥ãA°  >³33A¨\=LÌÍAžff<õÂAš=q<õÂA™¸=\)SloanSDSS J025601.63-081913.3NED   Z@F9Ñ=ì#‘?è7´¢3œ?/ìA ÌÍAp¤(  Ï<`ï          >“uAºzá?8QìA³×
+>™šA«33=£×
+A£…=LÌÍA ff=ÌÌÍSloanSDSS J025748.41+004524.5NED   [@G¶ž??Àbt†Ò?B[A(öAQì+/  Íˆ`ï          >
+=qA¯p¤>aG®A®  =uÂA¨(ö=#×
+AžáH<õÂAŸ
+==¸QìSloanSDSS J030425.70+000740.9NED   \@G>Þyüì¿ëÅ´-°>€hÜAë…Aë…( Y  ÍL`ï          >™šA«
+=>\)A¥p¤=#×
+A›…<£×
+A˜õÃ<£×
+A—33=LÌÍSloanSDSS J030439.83-005203.9NED   ]@Gb|mh ¿Ð3‘qÄÇ>‡+A×
+A×
++ n  Íˆ`ï          >	7LA¶ff>ÌÌÍA¨áH=#×
+Až£×<£×
+A›p¤<õÂA˜£×=#×
+SloanSDSS J030443.84-001511.1NED   ^@GYU`ûó¿ç™‹	TlP>»²ÿA®A®(   ÍL`ï          >PA®õÃ>k…A¨ÌÍ=LÌÍAë…<£×
+A™…<£×
+A•\)=#×
+SloanSDSS J030647.50-004414.9NED   _@G…8>Ž?ëönhòØç>î.²A×
+A  Æ—  Ëë`ï          >PA§Â>#×
+Aªff=\)A¤(ö=#×
+AŸ×
+=#×
+Až(ö=ÌÌÍSloanSDSS J030809.79+005225.8NED   `@HO¯QaÀ¯½qÎ>TzáA¸Ap¤Ëÿ  ÊÔ`ï          ÿÿÿÿAžff=LÌÍA•Â<£×
+AŽ\<£×
+A…<£×
+A
+=<õÂSloanSDSS J031428.27-072517.7NED   a@HZ0#Ì¿ñWê„Í*?ËûAáHA…Ç ö  Ëê`ï          >“uA±™š>®{Aªff=\)A£33=#×
+AœQì<õÂA…=¸QìSloanSDSS J031449.09-010502.2NED   b@HyƒáÑ(ÀùÈ~¡O@>ŒcñA õÃAÂË h  ÊÔ`ï          ÿÿÿÿA§™š=õÂA¡Â<õÂAšff<£×
+A—p¤<£×
+A“\)<õÂSloanSDSS J031547.01-075938.2NED   c@H“GáWý½¿î+UïÝë>ð‰ AÂAp¤  ô  ËÌ`ï          >bNA²¸R>£×
+A«¸=\)A¤õÃ=#×
+AŸG®=#×
+Ap¤=áG®SloanSDSS J031636.15-005634.0NED   d@H˜R‚û![¿ï¾ÅS»8>¼žíA(öA×
+) ÿ  Í§`ï  @ \(õÂ>C–A²zá>™™šA©\)=LÌÍA   <£×
+AœÌÍ<õÂA˜£×=\)SloanSDSS J031645.60-005930.9NED   e@HžZ£Òa1?×¿ãt—">ìÙèA£×AÂ)°  Íj`ï  @áG®zá>Ÿ¾A·×
+?:áHA­…=£×
+A¨\=uÂA =q=#×
+AŸ\)>¸SloanSDSS J031656.91+002215.9NED   f@H«ÄCJ?é§°³‘‘> ù	A™šA=q)x  Í§`ï  ?òffffff>‡+A§p¤>¸A =q=áG®A˜Qì=õÂA•p¤>\)A•¸=õÂSloanSDSS J031722.06+004801.8NED   g@H¼7ÿ2ñô¿ìô«…³ÙÎ=ð:ûA\)A… Ü  ÊÙ`ï  @õÂ\(ö>+A–  <£×
+A‘\)<#×
+AŽ\<#×
+AŠff<#×
+AŠzá<£×
+SloanSDSS J031752.90-005417.3NED   h@Hå |_m}¿Ô!,d;?"£A{A\ ©  ÊÙ`ï  @ ÌÌÌÌÌÍ>#×
+A©G®>™šA¥
+==#×
+Aœ=q<£×
+A–áH<£×
+A–zá=#×
+SloanSDSS J031909.61-001916.6NED   i@Hù5ü;O`¿ñYã øµ?3áA33A×
+Ç 0  Ëê`ï          >IºA´  >Ü(öA«×
+=£×
+A¦(ö=LÌÍAž(ö=#×
+Aœ\=£×
+SloanSDSS J031947.27-010504.0NED   j@Húó¡LìA¿ïañÈF´¿? HAp¤A{Ç :  Ëê`ï          >n˜A³\)>”záA¯®=ÌÌÍA¨ÌÍ=uÂAŸ®=#×
+A£¸>LÌÍSloanSDSS J031950.52-005850.3NED   k@Iâ¢à
+Æ?á†kï$>Äg8AffAffü  ÊÙ`ï          >PA¥Â=áG®A¡Â<õÂA›
+=<£×
+A˜{<£×
+A”ÌÍ=#×
+SloanSDSS J032029.78+003153.5NED   l@I7†Â&€œ?Ñ¾×|k?$‡ýA¸A=q)Q  Íj`ï          ÿÿÿÿA°¸R>ÌÌÍA¬õÃ=£×
+A¦\=LÌÍA Qì=#×
+AžÌÍ=õÂSloanSDSS J032144.11+001638.2NED   m@I™ a“i¿ä¬×“¸O–>ñÅAÌÍAG®( ã  Ía`ï          ÿÿÿÿA­…>k…A«G®=LÌÍA¦ff=LÌÍAž\<õÂAë…=\)SloanSDSS J032448.04-003846.0NED   n@I±Ç‚øÌÕ¿á6®}Vló>´záA£×AõÃ] „  ÎÑ`ï          ÿÿÿÿA­™š>ž¸RA¦=q=#×
+A×
+=#×
+A™š<õÂAš=q=uÂSloanSDSS J032533.34-003216.5NED   o@Iæ±£“w¿ôxFÜ]>sÐ}A
+=A33( a  Ía`ï          ÿÿÿÿAª(ö>B\A¡ë…<õÂA™G®<£×
+A•™š<£×
+A’{<õÂSloanSDSS J032712.55-011510.0NED   p@J`@ÀÒL8¿²mÏ(PQh>UL˜A£×AõÃÉ í  ËÒ`ï          ÿÿÿÿA­33>LÌÍA¡p¤<õÂA™™š<£×
+A•®<£×
+A”  =#×
+SloanSDSS J033100.46-000419.1NED   q@J™Þ?»×±¿ÅÅ¢õ|t>žžAzáAzáŸ ¿  Êb`ï          ÿÿÿÿA¤Qì=£×
+A¡33<õÂA˜  <£×
+A”£×<£×
+A™š<õÂSloanSDSS J033248.50-001012.3NED   r@JÒê šª:?ãô^NÛ>Ð:ûA×
+A  É$  ËÒ`ï          ÿÿÿÿA©\)>8QìA¥×
+=LÌÍA zá<õÂAG®<õÂA›Â=£×
+SloanSDSS J033435.46+003724.9NED   s@K“Ý—ö*¿ÀáaOÕéL>ÝÈA  AQì @  Êc`ï          ÿÿÿÿA¦\=ÌÌÍA£…<õÂAœ(ö<£×
+A—ë…<£×
+A–=q=LÌÍSloanSDSS J033606.70-000754.7NED   t@K; a“i?ãjãÁ|fj>Ñ·A	™šA	ë…'H  Ío`ï          ÿÿÿÿA®õÃ>W
+=A¬¸R=uÂA§\)=uÂA \=#×
+A £×=¸QìSloanSDSS J033751.80+003624.3NED   u@KlX‚ñIÀ?	à;µè=­«ŸA…A  Î¼  ÊÅ`ï          ÿÿÿÿAš{<õÂA”  <£×
+AQì<#×
+AŒ\<£×
+AŒ=q<£×
+SloanSDSS J033923.14-054841.5NED   v@KŠX£/D?Û6å¡>´¢4AõÃAÌÍ`Ó  Ï`ï          ÿÿÿÿAµ®>æffAªõÃ=uÂA¡¸<õÂAž{<õÂAš(ö=LÌÍSloanSDSS J034019.39+002530.6NED   w@KÅd@zê™?äîcŠ	?b·A¸A™š&×  Í‹`ï          ÿÿÿÿA®\>ž¸RA«\)=\)A¦áH=LÌÍA (ö=#×
+A¡p¤>¸SloanSDSS J034210.10+003914.7NED   x@KÇiÂ;yR¿Ý¦°bB2>¶4AáHA
+=` •  Ï`ï          ÿÿÿÿAª\>LÌÍA¦Qì=#×
+AŸ\)<õÂA…<õÂAšzá=uÂSloanSDSS J034213.89-002747.8NED   y@KÈ^a…m?ÅµèlÜÑå>²-AÌÍAG®`ô  Ï`ï          ÿÿÿÿA®(ö>uÂA¥G®<õÂAœQì<£×
+Aœ=q<õÂA˜Qì=uÂSloanSDSS J034215.08+001010.6NED   z@KÛü!­Ÿø?ì3U²ŠB?IAáHA
+=Ê  Ëé`ï          ÿÿÿÿAª¸R>€  Aª(ö=\)A¦{=uÂAŸ33=#×
+Ažff=õÂSloanSDSS J034252.47+005252.4NED   {@L	²Þ&?çI%<¸Ž€>ÍqA£×AG®&Æ  Í‹`ï          ÿÿÿÿA©…>8QìA©\)=uÂA£…=#×
+A®<õÂAœ{=\)SloanSDSS J034418.18+004339.6NED   |@L(B ­Ni?è±5y¾F>ÌIºA®A×
+`A  Ï`ï          ÿÿÿÿA«®>uÂA¦¸R=LÌÍAž\<õÂA™G®<£×
+A–ff=LÌÍSloanSDSS J034515.48+004617.8NED   }@LAY€Œù§¿¯íÉ>¿HAzáA£×a  Ï`ï          ÿÿÿÿA™š=\)Ašzá<£×
+A“ë…<£×
+A“®<£×
+AÂ<õÂSloanSDSS J034602.53-000058.7NED   ~@Lc¢œwšjÀ¸uO7u·>ÈÌA®A  b  Ð3`ï          ÿÿÿÿA±™š>”záA¬áH=uÂA¤Qì<õÂAŸ¸<õÂA›ë…=\)SloanSDSS J034706.81-065548.4NED   @LÍÂ3a?ïf‰ïa‘>(ÛŒAQìAQìÚ½  Î¥`ï          ÿÿÿÿA¥
+=>™šA›ë…<õÂA“\)<#×
+AŽ£×<#×
+AŒ\<£×
+SloanSDSS J035024.56+005852.5NED   €@Mðæãd¡À(ög›>·1A¸RA¸Rc 5  Ï=`ï          ÿÿÿÿA®£×>€  A©
+==uÂA×
+<£×
+Aš¸R<õÂA—p¤=uÂSloanSDSS J035931.69-070224.0NED   @N ÙÙBÌÀ†Ý¬îàó>.—A
+¸RA
+=Ð h  ÊÄ`ï          ÿÿÿÿA£™š=£×
+A–\<£×
+AŽ  <£×
+AŠ¸R<£×
+Aˆ£×<£×
+SloanSDSS J040001.59-065254.1NED   ‚@N;ï¾Q€TÀ*M++ý´>¤xA33A\)c-  Ï=`ï          ÿÿÿÿAªáH>B\A¥®<õÂAš{<£×
+Ašff<õÂA–£×=uÂSloanSDSS J040152.38-053228.7NED   ƒ@NžÿëIÀ"2qËÅ>±ø¡A(öAQìdH  ÏE`ï          ÿÿÿÿA´ff?¸A©\)=LÌÍAž{<£×
+Ašff<õÂA”ÌÍ=#×
+SloanSDSS J040456.46-042323.1NED   „@Oo)^žÀs@ 2ø>º‘AG®A\d    ÏE`ï          ÿÿÿÿA¬  >k…A®  =\)A¢=q<õÂAž(ö=#×
+A›Â=£×
+SloanSDSS J041128.42-053644.5NED   …@\;L½§f"@C¸OÀð—=áä÷AzáA	p¤Æ   Ï*`ï  @G®záH>JAœ=q=#×
+A•\)<£×
+A{<#×
+AŒ  <£×
+AŒ=q<£×
+SloanSDSS J073142.37+392623.7NED   †@\~×@ÿ¼l@E+èF8>¶lôA	™šA	ÂÇ¯  Ï+`ï  @×
+=p£×>“A¬  >#×
+A¦(ö<õÂAŸ
+=<£×
+A¸<£×
+A˜áH=uÂSloanSDSS J073555.65+422034.8NED   ‡@\‘Z!U@@V„œ;Ð?7µA	ë…A	ë…µ  Ê÷`ï  @*W
+=p£×>)ûçAÀQì?TzáA³\)=ÌÌÍA§®=#×
+AŸ™š<õÂAœQì=£×
+SloanSDSS J073705.07+324033.2NED   ˆ@\œ;ÿNè;@D.s¼ð©?<6AõÃA¸°g  Ê¬`ï          >	7LA³\)>½p¤A«Â=uÂA¦{=#×
+Ažzá<õÂAž=q=\)SloanSDSS J073745.88+402146.4NED   ‰@\­D_H«@?ïÈŸ@¢†>˜*™AG®A{ h  Ê÷`ï  @<+…¸Qì>A´zá>®{A«
+==LÌÍAžzá<£×
+A›¸<£×
+A–õÃ<õÂSloanSDSS J073849.76+315611.8NED   Š@\²ËŸ
+~@@ÈOý†1­>äZAQìA£×  Ê÷`ï  ?÷…¸Që…>
+=qA·®>æffA­\)=uÂA¨\=#×
+AŸp¤<õÂAž\=ÌÌÍSloanSDSS J073910.48+333353.5NED   ‹@\Îf€'Ô@A0'àxK‚>cA=qA\  Ë`ï          >$ÝA¤£×=uÂAš¸R<£×
+A”¸R<#×
+A‘™š<#×
+A\<£×
+SloanSDSS J074054.00+342234.4NED   Œ@\×èá^ûO@C½Þ Ñ¶>W>«A…A×
+° 3  Ê¬`ï  @£×
+=p¤>t¼A¶áH>½p¤A¤zá<õÂA˜õÃ<#×
+A”£×<£×
+A‘®<õÂSloanSDSS J074129.66+392835.9NED   @\î£ß2A@AZæBHJ3?@A33A33 Â  Ë`ï  ?ö\(õÂ>\)A¸\?ÌÍA´  =áG®A©…=LÌÍA£Â=#×
+A¡
+=>\)SloanSDSS J074254.90+344236.5NED   Ž@]; 'œä@Cà.=B	_>ùrGA
+ffA
+¸R° g  Ê¬`ï  ?ò=p£×
+=>bNA²¸R>\)A¬ff=uÂA¡™š<õÂA›×
+<£×
+Aš{=LÌÍSloanSDSS J074430.86+394505.1NED   @]Ò€¦›h@4/VÅ€ >J	A…A®ï ø  Íä`ï  ?øzáG®{>C–A£G®=uÂA™\)<#×
+A“G®<#×
+A‘®<#×
+A™š<õÂSloanSDSS J074433.08+201102.6NED   @]:‚S[¯@6XZó+?ÂA™šAff³²  Í½`ï  @¸Që…>
+=qA±
+=>”záA¬ff=uÂA¦Qì=#×
+A ÌÍ=#×
+A¡
+=>#×
+SloanSDSS J074508.36+220047.0NED   ‘@]3ç ÐBC@E`¹I0>9	lA	ë…A
+{²µ  Ê­`ï  @ÌÌÌÌÌÍ>VA§G®=£×
+Aœzá<£×
+A”ff<#×
+A’  <#×
+A=q<£×
+SloanSDSS J074714.62+424520.3NED   ’@]4Šßc>@AkxFÜ]>Ü£AQìAQìô  Ë`ï  @®záG®>bNA­\)>\)A©\)=#×
+A¡×
+<õÂAG®<£×
+A›®=uÂSloanSDSS J074717.03+345022.6NED   “@]=À~ib±@@Ú„]Pä>\)AáHA33óC  Ì`ï  ?ôõÂ\(ö>‡+A£G®=\)Ap¤<£×
+A–\<#×
+A–(ö<#×
+A‘ë…<õÂSloanSDSS J074751.58+320052.1NED   ”@]\ã`È¯@:ÊöÇ‰ö^>§ðA{AffZ¶  Ì\`ï  @G®záH>“A¤Qì=\)A›
+=<£×
+A“G®<#×
+A\<õÂAŽÌÍ<£×
+SloanSDSS J074948.33+264734.1NED   •@]‡ °Í2@9,ç=ð>t¼jA
+=A33  ²  Íb`ï          >™šA®=LÌÍA•33<#×
+A…<#×
+AŽ  <#×
+A™š<£×
+SloanSDSS J075226.52+251020.1NED   –@]–€^_0ç@CeeÃIÆ=Æs‚A\)A®±r  Ê¡`ï          >t¼A £×=#×
+A•\)<£×
+A×
+<£×
+A‹\)<#×
+AŠQì<£×
+SloanSDSS J075324.37+384731.7NED   —@]—ûÂ$,@7(•¿ðEw>¬VÖA	¸A	p¤´ <  Í½`ï  ?òáG®zá>záA¶ÌÍ>Ç®A­G®=uÂA¡®<õÂAŸ®<õÂAšáH=uÂSloanSDSS J075329.93+230930.7NED   ˜@]³äÝÄ<@CþÎ€Š¥!>}ÙA…A®³ g  Êª`ï  ?ó×
+=p£×>	7LA­Â>.{A¨{=#×
+AG®<£×
+Ašff<£×
+A˜{=#×
+SloanSDSS J075514.59+395926.4NED   ™@]Ád¾O+Î@C#õcèG>71A×
+A  #  Ë1`ï          >t¼A¤áH=uÂAš¸R<£×
+A“ë…<£×
+A\<#×
+AŽ¸R<£×
+SloanSDSS J075605.22+381651.3NED   š@]ÁèžöÈ@GFc2.8?ö+A=qAff´i  Ê«`ï  @2O\(õÂ>C–A§p¤=ÌÌÍA¤ÌÍ<õÂAœáH<£×
+A˜  <£×
+A—™š=#×
+SloanSDSS J075607.15+461411.5NED   ›@]å˜€ÐŒÓ@C²X»°>]/AQìAõÃ Ð  Ëé`ï  @™™™™™š>VA˜õÃ<£×
+A”õÃ<#×
+A¸R<#×
+A\)<#×
+Aë…<£×
+SloanSDSS J075820.97+392335.9NED   œ@]ø.ªòæ@6¨HKÖ÷>ýæ›A{A™šðò  Íã`ï          >‡+A¼ÌÍ?B\A¯…=¸QìA£¸<õÂA\)<£×
+A™
+==LÌÍSloanSDSS J075930.67+223926.4NED   @]úÍâ¥@5Wûþ¹Æ¾?$¨ÁA…A
+=/  ÎÍ`ï  @®záG®>“uA¯ë…>k…A©¸=#×
+A¦Qì=#×
+A¡™š<õÂA =q=õÂSloanSDSS J075940.51+212037.2NED   ž@]úìAÝ!@Ik…œŒ“ =^Ò‰AQìAG®M   ÐO`ï  @FÆfffff>A\<õÂA„Qì<£×
+A…™š<#×
+A¸<#×
+Ap¤<£×
+SloanSDSS J075940.96+505023.9NED   Ÿ@]ûçƒù@+SNÞéÖ	?&1ùA33A×
+Ø O  Ñ²`ï  @ ÌÌÌÌÌÍ>7KÇAµÂ>¨õÃA¬zá=LÌÍA¦ÌÍ=#×
+AŸ®<õÂA\)=\)SloanSDSS J075944.64+133945.7NED    @^ÞÞ/k@2™Zâ¼Ì>Ì¿±AáHAáHƒ  ÐG`ï  ?ýG®záH>n˜AµÂ>”záA®zá=uÂA¢áH<£×
+A™š<£×
+A™×
+=#×
+SloanSDSS J080019.09+183556.5NED   ¡@^w`*;û@FÎ€Š¥!?\’A=qA=q´ C  Ê«`ï          >¸A°{>LÌÍA«…=LÌÍA©33=LÌÍAŸ33<õÂA¥\)>™šSloanSDSS J080154.26+441233.9NED   ¢@^$ù@.T@>ÅâXOLm=œàvA=qAáH% ;  Í¡`ï  @
+õÂ\(ö>záAœzá=#×
+A‘33<£×
+A‹33<£×
+A†=q<#×
+A…G®<£×
+SloanSDSS J080218.65+304622.8NED   £@^&~AÅÌå@G[Á`p#­=öý"AõÃA	G®¶ ½  Ê¬`ï  @#záG®>IºA¡33=uÂA•p¤<£×
+AŽ(ö<#×
+A‰®<£×
+Aˆzá<£×
+SloanSDSS J080224.33+464300.8NED   ¤@^)ÞW	@B»Ç‚øÌÕ>t!A\A¸Rö  Ì`ï  @	p£×
+=q>t¼A¥¸=uÂA›®<£×
+A•×
+<#×
+A’{<#×
+Azá<£×
+SloanSDSS J080234.12+372801.2NED   ¥@^.!´‰@9áÑã]Iæ=¦ÂAQìAÂµŽ  Í¾`ï  @=^¸Që…>‡+A“Â<£×
+A‰¸<£×
+A„ff<£×
+A€Qì<#×
+A33<£×
+SloanSDSS J080252.92+255255.6NED   ¦@^9óà7Û@C¸¥C~3=†YKA™šAë…! ú  Ëê`ï  @(™™™™š>n˜AŸp¤=#×
+A®<£×
+AŠ{<#×
+A…33<£×
+A‚{<£×
+SloanSDSS J080337.32+392633.1NED   §@^:I ¼sÐ@D¬H¾µ²Ô? £×A  A×
+!z  Ëê`ï  ?ó
+=p£×
+>IºA±
+=>W
+=A­¸=uÂA¥…<õÂAŸ®<õÂA™š=\)SloanSDSS J080338.58+412045.5NED   ¨@^>VìÔ©@11W']úþ>š¬A  A(ö! ·  Ðm`ï  @=p£×
+=>t¼A»p¤?G®A¥ë…<õÂA™×
+<£×
+A–\<£×
+A“Â=#×
+SloanSDSS J080353.76+171133.8NED   ©@^HD_H«@B“£Váv?'ü¹A™šA\õZ  Ì`ï  @R¦fffff>¸RA¯…>W
+=A«™š=LÌÍA¦Qì=#×
+A¡™š=#×
+A¡¸=áG®SloanSDSS J080431.00+360718.1NED   ª@^M¥M6Ò@E$ýãf›>üàvA…A×
+µ @  Ê`ï  ?þ=p£×
+=>A»™š?0£×A´zá=õÂA©®=uÂA¤ff=#×
+A¡¸=ÌÌÍSloanSDSS J080451.17+421653.4NED   «@^V6`mÏ'@<MìçN@u>{JA	p¤A	ë…¡:  Íe`ï  @Â\(õÃ>bNA›\)=#×
+A’õÃ<£×
+AŽff<£×
+AŠáH<£×
+AŠQì<£×
+SloanSDSS J080523.29+281815.7NED   ¬@^~‰ ‰zÞ@Hã¼©i?FÜAQìAzáô ^  Ïb`ï          >Y‡A¦áH=¸QìA¡
+=<£×
+AœáH<£×
+A–\<£×
+A˜ff=LÌÍSloanSDSS J080754.51+494627.7NED   ­@^©L éR@CwÑ¢£Y>C-A  AQì÷ £  Ì`ï  ?ôQë…¸R>
+=qA¨¸R=¸QìA›ë…<£×
+A“…<#×
+A  <#×
+AŽ=q<£×
+SloanSDSS J081034.87+385609.9NED   ®@^°àW¬/@FZ.åµ¦>;J#A  AQì· ™  Ê¥`ï  ?ôQë…¸R>oA¡×
+=LÌÍA˜=q<#×
+AáH<£×
+Ap¤<#×
+A‹Â<õÂSloanSDSS J081100.21+444216.3NED   ¯@^´Ò¢p1¨@8Ó•¡¥x#>næ2A
+=A
+=ñ  Íá`ï  @ 
+=p£×
+>záA«Â=õÂAŸ×
+<õÂA•Â<#×
+A’\<#×
+A  <£×
+SloanSDSS J081118.08+244935.4NED   °@^¶âÁ*Ø@,1Ø<æ>³Z†AÂA{ÜÀ  ÏX`ï  @\(õÂ\>¬A´£×>™™šA¬Qì=LÌÍA£Â<õÂA¢õÃ<õÂAž  =£×
+SloanSDSS J081125.81+073235.3NED   ±@^Ç^þÎ¿t@AW€*Bù>ƒSøA\)A\)9¼  ÌA`ï  @	p£×
+=q>C–A©…=õÂAŸ33<£×
+A—×
+<£×
+A•ë…<£×
+A’£×<õÂSloanSDSS J081227.64+344100.9NED   ²@^ÌXÝpYE@C`ù]N¯>|A®A  ÷ ‚  Ì`ï  ?üÌÌÌÌÌÍ>t¼A²  >W
+=A¥™š<õÂA›®<#×
+A˜zá<£×
+A•\)<õÂSloanSDSS J081246.30+384527.4NED   ³@^Î)€g±H@D(‡~äâm?qA=qAáH÷²  Ì`ï  @‹Që…¸>>vÉA¬zá=õÂA¥p¤<õÂAœÌÍ<£×
+A–(ö<£×
+A•33<õÂSloanSDSS J081253.10+401900.0NED   ´@^ØÿëI@@
+á>[ü¯>Ë6zA  AõÃ]å  Ì^`ï  @=p£×
+=>t¼A´  >uÂA©33<õÂA¡®<õÂA™š<£×
+A™Â=LÌÍSloanSDSS J081330.42+320505.9NED   µ@^Þq}µög@008Âîåœ>Š™1A®A®Ûa  ÑÑ`ï          >Ÿ¾A©ë…>\)Až{<£×
+A•Â<£×
+A“G®<£×
+AÂ<õÂSloanSDSS J081354.16+161118.1NED   ¶@^á6ÞB]@-
+±òÍ@?¾wA{A=q(  ÎÆ`ï  @(×
+=p£×>¸RA¨áH=õÂA¤=q<õÂAŸp¤<£×
+A˜áH<£×
+Aš=q=¸QìSloanSDSS J081404.54+060238.3NED   ·@^å8Àš_©@5µçú®>ÑÎA™šAë…„'  ÐR`ï          >záA¹…?n{A©Â=#×
+A¥®=#×
+A›ë…<£×
+AžQì=£×
+SloanSDSS J081419.58+214225.5NED   ¸@^å ¥q%@>ƒ—˜ö|ø=þÅmAG®AÂ£1  Í‹`ï  @záG®{>t¼A¡p¤=LÌÍA—Â<#×
+A‘33<#×
+A®<£×
+A
+=<£×
+SloanSDSS J081420.80+303050.4NED   ¹@^ñú 	†@E‰€*Bù?ˆÎA
+=A\)"  Ëí`ï  @Â\(õÃ>¥ãA­G®>8QìA¨¸R=#×
+A¡\)<õÂAš{<£×
+A›
+==\)SloanSDSS J081507.41+430427.0NED   º@_#ÀËN¦@Å@Ìxéö>þÅmAp¤Aë… ü  Îâ`ï  ?ò=p£×
+=>IºA®õÃ>8QìA¬  =#×
+A¦ÌÍ=#×
+A¢\<õÂA¤zá=õÂSloanSDSS J081811.71+054133.4NED   »@_+K•ú0@BàÀ‡»z=›=A×
+Azá:K  ÌG`ï  @333333>\)Aœ\=LÌÍA‘ë…<£×
+AŽ\<£×
+A‰…<£×
+A‰
+=<£×
+SloanSDSS J081842.36+360409.6NED   ¼@_8Ë` éã@EM-¯fZ>m(A®A  "t  Ëí`ï          >¾wA¥\)=£×
+Aœ\<£×
+A”õÃ<#×
+A’ÌÍ<#×
+A‘™š<£×
+SloanSDSS J081932.97+423610.6NED   ½@_P°_®¼?@;×ãb40>màA¸AÂóe  ÎÄ`ï  ?öáG®zá>$ÝA¦áH=¸QìA õÃ<£×
+A—ë…<£×
+A–ÌÍ<£×
+A•®=#×
+SloanSDSS J082102.58+275035.9NED   ¾@_RÞa…mñ@
+e~}m¹>ç°A
+áHA\)  !  Í¡`ï  ?ó
+=p£×
+>Ÿ¾AÂÌÍ?«…A±
+==£×
+A¦=q=#×
+A (ö<õÂAž  =\)SloanSDSS J082110.76+031758.4NED   ¿@_[[0G@=ÃÌÁ&/>˜âA{A\·‚  ÍÀ`ï          >bNA¢  =LÌÍAž£×<£×
+A™™š<£×
+A—G®<£×
+A“ë…<õÂSloanSDSS J082142.59+294553.4NED   À@_s™¾áøÅ@?ˆÍ§Õûð>ÝÌdA…AQì¤  ÍŒ`ï  ?òzáG®>\)A¨ÌÍ=ÌÌÍA¤zá<õÂA£G®<õÂA—×
+<£×
+Ap¤=¸QìSloanSDSS J082313.50+313203.7NED   Á@_—UÀ…fó@4mÁÆ÷)g>¬<ŸAÂA{#©  Ðo`ï  @ ÌÌÌÌÌÍ>IºA®=q>.{A§®<õÂAž=q<£×
+Až¸R<£×
+A›®=\)SloanSDSS J082527.50+202543.4NED   Â@_²ýÞ½@6Ž„žŠÃ>1ÅA¸A™š‡\  ÐI`ï  @ffffff>bNA¡ë…=LÌÍA™×
+<£×
+A¸R<#×
+AŽzá<#×
+Ap¤<£×
+SloanSDSS J082711.22+223324.1NED   Ã@_½ÂQ@:ŸÉÇ¨@>ÃFÜA\)A®2h  ÎÑ`ï  ?ôÌÌÌÌÌÍ>n˜A³\)>”záA©™š=LÌÍAŸ×
+<õÂAšõÃ<£×
+A–\=#×
+SloanSDSS J082751.60+263726.9NED   Ä@_Ì6ŸWïÂ@Dál¾‡]>hÛŒA\A=qU  Íe`ï          >‡+A©33=ÌÌÍAG®<£×
+A“Â<£×
+A\)<£×
+Ap¤<£×
+SloanSDSS J082845.80+414540.1NED   Å@_ç^°¿7@4Vt}€^^>°HA{A\# o  Ðo`ï  @G®záH>‡+A­×
+>.{A¥\)<õÂAš£×<£×
+A˜áH<£×
+A“×
+<õÂSloanSDSS J083028.14+202015.7NED   Æ@_ì¡¿ä@B”Üû×á>OvAQìAÌÍ; p  ÌX`ï  @1¡G®zá>`A‰Aœzá<õÂA’£×<£×
+AŒ{<#×
+A‰×
+<#×
+Aˆ£×<£×
+SloanSDSS J083045.20+370946.7NED   Ç@_ø-9@fC´f>n.²A×
+AQìÑ  Îã`ï          >IºA©™š=ÌÌÍA¢õÃ<õÂA˜ff<£×
+A•¸<£×
+A•ë…=LÌÍSloanSDSS J083130.33+070559.5NED   È@_ùÀËN¦@=Wã2?‚ªA=qA\ô	  ÎÅ`ï  ?ñp£×
+=q>
+=qA¯
+=>#×
+A­33=uÂA¦(ö=#×
+A™š<õÂAž{=\)SloanSDSS J083134.21+290239.4NED   É@` &Þüz9@C­º#ô*Ç>T•A
+\A
+¸R~ "  Í‡`ï          >C–A¥™š=£×
+A™
+=<£×
+AQì<£×
+A®<#×
+A‹®<£×
+SloanSDSS J083201.13+392126.0NED   Ê@`uÿ$öÐ@6ZÌ¢Ûaº>M„MA
+áHA®‰ œ  Ðe`ï  ?úáG®zá>\)Až  =#×
+A—33<£×
+A‘Â<#×
+A  <#×
+A®<£×
+SloanSDSS J083433.45+222116.8NED   Ë@`QáÃó@KÉH_,>ò>w1A
+=A®÷   ÐŠ`ï  @¿>J=p£×?G+Aª£×>.{AŸ…<£×
+A–\<£×
+A’  <£×
+A{<õÂSloanSDSS J083454.89+553421.1NED   Ì@`/ ›Ô}@?¢ØÞ¨–>)ûçAQìA£×¸9  ÍÀ`ï          >t¼A©ë…>¸A ff<£×
+A—G®<£×
+A•¸<£×
+A’Qì<õÂSloanSDSS J083501.39+313809.9NED   Í@`c øµ@¢,‹Ø¶ý>ÌÌÍAÌÍA	G®Â  Îã`ï  ?ò\(õÂ>“uA¶õÃ>³33A­\)=uÂA¥\)=#×
+AŸ×
+=#×
+AžÌÍ=ÌÌÍSloanSDSS J083510.39+073930.1NED   Î@`¨`¡«@1éQAjì~>™™šA(öAQìã +  ÑÍ`ï  @™™™™™š>oA¥p¤=uÂAœ£×<#×
+A•×
+<#×
+A“Â<£×
+AQì<£×
+SloanSDSS J083512.43+175441.0NED   Ï@`-@oCû@JWI„Æ,o=ï²A{A=q¼ š  Ê«`ï  @¸Që…¸>VA–ff<õÂAë…<£×
+A‡™š<#×
+A„õÃ<#×
+AƒG®<£×
+SloanSDSS J083523.81+524055.1NED   Ð@`¼à+f>@;ÊžÂÎFI>DÐA¸A{3¢  Îä`ï  ?÷333333>n˜A¤õÃ=uÂAœ¸R<£×
+A”(ö<£×
+A’Qì<£×
+AÌÍ<£×
+SloanSDSS J083528.03+274729.3NED   Ñ@`&Gà-ºÄ@D6N›V©‰>1Ä3AáHA®   Íe`ï  @áG®zá>C–A¢zá=uÂA˜ÌÍ<£×
+A‘p¤<£×
+AŽÌÍ<£×
+A…<£×
+SloanSDSS J083647.10+402527.3NED   Ò@`)n]L@F‰@Þr>àu÷A
+\A
+ffú  Ì`ï          >OßAµë…>™™šA­…=LÌÍA¡™š<õÂAšáH<£×
+A—p¤<õÂSloanSDSS J083707.99+451350.7NED   Ó@`*"W@@[íà¢<î>%A\)A®¹\  ÍÂ`ï  ?ùp£×
+=q>C–AªÌÍ>™šA¢(ö<£×
+Aš(ö<£×
+A—…<£×
+A“×
+=#×
+SloanSDSS J083716.01+324305.5NED   Ô@`/€õÕ3@Fk—>ý>SÃaA\)A\)úA  Ì`ï          >JÀƒAªQì=ÌÌÍAG®<£×
+A“…<#×
+Ap¤<#×
+AŒ£×<£×
+SloanSDSS J083752.75+445025.9NED   Õ@`/GŸ„5³@C–öƒöÉÞ?"GEAQìAp¤<Ü  Ì]`ï  ?özáG®>Ÿ¾A³¸>™™šA°  =£×
+A§¸=#×
+A¡™š=#×
+AŸÂ=áG®SloanSDSS J083754.60+391045.8NED   Ö@`4ÇA%Ë@F¿Ž`€>&A£×AÌÍú.  Ì`ï  ?ö¸Që…¸>PA¤zá=LÌÍA—\)>¸A™š<£×
+A¸<#×
+A‹G®<£×
+SloanSDSS J083835.83+441356.6NED   ×@`5@¿¨	?@Fd2F>†éyAp¤A™šúC  Ì`ï          >Iº^A¥\)=\)AšáH<£×
+A’  <#×
+A(ö<#×
+AG®<£×
+SloanSDSS J083839.38+444654.4NED   Ø@`6ÒòäŽ@9t7¡þ>Ü¿A	™šA	™šŠ °  Ðc`ï          >¥ãA¶\>ÌÌÍA®Qì=uÂA¢{<õÂA›…<£×
+A˜ÌÍ=#×
+SloanSDSS J083851.15+252714.2NED   Ù@`;\ a“h@AAƒáÑ(>¬ÌÍA…A×
+¥  Í¢`ï  @	Â\(õÃ>\)A¨£×=ÌÌÍA¡
+=<õÂAš\<£×
+A—p¤<£×
+A“G®<õÂSloanSDSS J083925.21+343030.2NED   Ú@`>! Ï @C\häÝÄ;>Ùe,A	™šA	p¤< ›  Ì]`ï  ?õÂ\(õÃ>hsAª(ö=áG®A¦{<õÂAŸ33<õÂA›Â<õÂA˜£×=LÌÍSloanSDSS J083945.99+384318.9NED   Û@`Bžãm™@I]=|JtÇ>Î!–A…A\)½ÿ  Ê¡`ï  @333333>=p¤A´(ö>k…Aª(ö=#×
+Až(ö<£×
+A™33<£×
+A”õÃ<õÂSloanSDSS J084015.49+504342.4NED   Ü@`CÐ_d+‚@@¬†b»>+jèA  A£×¥ 
+  Í¢`ï  @ÌÌÌÌÌÍ>1'A§ë…=£×
+Aœ{<õÂA“×
+<#×
+Azá<£×
+AŽõÃ<£×
+SloanSDSS J084028.61+332052.2NED   Ý@`Ey@.U@CQÅ¢õ|> [ÀA33A…< “  Ì]`ï  ?û\(õÂ\>²-Aª£×>#×
+A¤(ö<õÂA›
+=<£×
+A˜=q<£×
+A“®<õÂSloanSDSS J084041.08+383819.8NED   Þ@`H%_F=@<Ð?ï4?/¾wA	ÂAÌÍ4 õ  Îå`ï  ?õë…¸Qì>n˜AÃp¤?p£×A³¸=ÌÌÍA©33=LÌÍA¢=q=#×
+AŸ…=áG®SloanSDSS J084101.09+280025.5NED   ß@`H£¿½ô@AQmÁ-, >æ1ùA33A¸R¥  Í¢`ï  ?òáG®zá>PAÁ¸?\)A±×
+=ÌÌÍA¦  =#×
+AŸp¤<õÂA™®=uÂSloanSDSS J084104.79+343810.2NED   à@`Hñ`•l@ qu>Œ<ŸA  AQì4E  Ì `ï  @6+…¸Qì>™šA²Qì>Š=qA¤(ö<õÂAš  <£×
+A˜\<£×
+A•33<õÂSloanSDSS J084107.06+033441.3NED   á@`LŸ¾vÈ@4´¨€"ø?$!A\)A…å  ÑÉ`ï          >VA»™š?E¸A«ë…=LÌÍA¥¸=#×
+Až¸R<õÂA¡\)>#×
+SloanSDSS J084130.77+204220.4NED   â@`L­À˜$?ð„TI])G=â‚AAÂAë…Óf  Ê½`ï  @™™™™™š>²-A¸=LÌÍA•¸<õÂA¸<õÂA‹33<õÂAŒzá=#×
+SloanSDSS J084135.08+010156.2NED   ã@`S©³úm@&ÌXJ£b>Œ²–A	G®A	™š£   Íä`ï  @Cp£×
+=>“uA§Â=ÌÌÍA£¸<£×
+A˜áH<£×
+A–¸R<£×
+A‘ë…<õÂSloanSDSS J084227.45+054716.4NED   ä@`T¨Ÿ‹3E@B5r²n?¾wA®A Qì` ?  Ì``ï  @G®záH>‡+A¨ÌÍ=ÌÌÍA¥Â<õÂA¢\<õÂA˜ÌÍ<£×
+A£ë…>¸SloanSDSS J084234.94+362503.1NED   å@`YP °’@=¼~•¨¢>ËÆ¨AÌÍAp¤õ   ÎÉ`ï  @1°£×
+=q>¬A§
+==ÌÌÍA£Â<õÂAžÌÍ<õÂA˜zá<õÂA–{<õÂSloanSDSS J084309.86+294404.7NED   æ@`Yð¿80!@<Ù™xè>ÂeA{A{4ž  Îå`ï  @ÌÌÌÌÌÍ>²-A¯
+=>B\A¬\=uÂA¥
+==#×
+A¡\)=#×
+Aœ{=uÂSloanSDSS J084314.55+285059.9NED   ç@`]CÔ™Á@=92È?/ªÎA×
+AQì4Ì  Îå`ï  @!Ñë…¸R>hsA¯
+=>#×
+A¬zá=uÂA¥…=#×
+A¡Â<õÂAœõÃ=\)SloanSDSS J084339.47+290124.5NED   è@`]ÿ×8×@Aê>Ð~Ù=\Æ?A™šA=q¦„  ÍÀ`ï  @áG®zá>oAš{<õÂAŽ(ö<#×
+A‹33<£×
+A†ff<#×
+A„áH<£×
+SloanSDSS J084344.98+354942.0NED   é@`|`<à+@AÄ!DÄl>í(A	p¤A	™š¦ ±  ÍÀ`ï          >IºA¹ë…>\)A°zá=\)A¤=q<õÂAž(ö<£×
+A›×
+=LÌÍSloanSDSS J084730.46+353208.0NED   ê@`|×@ÿ¼l@AÈ[n‹æ>ŽËûAáHA…¦ó  ÍÀ`ï  ?úzáG®>1'A°ff>8QìA§33<õÂAžáH<£×
+Aë…<õÂA™Â=#×
+SloanSDSS J084736.30+353348.4NED   ë@`}@ ŸSF@Iàu_‡Z?CØA33A®¿ ¾  Ê¥`ï          >+A´Qì>®{AªõÃ=LÌÍA¦  =#×
+A£p¤=#×
+AÂ=£×
+SloanSDSS J084739.38+514512.9NED   ì@`~š¿3‡@3ÏY?NR?äAQìA(öè Ú  Ñ°`ï  ?ñ¸Që…>PA¶zá>Ç®A¯™š=uÂA¨{=#×
+A¢  <õÂA…=£×
+SloanSDSS J084749.53+193356.3NED   í@`~£|ä@D	½·µÌ>7škA\A¸R= £  ÌH`ï          >	7LA¨£×=õÂA   <£×
+A—\)<#×
+A”ÌÍ<#×
+A“¸<õÂSloanSDSS J084749.79+400416.0NED   î@`‡‹ †O?ùÐ ºiÛÜ>³üA
+=A\)ÔL  ÊÈ`ï  @U\ÌÌÌÌÍ>™šAÀQì?ƒ×
+AªáH=LÌÍA {<õÂA™š<õÂA˜{=uÂSloanSDSS J084856.58+013647.8NED   ï@`‰`€sW@B0Ó@ãÆ%><¹$A¸RA
+=¦  ÍÀ`ï  @¸Që…>	7LA Qì=#×
+A›¸<£×
+A“p¤<£×
+A’áH<#×
+A’{<£×
+SloanSDSS J084907.92+362253.1NED   ð@`‹½ÀrÂÄ@%ð$>œ]dAffA¸R¥ µ  Í¼`ï  @(õÂ\)>n˜A¯…>W
+=A¤£×<õÂA›…<£×
+A™®<£×
+A”£×=#×
+SloanSDSS J084928.06+054629.5NED   ñ@`‘:Ÿsæ
+@3¤ü¤*ì>ÛÍ6A£×A£×ç_  ÑÌ`ï  ?ý¸Që…>hsA¸zá>½p¤A´\=¸QìA¬=q=LÌÍA¤\=#×
+A¡
+==áG®SloanSDSS J085009.22+190133.4NED   ò@`“c€=¿Ý@D¯·ž;>u?}AÌÍAõÃ>  ÌE`ï          >\)A©×
+>¸AŸÂ<£×
+A—¸<#×
+A”(ö<#×
+A‘…<õÂSloanSDSS J085025.41+412222.0NED   ó@`•@Ÿ@>¨³:°>6ý"A	™šA	ë…ö k  Îÿ`ï  ?ýÂ\(õÃ>VA¢{=LÌÍA—p¤<£×
+A‘¸<£×
+Ap¤<£×
+AŽzá<£×
+SloanSDSS J085038.14+303932.3NED   ô@`–¢W@G8m¼„ º?íAÌÍAp¤ûH  Ì`ï  ?û\(õÂ\>PA°áH>B\A¬{=LÌÍA¥p¤<õÂA Qì<õÂA   =ÌÌÍSloanSDSS J085049.76+462627.1NED   õ@`šGA%Ë@ð–9zÇ>ÉÔ•AõÃA	G®¦  Í¾`ï  ?ö=p£×
+=>²-A¶\?
+=A­Â=\)A¢ÌÍ=#×
+A×
+<õÂA›G®=¸QìSloanSDSS J085117.07+045905.8NED   ö@` ·¿Ž`@Áõ¶è¾j>@·€AQìA£×5  Ì`ï          >záA§\)=£×
+Ap¤<£×
+A•p¤<#×
+A’(ö<#×
+A=q<£×
+SloanSDSS J085205.38+024310.9NED   ÷@`£ðšX¬@;A…h§>9Œ~AQìA£×Œ'  Ðf`ï  ?ðÌÌÌÌÌÍ>
+=qAŸ¸=#×
+AšõÃ<£×
+A–ff<#×
+A”ff<£×
+A•p¤<õÂSloanSDSS J085229.52+271515.7NED   ø@`¤.`5â™@®~¥øL¬>ÖÕÐA
+=A…  Îì`ï  ?ø      >OßA¥×
+=¸QìA¢zá<õÂAœ£×<õÂA˜{<£×
+A—™š=LÌÍSloanSDSS J085231.35+074013.4NED   ù@`¦_¥j(@3y¾FŠ>ÕöýA®A×
+éå  ÑÏ`ï  @-      >C–A¥33=\)A¡…<õÂA›p¤<£×
+A˜  <£×
+A–ÌÍ<õÂSloanSDSS J085245.12+190116.9NED   ú@`ª˜¿º­n@CpQûÔÈ[>©“A×
+A  ® æ  Í½`ï  @0ŒÌÌÌÌÍ=éxÕAš{<õÂAzá<£×
+AŠzá<£×
+Aˆ(ö<#×
+A…Â<£×
+SloanSDSS J085319.46+385238.9NED   û@`¬$?åÉ@1äé<?cK>>ùÛA¸RA®é ³  ÑÏ`ï  @Që…¸R>bNA¨Qì=£×
+A ¸R<£×
+A˜{<#×
+A˜\<#×
+A›®=uÂSloanSDSS J085331.05+175339.0NED   ü@`¯’ßšíÍ@B50n™á>…S&A£×AÌÍ§ ³  Í£`ï  @-B\(õÃ>™šA¤\=uÂA›ë…<£×
+A–(ö=LÌÍA”=q<£×
+A’{<õÂSloanSDSS J085356.80+362455.9NED   ý@`´@û`@1qY3§?"äA£×Ap¤é 6  ÑÏ`ï  ?ó\(õÂ\>
+=qA¯Â>8QìA®(ö=uÂA¥\)=#×
+AŸ®<õÂAžQì=£×
+SloanSDSS J085430.01+170308.9NED   þ@`´¶Ÿí?@8±$Ý.>ƒn/AáHA® Š  Ð…`ï  @ õÂ\(ö>\)Aª=q=áG®A zá<£×
+A—
+=<#×
+A—…<#×
+A”\<£×
+SloanSDSS J085435.34+244136.1NED   ÿ@`µ– £üR@DçÀn¸>1uŽAë…A{¯  Íß`ï  @záG®>IºA¬=q=¸QìA ¸R<£×
+A—…<£×
+A–Qì<£×
+A“¸<£×
+SloanSDSS J085441.89+400053.5NED   @`¹n?–R@I.o½'=[>MjA{Aff'   Ë`ï  ?ý¸Që…>AŸÂ=#×
+A˜ÌÍ<#×
+A“®<£×
+A  <#×
+A®<£×
+SloanSDSS J085510.72+502146.1NED  @`¹ž`[*ø@HM BXÈ?²-AQìAõÃüx  Ì`ï          >PA²õÃ>”záAª£×=LÌÍA¤{<õÂAŸ33<õÂAŸë…=¸QìSloanSDSS J085512.14+483609.2NED  @`¿C?Iª@B“7Bt$>¶¡bAp¤Aë…¨  Íá`ï  ?özáG®>™šA§×
+=¸QìA¢=q<õÂAšÌÍ<£×
+A™™š<£×
+A•™š=#×
+SloanSDSS J085554.47+370900.4NED  @`Ñk?Ì'[@?\-àp>_A  Azá6  Îî`ï  @™™™™™š>bNA¡\)=LÌÍA–ff<£×
+A  <£×
+Ap¤<£×
+AŒzá<£×
+SloanSDSS J085810.64+312136.2NED  @`Óò¨SÐ@F%€^_0ç>èXyA  Azá ;  Í}`ï          >¸AŸ®=#×
+Aœ\<õÂAš(ö<£×
+A•¸<#×
+A•¸=LÌÍSloanSDSS J085829.59+441734.7NED  @`ÜCŸý`é@@ˆõ$Ç¬>þ¸RA{A\÷C  Îî`ï  @e>fffff=çl‹A´=q>¨õÃA«¸=#×
+A£
+=<õÂA®<£×
+Až  =¸QìSloanSDSS J085931.98+330411.9NED  @`äê@ºˆ@4åóO¾>q[WA®A×
+ê g  Ñ³`ï  @       >‡+A¦áH=uÂA {<õÂA˜£×<£×
+A–zá<£×
+A•…=#×
+SloanSDSS J090036.85+205340.3NED  @`ï¤$oª@5ùàè$ ™>ç»0AÂA\ì ß  ÑÌ`ï  ?÷…¸Që…>‡+A¥…=£×
+A¡×
+<£×
+A¸<£×
+A—×
+<£×
+A—33=#×
+SloanSDSS J090157.32+215833.8NED  @`òßîÐ¤@9À	+<L>æÏBA	ÂA	™š&o  Ð™`ï  ?òffffff>hsA®ff>8QìA¨áH=#×
+A¡™š<õÂA×
+<£×
+A›™š=#×
+SloanSDSS J090215.90+254500.5NED  	@`óžãm™@Kº Q>ÍBÄA®AáHÂ à  ÊÄ`ï          >t¼A»×
+?®A¯¸=\)A¢¸R<õÂAœ=q<£×
+A—×
+=#×
+SloanSDSS J090226.74+545952.3NED  
+@`ó–.ì@>…Ë'	?íúA  AQì6 W  Îî`ï  @õÂ\(ö>“uA«p¤>.{AªÌÍ=LÌÍA¥33=#×
+A ÌÍ=#×
+Až¸R=¸QìSloanSDSS J090226.89+300607.0NED  @`öB?=:?õu¡V§4?¢œAõÃAG®ÕP  ÊÉ`ï  ?ó
+=p£×
+>VA·G®?
+=qA¬(ö=uÂA¦¸R=LÌÍAžÌÍ<õÂA¡×
+>™šSloanSDSS J090246.93+012028.2NED  @`øB ,í@C¥çB™Øƒ>Ü„¶A®AQì¯   Íß`ï  @®záG®>bNA³×
+>k…Aª{=LÌÍA¤áH<õÂA\)<£×
+Aœ£×=\)SloanSDSS J090301.94+391746.0NED  @`ùŸ +û@•/-Cî>¨ÌA(öAzá×B  ÊÔ`ï  @5ë…¸R>VA­Â>8QìA¥…<õÂAœ  <õÂA˜zá<£×
+A’(ö<õÂSloanSDSS J090307.84+021152.2NED  @`ùW`tÌº@2öDú;?|îA£×AõÃëw  Ñá`ï  ?ñ¸Që…>VA¬õÃ>¸AªÌÍ=#×
+A¥ë…=#×
+A =q<õÂA¢zá=õÂSloanSDSS J090310.06+185743.1NED  @`þ˜¿º­n@6}~	Ù=? A
+¸RA
+\ì ©  ÑÌ`ï  ?õÂ\(õÃ>záA³\)>³33A­…=uÂA¢¸R<õÂA
+=<õÂA™™š=uÂSloanSDSS J090349.47+220020.9NED  @a  C“,@8²¾¬`>¹õA
+¸RA
+= Ú  Îí`ï  @Â\(õÃ>²-A£™š=\)Aš¸R<£×
+A’£×<£×
+A  <£×
+A\<£×
+SloanSDSS J090403.72+074819.3NED  @aá?†?©¿×2çx1áR>´¼jA{A=qÖ §  ÊÙ`ï  @®záG®>PA¡ë…=#×
+Až¸R<£×
+A™G®<#×
+A˜zá<£×
+A”£×<õÂSloanSDSS J090414.09-002144.9NED  @a=ßçÓ@:¨¸œ|Cv>ùè>A
+=A… ·  Ð‹`ï  ?ð      >\)A®  >8QìA®{=uÂA§ë…=LÌÍA¤(ö=#×
+A¤zá>¸SloanSDSS J090416.80+263932.6NED  @a)³úm@<°?hù>á½¥AõÃAG®Žq  Ðm`ï  @8«…¸Qì>n˜A±Â>…¸Aª=q=#×
+A Qì<£×
+AšÌÍ<£×
+A™\)=LÌÍSloanSDSS J090523.70+282955.6NED  @a†ßG
+÷@:çË^ö¦ê>®p;AQìA£× ¢  Ð‹`ï  ?ùp£×
+=q>OßA¬{>\)A¤ff<õÂAŸ
+=<£×
+Až\<£×
+AšõÃ=LÌÍSloanSDSS J090633.95+265419.5NED  @a2ßP]@B¶w»
+£÷>è§A¸RA
+=¨ P  Íá`ï          >C–AË™š?W
+=A²ff=¸QìA¦£×=#×
+A   <õÂAœ(ö=uÂSloanSDSS J090701.48+372531.9NED  @aû_ïI@G+O@ÇÏÝ>*ÍŸA	p¤A	™š‚0  Í~`ï  @=+…¸Qì>1'A¥\)=ÌÌÍAšõÃ<õÂA\<£×
+AŽõÃ<£×
+AŒzá<õÂSloanSDSS J090722.34+462018.0NED  @a6ÄJ@Jr!üÙÂ=­«ŸA\)A®(v  Ë`ï  ?øõÂ\(ö>t¼AœõÃ<õÂA{<£×
+A‹…<#×
+A‡33<#×
+A…p¤<£×
+SloanSDSS J090754.06+521127.6NED  @a -@oCû@Eå$Î÷>¹õZAë…AÂ@,  ÌX`ï  @@\(õÂ>VA³®>¸QìAª(ö=#×
+AŸ×
+<õÂA×
+=#×
+A™…=\)SloanSDSS J090801.33+434722.6NED  @a&%ß@e@ê ,í¶?LÙèA
+=Azá¨u  Í©`ï  @×
+=p£×>PA°Qì>W
+=A­33=\)Aª(ö=#×
+A¢{=#×
+Aœzá=uÂSloanSDSS J090846.10+052843.1NED  @a,w@ 
+1@Er¸¨A?+˜ÈAQìA®? '  ÌF`ï  @ªè8Që…?9XAŸ™š=LÌÍA›¸<õÂA–\<£×
+A“¸<£×
+A=q<õÂSloanSDSS J090933.51+425346.5NED  @a,»Ÿ0RÝ@%½;'Ä‚>)^žA…A×
+Ë¥  Ï:`ï  @\(õÂ>VA¤ÌÍ=uÂA¸<£×
+A”  <£×
+A‘33<£×
+AõÃ<£×
+SloanSDSS J090935.49+105210.5NED  @a5:þÕ¼@@KÞ&<>ýÈAÂAÂ7  Îð`ï  ?ôÌÌÌÌÌÍ>záA¬(ö>™šA§®=#×
+AŸ¸<£×
+A˜Qì<£×
+A–=q=#×
+SloanSDSS J091039.20+323524.9NED  @a?¬`'çu?û–êÈ`V?kQA
+=Azá×W  ÊÔ`ï  @õÂ\(ö>
+=qA¶zá?\A²Qì=áG®A«\)=\)A¢zá=#×
+AŸG®=õÂSloanSDSS J091157.54+014327.6NED  @aDƒÀœ´/@Cs°_®¼@?"œxA\)A  © ®  Íã`ï  ?ø(õÂ\)>záAµ®>½p¤A²£×=áG®A©
+==uÂA¢{=#×
+A õÃ=áG®SloanSDSS J091233.85+385413.6NED  @aEXò“ @#D‡×pÄ>È$AzáAÌÍ©Ý  Í¬`ï  @\(õÂ\>™šA¶Qì?\)A¬=q=uÂA¢áH<õÂAœ=q<£×
+A˜{=\)SloanSDSS J091240.07+053204.0NED   @aI@„<±@3g´C>~ùÛA	p¤A	ë…î B  ÑÄ`ï  ?ô(õÂ\)>VA¦(ö=uÂA¢(ö<£×
+A™ë…<£×
+A˜¸R<£×
+A–ff<õÂSloanSDSS J091307.97+192418.3NED  !@aNÀ­Ù@DxxB0ü÷>á½¥A%G®A&\° I  Í¼`ï  @…¸Që…>$ÝAG®<õÂAšQì<£×
+A˜ff<£×
+AŒff<#×
+A‘\)<£×
+SloanSDSS J091345.48+405628.2NED  "@aU¤ÀE?¼>k†H?·éA	ÂA
+¸RØ ¡  Êó`ï  ?ú=p£×
+=>Ÿ¾A¸£×>Ü(öA®ÌÍ=uÂA©…=LÌÍA¡
+=<õÂA¤{>.{SloanSDSS J091442.32+000637.1NED  #@a]äA@>'÷zö@c>êKA  Azá’5  Ðƒ`ï  @ffffff>záAŸë…=#×
+A”ÌÍ<õÂAŒQì<õÂA‰\)<£×
+Aˆ\<£×
+SloanSDSS J091544.19+300922.0NED  $@af#@)\I@<—<Ãøˆ>œàA
+=A…‘Ö  ÐŒ`ï  @Â\(õÃ>+A—\)<õÂA’áH<#×
+A33<£×
+AŠzá<£×
+AŠzá<£×
+SloanSDSS J091646.03+283526.7NED  %@apßU@¬kƒôuX> 'RAõÃAõÃß+  Íã`ï          >C–Ažff=LÌÍA•p¤<£×
+Ap¤<£×
+AŠ(ö<£×
+A‰33<£×
+SloanSDSS J091800.25+042506.1NED  &@apr¨SÐ@<øš—–¡ö>uÂA£×A¸‘º  ÐŒ`ï          >C–A áH=#×
+Až  <£×
+A—™š<£×
+A–  <#×
+A•…<£×
+SloanSDSS J091803.34+285815.9NED  '@arŸØñ>@7õË›ŒA’>Ö‡+A£×AG®ó å  ÑÒ`ï  @G®záH>hsA¦zá=\)A¢áH<£×
+A¡G®<õÂA˜£×<õÂAš(ö=uÂSloanSDSS J091819.66+235736.4NED  (@aáŸ¤Õ@FÄ+a•½›>Î{AffAáHA  ÌZ`ï          ?5A¦Qì=áG®A£33=#×
+Aœ¸R<õÂA˜=q<£×
+A–ff=LÌÍSloanSDSS J092014.12+453157.2NED  )@a…<ÿ v‹@7ÀÛ%%kR>Ò£A
+áHA\)ó y  ÑÒ`ï  @Â\(õÃ>C–A·…?   A­\)=uÂA¤\<õÂAŸ¸<õÂA›Â=uÂSloanSDSS J092039.28+234512.0NED  *@aŽþàÎ‚ß@IòÆ¼èS:?s‚A\A
+=ÿ²  Ì`ï  @ë…¸Qì>OßA³®>…¸A­G®=uÂA¦£×=#×
+AŸ¸<õÂA ÌÍ=¸QìSloanSDSS J092152.45+515348.1NED  +@a•ßeUÅ@DÂj^Z‡Û>þ	A  AQì«\  Íœ`ï          >+A±¸>™™šA®£×=\)A¨ff=uÂAŸë…=#×
+A¡
+==õÂSloanSDSS J092156.88+413107.9NED  ,@a“'?°1@;ž›1a*?¹ŒA×
+A×
+Ù  ÊÙ`ï  @	G®záH>¥ãA¹™š?ë…A³p¤=ÌÌÍA¦\=#×
+A¢{=#×
+A¡33>#×
+SloanSDSS J092223.65+020914.8NED  -@ašgÿX:S?ðw6Íòfº>ÆL0AQìAzáÚ   Ë `ï  ?özáG®>¬A¬zá>LÌÍA§
+==#×
+AžõÃ<õÂAš¸R<õÂA˜zá=LÌÍSloanSDSS J092318.06+010144.8NED  .@aà J¾@ \ž»^†>ÔÖ¡A  AQì W  Î`ï  @ \(õÂ>bNA³Â>ž¸RA®Qì=£×
+A¥
+==#×
+AžÌÍ<õÂAžff=\)SloanSDSS J092344.06+081051.1NED  /@aŸ†_³eL?õW·AJM*>Âu%A¸RA\)Ù   ÊÙ`ï  @,Ü(õÂ\>VAµë…>áG®A®¸R=£×
+A¥G®=#×
+AŸ®<õÂA™33=LÌÍSloanSDSS J092356.45+012002.0NED  0@a¥  ŸS@>zÃÞQ>‹ŸVAÌÍAõÃ•  ÐŠ`ï  @G®záH>‡+A®=q>aG®A£ë…=#×
+Aš(ö<õÂA˜Qì<£×
+A”Qì<õÂSloanSDSS J092438.24+302837.1NED  1@a¨<ÿ v‹@;ÄÕ“	‹?â‚A®AQì”T  Ð‡`ï  @9—
+=p£×>	7LA¤õÃ=£×
+A =q<õÂA›¸<£×
+A•×
+<£×
+A—×
+=LÌÍSloanSDSS J092501.78+274607.9NED  2@a®àW¬/@H£öý!ÿ->DµÝAáHA
+=„  Í`ï          >C–A¦{=uÂAp¤<£×
+A˜{<#×
+A•™š<£×
+A“33<õÂSloanSDSS J092549.15+491651.7NED  3@a±² =uL@ *â¼Ì5>B©“A33A…   Î`ï  ?õ¸Që…>‡+A­…>¸A¢õÃ<£×
+A›G®<£×
+A—¸<£×
+A•p¤=#×
+SloanSDSS J092612.71+080501.5NED  4@a´® ßgª@¦Ð‘}ke>B@¸A\A\«Q  Íô`ï  ?òáG®zá>VA¥¸=\)Aš  <£×
+A‘p¤<#×
+A™š<£×
+AŒ{<£×
+SloanSDSS J092635.11+072446.4NED  5@a´÷ÀHÑY@8kûVôw?C-A¸AõÃó #  ÑÒ`ï  ?ñ¸Që…>záA´áH>uÂA¯Â=uÂA¨=q=#×
+A¡…<õÂAžáH=\)SloanSDSS J092637.25+242518.4NED  6@aºû 1Î®@4Mÿþ>Gy§A33A®ñ £  ÑÌ`ï          >hsA§¸=ÌÌÍAŸ®<£×
+A–ÌÍ<£×
+A•®<£×
+A”=q<õÂSloanSDSS J092722.35+201803.8NED  7@aÉ	^è«Æ?ÜeâXOK=ðoiA…A  Û Í  Êý`ï          >¸RA¥™š=uÂAž  <£×
+A˜(ö<£×
+A“33<#×
+A™š<£×
+SloanSDSS J092907.78+002637.3NED  8@aà¿#7l@4_Ä}[ÿ>64A®A  ñ   ÑÌ`ï          >OßA ÌÍ=£×
+AŸ
+=<õÂA–(ö<õÂA”õÃ=#×
+A“33<õÂSloanSDSS J093204.15+202226.7NED  9@aåK` éã@D)Ür\=>É†A
+=A×
+«}  Íœ`ï  @(õÂ\)>Që…A¨Qì=£×
+A¢  <£×
+Aœ=q<õÂA™¸<£×
+A•…<õÂSloanSDSS J093239.69+410610.2NED  :@aî¨€"ø@64¿T&i?)rGA=qAáHô‡  ÑÑ`ï  @…¸Që…>A´{>uÂA­ë…=LÌÍA¨=q=#×
+A£¸=#×
+A ¸R=ÌÌÍSloanSDSS J093349.93+220401.9NED  ;@bµ 0¤l@"}5Ôžj?!–SA	™šAÌÍ C  Ï:`ï  @Dž¸Që…>:^5Aµ…>Ñë…A®ÌÍ=\)A¤=q=#×
+A›ë…<õÂAš{=\)SloanSDSS J093612.82+091439.7NED  <@bb X‹á@Mµã¶¹=ÃÉïAp¤A™šå   ÊÅ`ï  @
+=p£×
+>\)A¡®=LÌÍA–  <£×
+A=q<#×
+A‹™š<#×
+AŠ  <£×
+SloanSDSS J093625.37+592452.7NED  =@bŒ SâÕ@0ÛìD1 >Ÿ!-A\)A×
+	A Ö  Ñå`ï  ?ò=p£×
+=>n˜A­×
+>8QìA¦zá<õÂA›\)<£×
+Aš{<£×
+A–  <õÂSloanSDSS J093649.10+165132.6NED  >@bõÀ:Ö6¿ê‹Î:¢ò®?cˆAÌÍAp¤Ü _  ÌZ`ï          >²-A±ë…>”záA¬  =LÌÍA¨(ö=LÌÍA¢£×=#×
+A¤áH>™šSloanSDSS J093659.70-004946.4NED  ?@b
+[ ¥&•@DrÐY€Œ>Òa|AÌÍA¸¬   Í¾`ï  ?þzáG®>¸A´\>½p¤A§…=LÌÍA£®=#×
+Aœ{<õÂA›™š=\)SloanSDSS J093717.69+405349.1NED  @@bòÆé.@B‹ìÝü(«>æL0AQìAG®ûX  Ï`ï  @JE¸Që…>!ÊÁA¬¸R=õÂA¨zá<õÂA¡33<£×
+AšQì<£×
+Aš£×=LÌÍSloanSDSS J093737.11+370535.4NED  A@bŸÿµoA@F«ƒ5J>æffAzáA  ²Ï  ÍÀ`ï          >n˜A»ë…>Ü(öA²Qì=\)A¦\<õÂA =q<õÂA
+==LÌÍSloanSDSS J093834.68+452023.7NED  B@b¿ßõÎ@Aó)^ž>àßA  AQì:¡  Ï `ï          >´9XA¥G®=uÂAš(ö<£×
+Aff<£×
+AŽff<£×
+A™š<£×
+SloanSDSS J093952.75+355358.8NED  C@b!Ëß´@:r÷}JÆU?"¶®AG®AG®ù³  Ñê`ï  @[‚\(õÃ>#×
+A²=q>ž¸RA«®=LÌÍA¥
+==#×
+Až=q<õÂAš  =\)SloanSDSS J094013.46+262656.6NED  D@b13_y$7@L€³=¯÷>³33A(öA(ö-]  Ì`ï  ?ñp£×
+=q>‡+A   =#×
+A®<õÂAš{<£×
+A™G®<õÂA•ë…=#×
+SloanSDSS J094209.00+570019.7NED  E@b9‹?–@AxÝDU?€4AÌÍAG®: Ž  Ï `ï  @&™™™™š>1'A§\)=uÂA¤áH<£×
+A õÃ<£×
+A˜áH<£×
+Aë…=LÌÍSloanSDSS J094311.57+345615.8NED  F@b9µ€»”@Ê`ìR,?®A…A×
+ÝD  Ë:`ï  @‰å×
+=p¤>”záA¾(ö?=p¤A¶¸R>B\A©ë…=uÂA¡G®=#×
+A \>¸SloanSDSS J094312.82+024325.8NED  G@b>Ê%Ö‚@N†Aå3ú>®¾àA	p¤A	ë…æ š  ÊÆ`ï          >záAµë…>¸QìA©×
+=uÂAžff<£×
+A33<õÂA˜(ö=LÌÍSloanSDSS J094350.91+610255.9NED  H@bHÚ@5ç@rlýq8÷>¤@A	™šA	Â:  Ì*`ï          >VA £×=LÌÍAš£×<õÂA–  <£×
+A“ë…<£×
+A‘ë…<õÂSloanSDSS J094506.39+035551.1NED  I@bJØ`19@1¡¨%5ºü>oAáHAÌÍ	B-  Ò`ï  @CW
+=p£×>OßA°(ö>B\A¥
+=<õÂA33<£×
+AšQì<£×
+A™¸=#×
+SloanSDSS J094521.33+173753.2NED  J@bK?¿ëœk@$/÷¼4æð?½¥AzáA£×Õ  Î`ï  @3œ(õÂ\>E¡ËA°ÌÍ>LÌÍA«™š=#×
+A£Â<õÂA¡\)<õÂAž=q=£×
+SloanSDSS J094524.35+100537.2NED  K@bQ®÷<@å«Äúi>*dÃAffA¸R;^  Ì>`ï          >\)A©Â=ÌÌÍAž¸R<£×
+A—G®<£×
+A’ff<£×
+A\<õÂSloanSDSS J094612.59+042827.4NED  L@bZsdÀ£@3öû~ÿ–>ÜC-A
+=A®	: º  Ñÿ`ï          >záA¨£×>¸A¦¸R=#×
+A¤Qì<õÂAš=q<£×
+Až(ö=\)SloanSDSS J094718.36+195753.1NED  M@b[sà7Ü@<!Bo>ÒGEAõÃAp¤	&A  Ñî`ï  @×
+=p£×>hsA°¸R>uÂA©…=#×
+A¡ë…<õÂA›ë…<£×
+A˜¸R=LÌÍSloanSDSS J094725.89+280648.5NED  N@b^õß¯æƒ@=ÚVß!Â?XyA¸A™š›k  Ð·`ï          >+A¯…>W
+=A®Qì=uÂA¦\=#×
+Až¸R<õÂA£™š>™šSloanSDSS J094752.20+295106.9NED  O@bc]ß ×@9ºå[˜|>7eþA  Azá	%«  Ñê`ï  ?ýG®záH>	7LA™š<õÂA•ë…<£×
+A™š<£×
+AG®<õÂA‹®<£×
+SloanSDSS J094825.24+250658.0NED  P@bdÎ?á ?Ö{cÄû/V>¥ðoAõÃA	¸à ,  Ë`ï  @ffffff>Ÿ¾A«…>¸A¥¸<õÂA›\)<£×
+Ašzá<£×
+A—ë…=LÌÍSloanSDSS J094836.03+002104.5NED  Q@bpÆàqMñ@HÀ]Ê>¿åÉA	ë…A
+=qí ¤  Íß`ï          >	7LA»ë…?&ffA¯p¤=£×
+A¦{=#×
+A¢ff=#×
+Až=q=¸QìSloanSDSS J095005.82+481338.5NED  R@br§€Y¶$@Ç`tÌº(?
+¦A{A\â  Íõ`ï  @Që…¸R>“uA§G®=ÌÌÍA¤  <õÂAŸ¸<õÂA˜¸R<£×
+A—\)<õÂSloanSDSS J095019.90+051140.9NED  S@b‚A)­×@#­X¥ƒÊƒ?RTAÌÍA™š ´  Ï`ï  @
+¸Që…¸>
+=qA¹G®?(öA³¸=áG®A«\)=uÂA¡¸<õÂA¥ë…>#×
+SloanSDSS J095215.85+095018.8NED  T@bŠ—?Õys@E>MÂ¢ X>dÂøA®A®Á]  ÍÀ`ï  ?øQë…¸R>OßA«ë…>#×
+A¡×
+<õÂA˜=q<£×
+A—…<£×
+A—¸=#×
+SloanSDSS J095319.42+422912.2NED  U@b™áŸ¤Õ@@óË>WS>×ÎÙA(öA  ; =  Ì>`ï  @ ffffff>bNA¯…>8QìA¨\=#×
+AŸ×
+<£×
+A›\)<£×
+A˜(ö=#×
+SloanSDSS J095514.11+034654.2NED  V@b¶×ÿ}‚²@HEJþBð>'ïžA
+=A33î ö  Íä`ï  ?ùG®záH>‡+A¢zá=uÂAš\<£×
+A’¸R<õÂA‘
+=<£×
+Aë…<õÂSloanSDSS J095851.34+483228.7NED  W@b·‚íéô@N%½›¿…>Ô,A¸A™š Ä  Ì:`ï  ?ô(õÂ\)>™šA¤Qì=\)Ašzá<õÂA“\)<#×
+AQì<£×
+AG®<õÂSloanSDSS J095856.31+601741.4NED  X@b¸á?†?©@I‡LâïÅN?ÿ.AõÃA¸† #  Ì¹`ï          >hsA­\)>™šAªQì=uÂA¤£×=#×
+AŸÂ<õÂA õÃ=áG®SloanSDSS J095906.61+510325.3NED  Y@bÁÀ 2øñ@)j ,í¶>§‡A¸A™šÐ§  Ï?`ï  @9³33333>$ÝAšÌÍ<õÂA•
+=<£×
+AŽ=q<£×
+AŠáH<£×
+AŒáH<£×
+SloanSDSS J100013.14+124226.2NED  Z@bÏR?gôÛ@>g´¢3œ>?b·A
+=qA
+=qž?  Ð¼`ï  ?ð(õÂ\)>hsA©p¤=õÂA   <£×
+A–{<£×
+A’õÃ<#×
+A‘Â<õÂSloanSDSS J100154.91+302418.3NED  [@bÐFÿæ^>@sb:èÚ>UAë…Affã Ÿ  Íû`ï  @ÌÌÌÌÌÍ>\)A¡ë…=LÌÍA™×
+<õÂA‘
+=<£×
+AŽ¸R<#×
+AŽQì<£×
+SloanSDSS J100202.08+055145.6NED  \@bÒ1ß“ð;@"ßÌQL>A:“A(öAzá< s  ÌA`ï          >PA­…>™šA¢=q<£×
+A™¸<#×
+A•¸<£×
+A”{<õÂSloanSDSS J100216.45+034601.2NED  ]@bÕRàÅ0Ç@"dßóy°>ÖE¢AzáA£× :  Ï`ï  @záG®{>\)A¬=q>™šA¥…<õÂAœáH<£×
+A˜(ö<£×
+A•™š=#×
+SloanSDSS J100239.93+091149.2NED  ^@b×Ò¿¼@‹÷'j??ø8Aë…A=qã 6  Íû`ï          >
+=qA¸£×?\A°Qì=£×
+A¨{=#×
+A¡®=#×
+A {>™šSloanSDSS J100258.68+050812.0NED  _@bÛÿS‘G@Eap`CÝ¼>ÚÇAÌÍAõÃÁ  ÍÀ`ï  @ aG®zá>“A±
+=>8QìAª£×=#×
+A¡¸<£×
+Ap¤<õÂA›G®=uÂSloanSDSS J100323.02+424540.4NED  `@bÛ¹@Ã&Ñ@KÙbbË§2>A×
+A×
+±¹  Í¬`ï  ?ô(õÂ\)>"ÐåA§33=\)Aœ£×<õÂA”õÃ<#×
+A’=q<#×
+AÌÍ<£×
+SloanSDSS J100327.92+554154.2NED  a@bçëßiþÐ@Eh³îÇQ>ïìWA(öA£×õ  Ì`ï          >²-A¢ff=uÂA¡Â<£×
+A›Â<£×
+A˜áH<£×
+A—Â=LÌÍSloanSDSS J100459.41+030202.0NED  b@bðUÛáã@ÄÈ¸âcõ=ö”FA£×AÌÍäH  Í¡`ï  @…¸Që…>bMÓA ¸R=LÌÍA•…<£×
+A‘p¤<£×
+A‹ë…<£×
+AŠ{<£×
+SloanSDSS J100602.50+071131.8NED  c@býŸEK“@;.'œå?¶FAQìAõÃ	+j  Ñý`ï  ?ðõÂ\(ö>+A²áH>Š=qA«…=uÂA¦ff=#×
+AžáH<õÂAžÌÍ=¸QìSloanSDSS J100738.39+271049.0NED  d@cAßn§Ü@GÁ¾U?=A
+=Aff¯¡  Ì˜`ï  @333333>1'A¶zá>¸QìA²ÌÍ=£×
+A¨õÃ=#×
+A¡×
+=#×
+A {=£×
+SloanSDSS J100854.44+461300.6NED  e@c@sí@*Ã{Ì †Û>d?æA×
+A×
+Ñ  ÏE`ï  @1#×
+=p¤>Aª  =ÌÌÍAŸ¸=#×
+A”õÃ<õÂA’  <£×
+A(ö<õÂSloanSDSS J100900.09+132254.5NED  f@c
+ÕÁˆq?øô"Ue¤þ>áA  A(öö ð  Êõ`ï          >¬A£
+==\)A–¸R<£×
+AÂ<£×
+A33<£×
+A‹¸<õÂSloanSDSS J100921.26+013334.5NED  g@cÈ@áqŸ@Í5¨Xy==ÈðA
+=qA
+áHä Ž  Í¡`ï  @WzáG®>Ø“uA˜ff<£×
+A’zá<#×
+AŽ\<#×
+A‡p¤<£×
+Aˆ(ö<£×
+SloanSDSS J101043.36+061201.4NED  h@cŸ' Å@3ÑÂã>ÿ>º^5A
+{A
+\	E¬  Ò`ï  ?ôQë…¸R>A²zá>W
+=Až£×<£×
+A•…<#×
+A’£×<£×
+AŽ¸R<õÂSloanSDSS J101107.95+194909.7NED  i@c² =uL@FZƒ"¾A0?Ò‰A™šAë…¯ –  Ì˜`ï  ?üõÂ\(ö>VAµÂ>½p¤A­…=LÌÍA¥×
+<õÂAž£×<õÂAœ£×=uÂSloanSDSS J101120.21+444225.6NED  j@c*ó`E´@;^Šû“‰?*¬ÚAÌÍA¸R	+Y  Ñý`ï  ?õG®záH>VA¬=q=ÌÌÍA¦{=#×
+AŸë…<£×
+Aœ{<õÂAšff=LÌÍSloanSDSS J101322.12+272209.4NED  k@c06 O9Ê@E¡‹‚¡ ?ÐåA×
+AQìÂá  Íå`ï  @	…¸Që…>IºA³ë…>£×
+A®áH=uÂA¦{=#×
+A áH=#×
+Až\=áG®SloanSDSS J101401.58+431543.4NED  l@c<Óÿö­è?íT/þû=ö+kA
+áHA
+=t  Ê«`ï  ?ùp£×
+=q>Ÿ¾A…=#×
+A”(ö<£×
+AŒõÃ<£×
+A‰\)<£×
+AˆÌÍ<õÂSloanSDSS J101536.21+005459.3NED  m@cC+,Ô@Jûóœ£à[>:¬ÚA	p¤A	™šˆÓ  Ì`ï  @
+=p£×
+>VA£¸=#×
+A™…<õÂA“…<#×
+Aff<#×
+A™š<£×
+SloanSDSS J101623.75+535806.3NED  n@cEÚÿGê©@–óõ/Âd>4¼jA
+=A¸RÕ   Î`ï          >IºA§
+==\)A…<£×
+A–=q<£×
+A”ff<£×
+A’  <õÂSloanSDSS J101643.92+073850.7NED  o@cG,ÿÅ¾ë?Þá÷›•“©=î.²A	p¤A
+{·  Ê«`ï          >¬A\)=#×
+A”(ö<£×
+AŒQì<£×
+A‰¸<£×
+A‰¸<õÂSloanSDSS J101653.82+002857.0NED  p@cJ}`éNã@CÂáß$?ÎÙA…AQìM 3  Ï*`ï  @(õÂ\)>“uA©
+==\)A¥…<õÂA¡\)<£×
+A™p¤<£×
+Aœ\=LÌÍSloanSDSS J101718.67+393121.0NED  q@cOL ó6¿Þ¹yÙø>:‘A¸A¸ ²  Ê«`ï          >OßA¤Qì=uÂAœ¸R<£×
+A”£×<#×
+A‘®<£×
+AG®<£×
+SloanSDSS J101754.73-002811.8NED  r@c`T¿	•ª@Íˆö> A\)A\)å5  Íþ`ï          >Ÿ¾A§®=¸QìAG®<£×
+A”£×<£×
+A\<£×
+AŽ\<£×
+SloanSDSS J102002.48+072700.9NED  s@chÿxÙ¦@º°FúÑ=ÝÌdA(öAQìål  Íþ`ï  ?ý¸Që…>¥ãA £×=#×
+A”¸R<£×
+A
+=<£×
+A‹…<£×
+A‰
+=<£×
+SloanSDSS J102103.81+071056.3NED  t@csêÀ8°@3~âßu¥>ÐŽA{A\	G/  Ò
+`ï  @ ¸Që…¸>OßA·p¤>õÂA¬áH=LÌÍAë…<£×
+A™\)<£×
+A–ÌÍ<õÂSloanSDSS J102229.36+192938.8NED  u@cw™ 	ô@GÊw£½h{>t¼AõÃA¸i 8  ÍÂ`ï          >1'A¥
+==£×
+A™Â=#×
+A‘Â<£×
+A33<£×
+A‹p¤<£×
+SloanSDSS J102257.00+473454.3NED  v@cyvÀŒd†¿Þ/ã¾=ç°AÂAÂ î  Êå`ï          >¥ãA¤  =uÂA›G®<£×
+A–(ö<£×
+A’£×<#×
+A‘®<£×
+SloanSDSS J102310.97-002810.8NED  w@c‘?>p@J,4X>ä¨ÁA
+=A…ñb  Í¤`ï  @×
+=p£×>OßA¯p¤>B\A©p¤=LÌÍA£Â<õÂAŸp¤<õÂAž¸R=\)SloanSDSS J102607.85+522038.8NED  x@c•cà\U;¿æu)Yõ">º’£A33A33%  Êõ`ï  @ õÂ\(ö>¸RA«p¤>8QìA¤ÌÍ=#×
+Aœff<õÂA—×
+<£×
+A“×
+<õÂSloanSDSS J102640.43-004206.4NED  y@cœÜ Íí½@<üý46>ƒ•A\)A…	/    Ò`ï  ?÷…¸Që…>t¼A¥™š=£×
+A ff<õÂA™33<£×
+A˜ff<õÂA”õÃ=#×
+SloanSDSS J102736.45+285917.6NED  z@cž#_žl–?áq1úõ?qA\)A  …  Êõ`ï  @¸Që…¸>²-A¯×
+>…¸A«™š=\)A¤ff=LÌÍAŸ33=uÂA¡¸>\)SloanSDSS J102746.04+003205.0NED  {@c§1 y@IÜüMó>ÕÏ«AÂA{ð€  Íã`ï          >‡+Aµ\)>½p¤A®ff=uÂA«ë…=\)A¡Â<õÂA¢=q>™šSloanSDSS J102853.93+514323.0NED  |@c§w@ 
+1@Lšr\=îw>ßË’AÌÍAp¤³ñ  Ì»`ï  @ÌÌÌÌÌÍ>bNA¶Qì>Ñë…A©ë…=#×
+A =q<£×
+A›\)<£×
+A˜zá=LÌÍSloanSDSS J102855.98+571223.7NED  }@c¯X¦IÚ@C¬Xë>V¡bA
+{A
+=q”&  Ï`ï          >!ÊÁA£×
+=LÌÍA—
+=<£×
+A{<#×
+AŽ(ö<#×
+AŒzá<£×
+SloanSDSS J102955.08+392047.2NED  ~@c¯a œ@Iþ\‘ÑM>°òA…A®ð #  Íã`ï          >“Aª=q=ÌÌÍAœ(ö<#×
+A”\<£×
+A’{<£×
+AÂ<õÂSloanSDSS J102955.35+505959.8NED  @cÇ^¢@H·í:Ï8=óê³AÌÍA™šjs  Ìr`ï  @®záG®>™šA¤zá=uÂA™×
+<£×
+A’ÌÍ<£×
+A\)<£×
+AŽ£×<õÂSloanSDSS J103252.60+492612.8NED  €@cÉ…_ö?úá™<d«>ÃÊ@û×
+@û…ù  Ì]`ï  ?òffffff>bNA§G®@;…AšõÃ@^{A“ë…@   A‘
+=?Â\Ap¤?ñë…SloanSDSS J103311.64+013754.5NED  @cÊR «¶¿ä8Ö(6¯§>_¾wA  AQì ]  Êõ`ï          >²-A±
+=>Š=qA§®=#×
+Ažzá<õÂAž\=#×
+A™š=¸QìSloanSDSS J103317.42-003755.0NED  ‚@cÑ%_F=@NüÂuºf=QN<AõÃA™š0  ÌH`ï  @1\(õÃ>¾wA=q=#×
+A„(ö<£×
+A„£×<#×
+A€£×<£×
+A~\<#×
+SloanSDSS J103408.57+600152.5NED  ƒ@c×„ »I@CÔ¨û•Þ:>QA\AáH˜  Ï`ï  ?ø(õÂ\)>“uA£¸=LÌÍA—×
+<£×
+A¸<#×
+AŒ£×<#×
+AŒff<£×
+SloanSDSS J103456.37+393941.0NED  „@cÙ=_¿é@GÏ®¼@Ž>÷KÇA\)A¸RÁ]  Í‡`ï  ?øQë…¸R>	7LAµp¤>ž¸RA°(ö=uÂA¥
+=<õÂAžff<õÂAš\=#×
+SloanSDSS J103509.29+473721.2NED  …@cà¿fÊ˜?ùÖ‘§\Ðº=Ú¹õAQìAzáù †  Ì]`ï          >bNAšff<õÂA(ö<£×
+A‰ë…<£×
+A†ff<£×
+A„£×<£×
+SloanSDSS J103600.37+013653.5NED  †@câõ‘Q%@O÷8}¿G>Üú­A¸RAáHr  Ì˜`ï          >1'A²\>¨õÃA­…=uÂA¡…<õÂA›™š<£×
+A˜(ö=LÌÍSloanSDSS J103622.18+635553.1NED  ‡@cå@€½è¤@P
+
+ P|>ËŸVAÂA £×é X  ÊÚ`ï          ÿÿÿÿAÀ¸R?Y™šA­®?ÔzáA ¸R?
+=Aš(ö>™™šA–\>k…SloanSDSS J103639.39+640924.7NED  ˆ@cìOÇí@,tý©%†>SáAzáA	¸Ôã  Ïx`ï  @záG®{>“uAž¸R<õÂA˜  <£×
+A‘×
+<£×
+AŽzá<£×
+Ap¤<£×
+SloanSDSS J103734.22+140120.5NED  ‰@còñ`•l@JB³=¯÷?0¾AffA\ñV  Í¤`ï  ?ôÌÌÌÌÌÍ>n˜A®(ö>#×
+A­\)=LÌÍA¨\=LÌÍAž£×<õÂA©…>\)SloanSDSS J103822.08+523115.8NED  Š@cû  éä@Fš%{¢¯?9XA¸A™š—  Ï `ï  ?ú\(õÂ>IºA±\)>LÌÍA«™š=LÌÍA¦(ö=#×
+Aœ{<£×
+A¢=q=¸QìSloanSDSS J103927.19+451215.2NED  ‹@cü`Ÿèh3¿âMœ/^2ê>h	ÕAp¤A{ ¼  ÊÉ`ï  ?ó®záG®>¥ãA§\)=£×
+AšÌÍ<£×
+A’\<£×
+A…<#×
+A®<£×
+SloanSDSS J103932.83-003419.1NED  Œ@cþÝ?ÿjÞ@P @N¤¨>Í¸»AáHA  é 8  ÊÚ`ï          ÿÿÿÿA¥\)=uÂA¡G®<õÂAž=q<£×
+A˜  <£×
+A˜áH=LÌÍSloanSDSS J103951.49+643004.2NED  @dì <K	@Gáò]h1q>øÔþAQìA¸Âç  ÍŒ`ï  @Që…¸R>VAœ¸R=#×
+AšáH<£×
+A—×
+<£×
+A’  <£×
+A“\)<õÂSloanSDSS J104014.42+474554.7NED  Ž@d	àuöü@KþÖîPz>A¸RA33Šl  Ì`ï          >VAªáH>¸A¡ë…=#×
+A™ë…<£×
+A—p¤<£×
+A•Â<õÂSloanSDSS J104108.34+555927.2NED  @dÍ@$³=@>‰‹÷Ë
+?—AzáA®±  Ð‡`ï  ?ôQë…¸R>Ÿ¾A¾¸R?Y™šA²zá=ÌÌÍAªáH=uÂA¢¸R=#×
+A zá=áG®SloanSDSS J104143.50+303214.2NED  @d[~ÛU@C0æãd¢?’:AáHA…Î‘  Ð¹`ï          >“uA®õÃ>k…A«G®=LÌÍA¤(ö<õÂAœ  <õÂA›33=LÌÍSloanSDSS J104210.18+382255.3NED  ‘@d‹¿<H@6Æ¸?G>;d@ýp¤@ýÂB Ç  Ìs`ï  ?û
+=p£×
+>záA¬£×=áG®A¦  =õÂAœ¸R=ÌÌÍA˜£×=¸QìA–õÃ=õÂSloanSDSS J104256.59+043310.1NED  ’@d QáÃó@>$ŽI37Û>þB[A=qA\± 8  Ð‡`ï  @333333>“uA«Â>¸A¦£×<õÂA¡…<õÂA—Â<£×
+A›×
+=uÂSloanSDSS J104402.39+300834.0NED  “@d#àe§S@†Çç+Lœ>WsA\A¸Ré.  Í¾`ï          >™šA®zá>™šA¢ÌÍ<£×
+A™p¤<£×
+A•G®<£×
+A’ff<£×
+SloanSDSS J104426.70+063753.8NED  ”@d(¸ ]4í@L‚¹â´>Û=A\)A×
+Š  Ì`ï  @¸Që…¸>¸RA¤ÌÍ=\)A¡…<£×
+Aœ{<£×
+A—Â<£×
+A–Qì=#×
+SloanSDSS J104505.38+561118.3NED  •@d-Ëß´@B[”¿ž·'?ë…A®AG®*ª  Ð×`ï  @£×
+=p¤>€  A¶=q>æffA¯Â=\)A¦ff=LÌÍAŸ×
+<õÂA ff=£×
+SloanSDSS J104543.47+364255.7NED  –@d.dÿÒ\@@a‚"l²à?&4A×
+AÂã@  Ð¶`ï          =ùÛ#A´ff>™™šA°ff=uÂA§G®=#×
+A ÌÍ<õÂA¢{>\)SloanSDSS J104547.96+324542.4NED  —@d4K•ú1@KLÊ`ùžŒ>,=A(öA  Š ©  Ì`ï  @"½p£×
+=>)ûçA§ë…=¸QìAœ=q=#×
+A”=q<£×
+Aë…<£×
+A\)<õÂSloanSDSS J104632.21+543559.7NED  ˜@d<>ß¤?å@gth‡¨Õ>Þ¸RAzáAÌÍé ß  Í¾`ï  @£×
+=p¤>záA¢Qì=LÌÍAœÌÍ<£×
+A™®<£×
+A•G®<£×
+A“\)<õÂSloanSDSS J104731.84+063603.7NED  ™@dA BX?í¸d„?$‡ýAQìA£×C  ÊÆ`ï  @p´Që…¸>OßA¯…>€  Aª\=LÌÍA¦áH=LÌÍA =q=#×
+Až{=¸QìSloanSDSS J104807.74+005543.4NED  š@dAù ¸õ@:fæ¹ù>ékºAõÃA™š	3  Ò `ï  ?÷\(õÂ\>n˜A°(ö>\)A«p¤=#×
+A¥™š<õÂAžff<õÂA õÃ=¸QìSloanSDSS J104814.79+262407.0NED  ›@dW| ª@AOý&¨:>û‹¬A
+=A33¿c  ÐÂ`ï  @	®záG®>\)A±p¤>W
+=A¨£×=#×
+A¢zá<õÂA›¸<õÂAšff=LÌÍSloanSDSS J105056.15+343703.3NED  œ@dZû 1Î®@GHèBëfÓ>dÝ/A×
+A  Ã Œ  Í£`ï  @ë…¸Qì>n˜A­®>#×
+A ÌÍ<õÂA–ff<£×
+A’zá<õÂA(ö<õÂSloanSDSS J105122.35+463410.4NED  @daÞÞ/k@ê‰v5æ=UÏ«AffA33é 6  Í¾`ï  @Â\(õÃ>PA–õÃ<õÂA‰®<£×
+A‰
+=<£×
+A…\)<#×
+A‚£×<£×
+SloanSDSS J105208.19+060915.1NED  ž@dlù ¸õ@Gcæ»s‚>e,A(öAzáÃ U  Í£`ï  ?ðzáG®{>
+=qA¡®=uÂAšõÃ<õÂA”=q<£×
+A’(ö<£×
+A‘Â<õÂSloanSDSS J105337.28+464649.7NED  Ÿ@dnŸà@^ô@CníÉ>îËûA\)AÂ×  Ðâ`ï  ?üÌÌÌÌÌÍ>¬A¯™š>€  A¨(ö=#×
+Aë…<£×
+A™×
+<õÂA˜=q=#×
+SloanSDSS J105349.68+385159.8NED   @da œ@&}ù‰”€>É†A
+=A®B u  Ï}`ï  @…¸Që…>C–A \=LÌÍA–ff<õÂAŽ(ö<#×
+A‹p¤<#×
+AŠ(ö<õÂSloanSDSS J105555.34+110252.2NED  ¡@d„žßîÐ£@Aýq[ì`'?äAzáA¸*   Ð×`ï          >n˜A±…>Š=qA®ÌÍ=uÂA§Â=#×
+A {<õÂA£
+=>\)SloanSDSS J105634.65+355848.0NED  ¢@d—j@º‡@$ñÉ²6`m>Rn˜AáHAáHÄG  Íó`ï          >™šAªõÃ>#×
+A
+=<£×
+A•×
+<£×
+A’Qì<£×
+A®<£×
+SloanSDSS J105855.60+102820.0NED  £@d˜@>Tþ@I=Á æ>
+¦L@ú\@ú\m,  Ì`ï  @záG®>$ÝA¬õÃ>\)A¡™š<£×
+A™™š<£×
+A”£×<£×
+A™
+==uÂSloanSDSS J105900.18+500255.5NED  ¤@d˜v î@L®Âƒµ‹7=óMjA¸A™šµ 3  ÌË`ï  @™™™™™š>AžáH=#×
+A—ë…<£×
+A’  <£×
+Ap¤<#×
+Ap¤<£×
+SloanSDSS J105903.46+572155.3NED  ¥@dš9Ÿ"W¹@Kr¢#Le>a–SAáHA¸R‹ <  Ì•`ï          >n˜A©×
+=ÌÌÍAœõÃ<£×
+A“®<£×
+A=q<£×
+AŽff<£×
+SloanSDSS J105916.68+545344.0NED  ¦@d¡§ Æy@!ŠÜ±F^ˆ=Íž„AÂA33Ä ¼  Íó`ï  @ME¸Që…=Ä›¦A‘33<£×
+AG®<£×
+A‰\)<#×
+A„=q<#×
+A…™š<£×
+SloanSDSS J110012.38+084616.3NED  §@d¤w@ 
+1@Hí€*Bø>	º^A¸A¸m ö  Ì`ï          >OßA¨ÌÍ=£×
+Aš=q<õÂA’áH<#×
+AŽáH<£×
+A‹\)<õÂSloanSDSS J110033.49+495119.7NED  ¨@d©À_‰sá@C;Ò@’7Õ?G ùAáHA33Ä õ  ÐÝ`ï  @áG®zá>IºA¯
+=>k…A­Â=\)A¦Qì=#×
+A¡
+=<õÂAš£×=uÂSloanSDSS J110113.13+382802.4NED  ©@d­gÀn¸@D	Y?NS>éîÌA\)A×
+  Ï6`ï  @1×
+=p£×>hsA¬Qì>\)A§G®<õÂA¤ÌÍ=#×
+Aš  <£×
+AÂ=uÂSloanSDSS J110140.54+400422.9NED  ª@d±¼@ŽÉ@P?_ýö
+Ë=žìÀA
+=A33ê U  ÊÙ`ï          ÿÿÿÿA™š=#×
+A\<#×
+A‰Â<#×
+A‚õÃ<#×
+A‚Qì<#×
+SloanSDSS J110213.00+645925.1NED  «@d·¿Ñúª@JœS~££Æ>’-AzáA\ó ™  Í¬`ï          >Ÿ¾A«…=õÂAŸ…<£×
+A•…<#×
+A’¸R<#×
+A™š<£×
+SloanSDSS J110252.69+531316.6NED  ¬@d·Ø`19@@48-Ì>‚@¸A=qAë…D   Ì`ï          >n˜A¥…=\)AŸÂ<õÂA™p¤<£×
+A—33<£×
+A“33<õÂSloanSDSS J110258.83+034652.5NED  ­@dºéþÑú@NfA9?+C–AõÃAÌÍ |  Ì>`ï          >OßA¾õÃ?\(öA²  =õÂA©™š=\)A¡®=LÌÍA \>\)SloanSDSS J110321.85+600520.5NED  ®@dÂÀ ŸSF@HE­\e‹\>V»™Aë…A™šÄß  Í¦`ï          >záA£p¤=£×
+A™Â<£×
+A‘\)<£×
+AŽÌÍ<£×
+AŒ¸R<õÂSloanSDSS J110420.63+483239.7NED  ¯@dÎ¼ÿ v‹@&æ³TüÉr>þ«6A®A£×D5  ÏV`ï  @=p£×
+=>t¼A®ff>aG®A©™š=LÌÍA¥¸=#×
+A›¸<õÂA \>\)SloanSDSS J110550.53+112702.0NED  °@dÒíŸø·Ý@´gò‡Y›>x7µA(öAQìE Ó  Ì„`ï          >n˜A¦\=ÌÌÍAžzá<£×
+A“p¤<£×
+A‘×
+<#×
+A®<£×
+SloanSDSS J110621.95+035747.1NED  ±@dÖœ .šv@9²B{¶e>¹õA®A  ¤ £  Ò`ï  @\(õÂ\>n˜A¸zá>™™šA¯
+==¸QìA zá<õÂA›p¤<õÂA—\)=LÌÍSloanSDSS J110649.57+254146.7NED  ²@d×_¿¡­?ùŒ;*ö>G®Ap¤Aë…ý  Ì–`ï          >“uA¥×
+=ÌÌÍA›™š<£×
+A”ff<£×
+A‘…<£×
+AŽ\<õÂSloanSDSS J110655.30+013548.2NED  ³@dØWÿ}‚²@A¬D|0Ó>ê~úAG®Affòæ  ÐÚ`ï          >	7LA±Â>€  A®zá=uÂAªzá=uÂA áH<õÂA¥™š>#×
+SloanSDSS J110702.57+352044.9NED  ´@dãÚ_ª4@›apu<’? ÄœAffA
+=ë &  Í¡`ï          >¬A­¸>.{A­G®=uÂA¨=q=LÌÍA ¸R<õÂA¥×
+>k…SloanSDSS J110828.89+070906.3NED  µ@däË@«Ù–@»»áç>^ìÀA{A{ëo  Í¡`ï          >n˜A¬\>™šA¡Â<õÂA™×
+<£×
+A–áH<£×
+A“Â<õÂSloanSDSS J110835.95+072600.0NED  ¶@dæÍÀMze@ïX:S¸ä>9Û#AzáAõÃì ¶  Íó`ï  @"™™™™™š>1'AœQì=#×
+A•®<£×
+A’  <£×
+AŽ£×<£×
+AŽ  <£×
+SloanSDSS J110851.04+065901.4NED  ·@dê »I@<C—ÿ}‚²?ZA(öA33¥   Ò `ï  ?ñ¸Që…>t¼Aµ×
+>×
+=A­…=uÂA¨=q=#×
+A¡33=#×
+A¡®=ÌÌÍSloanSDSS J110915.11+281550.5NED  ¸@dí4Á@:ÿï)0£>§®A  AQì¦  Ò"`ï  @p£×
+=q>IºA¸¸R?\(öAª{=LÌÍAœ¸R<õÂA˜{<õÂA“p¤<õÂSloanSDSS J110938.00+265959.0NED  ¹@dï?–@EFõ;i(>…¼Aë…A=qS '  Ï=`ï  @05Â\(ö>
+=qA áH=LÌÍA™\)<£×
+A£×<£×
+A‘G®<õÂA…<õÂSloanSDSS J110952.82+423315.7NED  º@dðÖ ©¿ðW¯Ö3Ý=àA‰A  AQì `  Ê¼`ï  ?ý¸Që…>t¼A¸<õÂA˜  <õÂA•G®<#×
+AõÃ<£×
+Aff<õÂSloanSDSS J111006.26-010116.5NED  »@dò jå€@Mhž«
+>óAp¤A{¶)  Ìš`ï  @\(õÂ>Ÿ¾A¡®=#×
+Aœ(ö<#×
+A”ÌÍ<#×
+A”(ö<#×
+A–£×<õÂSloanSDSS J111015.22+584846.3NED  ¼@døÀ3Ø¤¿ì“‡`š=¹#£A¸Ap¤ )  Ê¼`ï  @333333>¾wA…<õÂA‘p¤<£×
+AŒQì<£×
+A‡¸<#×
+A…¸<£×
+SloanSDSS J111100.61-005334.9NED  ½@dù·`¿]x@	-«ŸU›<>ëÆ¨A\)AáHýb  Ì–`ï          >Ÿ¾wA·
+=>³33A°{=£×
+A£\)<õÂA
+=<õÂA™×
+=uÂSloanSDSS J111112.86+030850.2NED  ¾@dþq>ËÕÍ@&†R‡¤,>&µA(öA£×D `  ÏV`ï  @=p£×
+=>IºAŸë…=uÂA•Â<£×
+AŽ£×<£×
+AŒQì<£×
+AŠõÃ<£×
+SloanSDSS J111148.31+111542.8NED  ¿@eÿcàñ@(XÔ—l°‹>Ë(A×
+A  D   ÏV`ï  ?ðõÂ\(ö>n˜A£G®=ÌÌÍAŸG®<õÂAš  <õÂA–õÃ<£×
+A“Â=LÌÍSloanSDSS J111238.40+121024.5NED  À@eÀßŒ@F…?|í‘h>çËAQìAõÃT"  ÏE`ï  ?ñp£×
+=q>t¼A¬£×=õÂAªQì=#×
+A¤£×<õÂAœ¸R<£×
+Až=q=£×
+SloanSDSS J111350.66+450227.5NED  Á@eŒŸñºK@Kè¢tÚ´=Ü]dA\A\õ  Íã`ï          >A‰7A¡G®=LÌÍA•…<£×
+A
+=<#×
+A‹33<£×
+A‰
+=<£×
+SloanSDSS J111526.61+540823.6NED  Â@e8ð %H^@N	ŸÜÁ–>‡E9AzáA{·š  Ì®`ï  @3Þ¸Që…>!ÊÁAŸG®=#×
+A˜Qì<£×
+A“®<£×
+A‘…<£×
+A
+=<£×
+SloanSDSS J111907.02+600430.7NED  Ã@e=ÇŸ„5³@F¢–%3f>P|…Aë…A\U­  ÏF`ï  @ záG®{>1'A =q=#×
+A›p¤<õÂA’ÌÍ<£×
+A‘G®<õÂA‘¸=#×
+SloanSDSS J111943.35+451612.7NED  Ä@eCª€$@MwñžUI®>"‚AAQìA(ö·ë  Ì®`ï  @Je¸Që…>hsA£\)=LÌÍA˜¸R<#×
+Aff<£×
+A™š<£×
+A‹
+=<£×
+SloanSDSS J112027.49+585613.4NED  Å@eF»`F2B@?kQÕQÕ>ºCþA	ë…A
+ff» ˜  Ð·`ï  ?þ\(õÂ=÷ÎÙA¬  >¸A¤£×<õÂA™š<£×
+A›…<£×
+A˜Qì=LÌÍSloanSDSS J112050.49+312509.1NED  Æ@ePøÀ>-@@7K¦>Â\AQìAzá»¨  Ð·`ï  ?ó®záG®>¸A¹G®?¸A¯×
+=£×
+A¥™š=#×
+A õÃ=#×
+Aœzá=£×
+SloanSDSS J112207.28+322548.1NED  Ç@eZ@ÇÏÝ@B2+ßiþÐ>x7µA™šAffõ c  ÐÆ`ï  @(áG®zá>OßA§p¤=\)Až{<õÂA–¸R<£×
+A”áH<£×
+A“¸=#×
+SloanSDSS J112319.19+362331.0NED  È@eZàe§S@>yG9’Qv?¼AQìA£×» N  Ð·`ï  ?òffffff>t¼Aµ¸>¸QìA¬áH=\)A©G®=LÌÍA¡™š=#×
+A¥¸>B\SloanSDSS J112319.21+302825.4NED  É@e\Ð;E@?´×Ë¤Ý>ž‘ AffA¸R» Y  Ð·`ï  @1E¸Që…=ùÛ#A§×
+=áG®A¢ff<õÂA™33<£×
+A™…<£×
+A“
+=<õÂSloanSDSS J112330.88+310519.3NED  Ê@edü¿Œ÷@Á’·ý>Ë)AõÃA¸D  Ì˜`ï          >}ó¶AªáH>W
+=A¦\=#×
+AšQì<£×
+A—
+=<õÂA‘ë…=#×
+SloanSDSS J112437.40+045618.9NED  Ë@egk
+ÍèÀáä÷eýŠ>…‡”AÌÍAõÃF€  Ì—`ï  ?ðzáG®{>¬A»…?\(öA¨ff=#×
+Až  <£×
+Aœzá<õÂA˜Qì=uÂSloanSDSS J112455.65-021407.1NED  Ì@eh {5*?ÏUhÆ’ö>z^5AÂA\ u  Éœ`ï  @=p£×
+=>záA¬¸R=¸QìA£®<õÂA—Â<#×
+A–(ö<£×
+A“®<õÂSloanSDSS J112500.63+001441.2NED  Í@ehú 	†@ùÆ*\|>…`BA\)A… ‚  Ë`ï          >2-A°ÌÍ>\)A¢=q<õÂA˜ff<£×
+A”¸R<£×
+AõÃ<õÂSloanSDSS J112507.34+023719.1NED  Î@er jå€@C|Z£Òa1>¬VÖAõÃAÂÌ |  Ð¼`ï  ?ð£×
+=p¤>hsA®¸R>B\A§33=#×
+A™š<£×
+A =q<õÂAš\=LÌÍSloanSDSS J112615.25+385817.4NED  Ï@evGà-ºÄ@;~ØIy?IA£×A¸¨g  Ò#`ï          >bNAÃG®?E¸A©®=LÌÍA£™š<õÂA¡…=#×
+A¡\)=¸QìSloanSDSS J112647.10+272932.2NED  Ð@exñ`•l@KhDb—>éâAffAffõk  Íã`ï          >™šA«ë…>¸Až=q<õÂA”ÌÍ<£×
+A’\<£×
+A‘33<õÂSloanSDSS J112707.06+544852.6NED  Ñ@e9 ¡Á@@\ëC,¥?¹A(öAQì¶U  Ð¶`ï  @…¸Që…>hsA«®>.{A¨(ö=#×
+AŸ\)<£×
+AšQì<õÂAšQì=uÂSloanSDSS J112809.17+324333.2NED  Ò@e„]JC@DÞ]õ9>Pÿ—AzáAzá£ Þ  Ï?`ï  @333333>¥ãAª¸R=áG®AŸ®<õÂA—¸<£×
+A“p¤<£×
+A’=q<õÂSloanSDSS J112832.72+414414.0NED  Ó@e…-àq@It?ýX>‰­CAÌÍA	¸o _  Ì`ï  ?ð£×
+=p¤>PAª  =¸QìA¡Â<£×
+A˜¸R<#×
+A—33<£×
+A”  <õÂSloanSDSS J112838.84+505424.4NED  Ô@eˆò`QØà@L÷¨ßŸ–Ù> 7AÂA{Á  Î`ï  @¸Që…>bNAª(ö>™šA¢{=LÌÍA—×
+<õÂA×
+<õÂA–{=#×
+SloanSDSS J112907.07+575605.6NED  Õ@eM ¯¢ð@N{5Ô=å`BA  A\)   ÌG`ï  @9°£×
+=q>¸RA {=#×
+A”¸R<£×
+A™š<£×
+A‰
+=<#×
+Aˆ=q<£×
+SloanSDSS J112939.77+605742.5NED  Ö@eŽHÁ
+8Ç@A=?|í‘h>D“A£×AõÃ4[  ÑÑ`ï  ?ñ™™™™™š>t¼A¬ff>¸A¢  <£×
+A˜{<#×
+A•Â<£×
+A”ÌÍ=#×
+SloanSDSS J112947.14+342842.6NED  ×@e“,œ÷Â@'ÊMPt\à?ÚQA  AQìG-  Ï[`ï  @¸Që…>t¼A·…?ÌÍA©…=#×
+A¢\<õÂA›Â<õÂA
+==£×
+SloanSDSS J113023.80+115342.4NED  Ø@eŸ*Ÿ™.i@?l–ê3>>¾Ò‰AQìA£×¶ ê  Ð¶`ï  ?ÿ×
+=p£×>	7LA³
+=>Â\A¬áH=\)A¢=q<õÂA…<õÂA™33=LÌÍSloanSDSS J113153.75+310639.6NED  Ù@eª½ÿ\ã_À{¹AíiË=ò×AG®AÂG Ø  ÌF`ï          >>vÉA£33=uÂA—™š<£×
+A’ff<#×
+A
+=<£×
+AŒ¸R<£×
+SloanSDSS J113320.56-033337.4NED  Ú@e­Þ¿äžÙ@NÊƒ ’‚e>ÙõZAG®AÂ ì  Ì_`ï          >™šA›ë…<õÂAš¸R<£×
+A˜ff<£×
+A–áH<£×
+A–õÃ=LÌÍSloanSDSS J113344.03+613455.7NED  Û@e²Jž¹|.@I@'àxK‚>…Ö9A\)A\)Æa  Í¢`ï  @BJ=p£×
+>‡+A°(ö>8QìA¢õÃ<£×
+A—ë…<#×
+A“ë…<£×
+AÌÍ<£×
+SloanSDSS J113417.17+503004.3NED  Ü@e½×8×@M»Q‚©“>2GEA£×A£×¸O  Ì¹`ï          >IºA§ë…=\)AšáH<õÂA’(ö<#×
+AŽQì<õÂAŒ\<£×
+SloanSDSS J113541.23+592748.3NED  Ý@eÁ?xD@Bm¿ëœk>õ?}AõÃA	p¤ô -  ÐÆ`ï  @¸Që…>49XA®zá>8QìA«ë…=LÌÍA¤áH<õÂA¢=q<õÂAŸG®=£×
+SloanSDSS J113607.59+365119.6NED  Þ@eÉoà°8@LÄ9>n Þ>ÊdÃA™šAÂ¬  Î`ï  @ÌÌÌÌÌÍ>n˜A«33>\)A£®<õÂA (ö<õÂA—®<£×
+A˜¸R=LÌÍSloanSDSS J113710.78+573158.8NED  ß@eÊÙ!…Æ@Nªµ^ñýÞ=ã¼ÓA	ë…A
+=q c  Ì_`ï  @×
+=p£×>A‰7AŸp¤=#×
+A•¸<£×
+AG®<#×
+AŠáH<#×
+AˆáH<£×
+SloanSDSS J113721.36+612001.1NED  à@eÍ²¿ÛLÂ@Cÿƒùd><£AáHA\)´Ö  ÐÚ`ï          >˜“uA zá=#×
+A™p¤<£×
+A“™š<õÂA‘G®<#×
+AÌÍ<£×
+SloanSDSS J113742.74+395946.0NED  á@eéÉà;µè@A;0@9«ó>SZ†A
+áHA
+=Ü m  Ðõ`ï          >C–A¤(ö=uÂA˜Qì<£×
+AõÃ<#×
+A=q<£×
+Ap¤<£×
+SloanSDSS J114113.41+342744.6NED  â@eìfTpùÀVH@áqŸ=þùÛA£×AÌÍH ³  Ì:`ï  ?ò=p£×
+=>"ÐåAŸ×
+=#×
+A–¸R<£×
+A£×<#×
+A¸<#×
+AŒ{<£×
+SloanSDSS J114132.99-030231.7NED  ã@eô?_Í@&ÍQ±D
+>IRAõÃA¸H Ð  Ï’`ï  @£×
+=p¤>PA®ÌÍ>uÂA¦áH=LÌÍAÂ<£×
+A®<õÂA™ë…=LÌÍSloanSDSS J114231.85+112403.6NED  ä@eö_¥j(@O•þÚf>Mí)AzáAzá q  Ì_`ï          ÿÿÿÿA§
+==£×
+Až=q<£×
+A•\)<£×
+A”õÃ=uÂAQì<£×
+SloanSDSS J114245.08+620718.5NED  å@e÷É`îÀ@$í3òFõ>cñAA
+=A33Éù  Î`ï  @ \(õÂ>²-A§™š=¸QìA®<õÂA“Â<£×
+A’ff<õÂA‘Â<õÂSloanSDSS J114258.39+102747.8NED  æ@eþ‚íéô@L¨»^†Í>1ø¡AõÃA¸  Î`ï  ?ø(õÂ\)>Ÿ¾A¡p¤=uÂA—Â=#×
+A  <#×
+A™š<£×
+AŒ\<£×
+SloanSDSS J114348.81+571845.3NED  ç@få¶™„@Dƒùd?	ûçA…A(ö²x  ÐŠ`ï  ?òffffff>\)Aµ
+=>³33A°¸R=¸QìA§×
+=#×
+A¡™š<õÂA õÃ=¸QìSloanSDSS J114544.23+405946.1NED  è@fÿ×8×@†ËàÇ…>aA
+=A33å  Ë`ï  ?ýë…¸Qì>$Ý/A¥×
+=\)Aš¸R<£×
+A“p¤<£×
+A¸<#×
+AŽ(ö<£×
+SloanSDSS J114544.99+024126.9NED  é@f©à†F¦@I–cŠ	>¸A{A=qq ñ  Ì`ï          >VAž£×<õÂA™33<£×
+A‘…<#×
+AŽQì<£×
+AŒ  <£×
+SloanSDSS J114642.47+511029.6NED  ê@f.ïà°8@M'&!Õo>ãˆfA
+{A	ë…Z  Î`ï  @Tæfffff=ûçmAµp¤?\)A­Â=\)A¡
+=<õÂA›\)<õÂA˜(ö=LÌÍSloanSDSS J114952.03+581821.0NED  ë@f3˜¿º­n@I³æ»s‚>µÝAáHA33q   Ì`ï          >\)A =q=#×
+A˜  <£×
+Azá<#×
+A
+=<#×
+AŠ¸R<£×
+SloanSDSS J115026.96+512419.9NED  ì@f=€Œù§?ê‹Ëæÿê>GÈKAffA\™  Êç`ï          >™šA¦ff=uÂAž  <£×
+A”¸R<#×
+A‘×
+<#×
+AQì<£×
+SloanSDSS J115138.24+004946.6NED  í@f@Òa1‹?ýfõõÒÞ>&ffA(öAQì æ  ËS`ï          >záA¤Qì=\)Ašzá<£×
+A”(ö<£×
+A‘
+=<£×
+AŽ\<£×
+SloanSDSS J115206.17+015014.5NED  î@fF€Â‘°@$‹ì…pF¡='»A33A…Ë­  Íý`ï  @záG®{>C–A˜Qì<õÂAŽ=q<#×
+A‹p¤<£×
+A†õÃ<#×
+A…ë…<£×
+SloanSDSS J115245.66+101623.8NED  ï@fG9`87@DùW¼w¯>ã×
+A…A(ö§ ½  Ï€`ï  @×
+=p£×>C–A®(ö>#×
+Aª  =LÌÍA£™š<õÂAŸ
+=<õÂAœ{=uÂSloanSDSS J115254.18+415652.7NED  ð@fIéþÑú@˜Ì‹Ž&>?&A=qA\Ä  ËS`ï  @ ¸Që…¸>¬Aª(ö=õÂA¤\<õÂA ff<õÂA™¸<£×
+AšáH=\)SloanSDSS J115314.36+032658.6NED  ñ@fK† ÉD±@MbÛöÜ‚=„“A
+=A® Æ  Î-`ï  @ 8Që…¸>PA—33<õÂAŒff<£×
+AŠ(ö<£×
+A…p¤<#×
+A…Â<£×
+SloanSDSS J115326.41+580644.9NED  ò@fPF )ñj@NÒ¡‚„J¬>8†A\)A®	   Ì``ï  ?þ=p£×
+=>
+=qA¢¸R=¸QìA˜{=#×
+AÌÍ<#×
+A33<£×
+AŠff<£×
+SloanSDSS J115402.02+613843.9NED  ó@f^Z@5ç?êñJrsŠ>UÏ«AÌÍAÌÍe  Êç`ï          >™šAž\<õÂAš¸R<£×
+A”áH<£×
+A‘×
+<#×
+A‘p¤<£×
+SloanSDSS J115547.64+004852.0NED  ô@fiQ¿?-³@%0=õ >í\ûAÂA{ÌZ  Íø`ï          >bNA°ÌÍ>\)A±\)=õÂA«33=\)A¢ff=LÌÍA¢áH>8QìSloanSDSS J115709.88+103539.1NED  õ@fjrÆé-@NÀŽ¸>ûšAÂAáH¹U  Ì»`ï  ?ø£×
+=p¤>\)A¡33=#×
+AžõÃ<£×
+A›™š<£×
+A•
+=<£×
+A—p¤=#×
+SloanSDSS J115718.34+600345.5NED  ö@fnŠŸã¿'@.jSw¦í?£×AG®Aë…ãë  Ð×`ï  ?ð(õÂ\)>A´õÃ>\)A®  =LÌÍA¦zá<õÂA ff<õÂAŸ®=£×
+SloanSDSS J115749.06+151227.5NED  ÷@foïa’f@BK=-ª>FÜA	p¤A	ë…ë 5  Ð¹`ï  @
+=p£×
+>¬AŸ
+=<õÂA”\<£×
+AŒõÃ<£×
+AŠ{<£×
+A‰\)<£×
+SloanSDSS J115759.50+370738.2NED  ø@fuÌþæ¯@PI
+ÐW>/·éAG®Ap¤W[  Ì]`ï          ÿÿÿÿA§G®=ÌÌÍAœ  <£×
+A”\<£×
+A‘33<#×
+A¸<õÂSloanSDSS J115843.49+650828.6NED  ù@f€6ÄJ@,—)^>þOvA¸RA\)Wˆ  Ïa`ï  @$”záG®>‡+A¶=q>¸QìA¬ÌÍ=LÌÍA¦\<õÂAž\<£×
+A
+==\)SloanSDSS J120001.58+073234.9NED  ú@f…„ÿCA@?ËÓä f†=ì¿±AõÃAÂ/  Ðâ`ï  @=p£×
+=>PA—¸<£×
+A“\)<£×
+AŒ\<#×
+AˆÌÍ<£×
+A‹p¤<£×
+SloanSDSS J120041.39+314746.2NED  û@f›Sÿö­ç@:ÎÄ>
+¦LA  AÌÍJ ä  Ì˜`ï          >OßA¡…=#×
+A™p¤<£×
+A’£×<#×
+Aë…<#×
+A…<£×
+SloanSDSS J120324.94+044649.7NED  ü@f«y ¸õ@@B ­Nj>ø A×
+AÌÍ/ s  Ðâ`ï  ?ø      >IºA®ff>B\A«¸=LÌÍA¥Â=#×
+A›×
+<£×
+AžõÃ=ÌÌÍSloanSDSS J120526.04+321314.6NED  ý@f­Â ,í@+FÃø‰Bñ>†L0A
+ffA
+\K5  Ï›`ï          >1'A¶ff?ÌÍA§…=LÌÍAžÌÍ<õÂAŸ™š<õÂAœ£×=uÂSloanSDSS J120543.18+133817.5NED  þ@f½A æ¯Ì@Úçüód>BÃÊA(öAQìð  Ë8`ï          >hsA©×
+=õÂAŸ
+=<£×
+A–£×<£×
+A“\)<£×
+A‘×
+<õÂSloanSDSS J120739.40+022854.7NED  ÿ@fÛ“ßì|À	4…]¢r…>=ó¶A
+=A
+=L †  Ì`ï          >¾wAž\=#×
+A”¸R<£×
+AŽff<£×
+AŒ£×<£×
+AŠÌÍ<£×
+SloanSDSS J121126.83-030902.3NED   @fò/þûe@BœH¾µ²Ô>E¼AzáAÌÍÑ ñ  Ðõ`ï          >t¼A©p¤=£×
+AžáH<£×
+A•®<£×
+A’¸R<õÂA‘®<õÂSloanSDSS J121416.40+371315.5NED  @g
+gÿX:S@C! e2>ÑÅA	ÂA	ë…Ñ ž  Ðõ`ï  ?ýÂ\(õÃ>záA°áH>LÌÍA®Qì=uÂA§®=#×
+A¡®<õÂAŸ…=£×
+SloanSDSS J121718.03+381531.6NED  @g† ÉD±@B©³9Ø?’£A™šA=qÓF  ÐÂ`ï          >¬A­…>™šA¨\=#×
+A¦{=#×
+AŸë…<õÂA£®>\)SloanSDSS J121818.93+371932.8NED  @gºKá@¨è€>ZQA™šA{ J  Ì:`ï  ?û333333>²-A¡®=LÌÍAš  <£×
+A“ë…<£×
+A‘G®<£×
+A£×=#×
+SloanSDSS J121835.45+022239.9NED  @gA æ¯Ì@GÈ[­v=ÀN¥AõÃA	G®« ¾  Ï}`ï  @333333>A·p¤?   A«¸=#×
+AÂ<£×
+A™…<õÂA•®=#×
+SloanSDSS J121839.40+470627.6NED  @g¦ Yž@I8ò’ÿ>KûA£×AÌÍÊ  Ì½`ï  @333333>‡+A¤õÃ=\)Aœ  <£×
+A“ë…<õÂAáH<£×
+A®<õÂSloanSDSS J121849.89+502617.8NED  @g…ßŠž$@N©W‚>bù>¼í‘A£×Azá T  Ìv`ï          >¥ãA¨  =ÌÌÍA¤\<õÂAšõÃ<õÂA—®<õÂA–£×=LÌÍSloanSDSS J121856.42+611922.7NED  @g  }‰@D’Óc×Ÿ^>óáAQìA	G®Ëa  Ð§`ï          >‡+A·¸>ÌÌÍA­™š=#×
+A¡™š<õÂAšõÃ<£×
+A—Â=#×
+SloanSDSS J121915.15+410849.4NED  @g!­À˜#¿ñyu®Àé=òGEA£×AõÃ  X  Ë `ï  ?û333333>“uA£×
+=\)Aš¸R<õÂA”=q<£×
+A\<£×
+A®<£×
+SloanSDSS J122012.58-010531.5NED  	@g!·€¶ê@¯…MRÈâ=ÿ.IA¸A¸L F  Ìš`ï  @záG®>¬A£®=uÂA—
+=<£×
+Aë…<£×
+AŒ  <£×
+AŠQì<õÂSloanSDSS J122012.85+044017.1NED  
+@g#>~ð‰
+@H‰}b‘Ü>OÅA\)A\)Ê .  Ì½`ï          >
+=qA·ë…>³33A¨{=#×
+Ašff<#×
+A•\)<£×
+A’¸R<õÂSloanSDSS J122024.32+490426.9NED  @g$$?åÉ@Jàã{”³>,1A\)A33t  Ì–`ï  @
+=p£×
+>bNA«…=áG®Až=q<õÂA”õÃ<#×
+A’=q<£×
+A  <£×
+SloanSDSS J122031.05+520851.2NED  @g*ß Ž#ê?ú¿#Ìâ«>ˆ´9A	™šA	ë…  Ì;`ï          >n˜A°Qì>…¸A¥G®<õÂAšzá<£×
+A˜ff<£×
+A”ff=#×
+SloanSDSS J122121.53+014017.9NED  @g2a€/Ä¹¿À}Vlô!>0ò|AÌÍAp¤!8  Ë`ï  @
+=p£×
+>OßAG®<õÂA–=q<õÂA×
+<£×
+A\)=#×
+AŽzá<õÂSloanSDSS J122217.85-000743.7NED  @g=‡9h_@ :~w]Õµ>¤©A(öAõÃYr  Ï”`ï          >“uAŸ™š=#×
+A˜  <#×
+A’  <£×
+A¸R<#×
+A\<£×
+SloanSDSS J122341.46+080651.4NED  @g?¥ -%¢ÀmÜØãC§>KxA\AáHNZ  Ë`ï  ?þ¸Që…¸>C–A«\)=áG®A =q<£×
+A˜ÌÍ<£×
+A”¸R<#×
+A’£×<õÂSloanSDSS J122357.34-023313.2NED  @gEÊž¹|.@F4”£¨oÆ> IA¸A¸[ ¦  ÎU`ï  @áG®zá>IºA›33<õÂA‘®<£×
+A‹…<£×
+A‡™š<#×
+A…™š<£×
+SloanSDSS J122443.43+442438.8NED  @gHµ?|í‘@0û`F2C>U›A¸RA33ç  Ð¼`ï          >(õÃAœ{<õÂA—×
+<#×
+A•¸<£×
+A“G®<£×
+A’{<õÂSloanSDSS J122505.30+160701.6NED  @gOÿÊgö@E…"À•¶>TA®A  ¬å  Ïx`ï          >1'A«G®=õÂA¡G®<£×
+A˜ÌÍ>Â\A•Â>™™šA”ff<õÂSloanSDSS J122552.58+430224.4NED  @gW‡ß˜™G?ø_ü6¦U?;jèAÌÍAõÃ   Ì;`ï          ?=ó¶A¯G®>k…A§×
+=LÌÍA¡®<õÂAŸ
+=<õÂA—Â=LÌÍSloanSDSS J122656.48+013124.3NED  @gYO QC¿@)¡ZÔÁ^>G+A  A£×O²  Ï®`ï          >záHA¬õÃ>8QìA Qì<õÂA–zá<£×
+A’¸R<#×
+A{<õÂSloanSDSS J122709.83+124854.5NED  @g[™aéZ@@t>búA©?	#£A¸Aë…³Ž  Ðà`ï  @      =ÔýôA¦=q=\)A¤õÃ<õÂAŸ™š<£×
+AšÌÍ<£×
+AšQì=LÌÍSloanSDSS J122726.99+325429.3NED  @g_üàÀ‡»@+YCš*	?ÞjA™šA{Ol  Ï®`ï          >záA°Qì>…¸A­p¤=uÂA¥
+=<õÂAŸ®<õÂA {=¸QìSloanSDSS J122759.91+134027.6NED  @gaý?¸£@H¿#_	K>Ö9A{AffË ’  Í¤`ï  ?ñp£×
+=q>	7LA¤\=uÂAœff<£×
+A–£×<#×
+A“×
+<#×
+A’  <õÂSloanSDSS J122814.91+492935.8NED  @gf€Œù§?êÕ?2\Ó?33AzáAõÃ!  Ë`ï  @™™™™™š>º^5A¹G®>Ç®A±×
+=£×
+A©®=LÌÍA¡\)<õÂA¢õÃ=áG®SloanSDSS J122845.74+005018.8NED  @ghú 	†@BY^Gã¬>óØA(öAõÃÓK  ÐÂ`ï  @ë…¸Qì>Æ$ÝA°Qì>8QìA¬\=uÂA¥™š<õÂAŸ®<õÂA®=\)SloanSDSS J122907.34+364145.1NED  @gjÀ 2øñ@DüW `i%>bMÓA	ÂA	Â¬ D  Ïx`ï  @
+áG®zá>‡+A¦áH=ÌÌÍAžzá=#×
+A•™š<£×
+A‘Â<£×
+Azá<õÂSloanSDSS J122920.63+415817.0NED  @glàW¬/@CbÞDdã—=Ñ·A=qA\Èå  ÐÚ`ï  ?øzáG®{>bNAžÌÍ=#×
+A—™š<£×
+A£×<£×
+A¸<#×
+AŒ=q<£×
+SloanSDSS J122930.40+384620.6NED  @gpçßã*@CÜk›A°Ó>Ð‰ A×
+AzáÀ+  Ð¹`ï  ?ôzáG®{>VA¨=q=¸QìA£™š<£×
+A¢ÌÍ=#×
+A—\)<£×
+AšõÃ=LÌÍSloanSDSS J123006.79+394319.3NED  @gti Þ=f@A×@è+ž?àA…A33Ú ö  Ð÷`ï  @VTzáG®>OßA°ff>.{A«®=#×
+A¢=q<£×
+Aœ\<£×
+Aš£×=LÌÍSloanSDSS J123033.08+354053.9NED  @g‚à¹Š)@ ÒW¿>öOAë…A\ ¾  Ì@`ï          ?ŽùÛA§¸=¸QìA¤Qì=#×
+A¢zá<õÂA˜\<õÂAœ=q=£×
+SloanSDSS J123215.81+020610.0NED  @g„<@ŽÉ@DC¼S1¾>ßoÒAõÃAõÃÀÜ  Ð¹`ï  ?þffffff>n˜A¦Qì=\)A¢Qì<£×
+Aœ(ö<£×
+A™™š<£×
+A—¸=#×
+SloanSDSS J123231.76+403125.1NED   @g‡€Œù§@/6Ñ9C¬?V‡+A…Aë…èè  ÐÂ`ï  @
+=p£×
+>Ÿ¾A®£×=õÂA«¸=#×
+A©¸=#×
+A¢áH<õÂA›G®=#×
+SloanSDSS J123253.23+153625.3NED  !@g‰Q_ ˜U@/©®ÔB>Ó¶FAp¤Aë…è  ÐÂ`ï  @ záG®{>C–A¤ff=\)AŸ33<£×
+A›®<õÂA–áH<õÂA•
+==#×
+SloanSDSS J123309.87+154952.2NED  "@g” jå€@D”nâ7>C{JAQìA£×Àº  Ð¹`ï          > ÄœA¤=q=uÂAœ£×<õÂA’ff<£×
+A‘®<õÂAÌÍ<õÂSloanSDSS J123430.24+410934.7NED  #@g—~õ2@Pƒß|£ ?~A	ÂA
+áHX -  Ì]`ï          >¥ãA´  >™™šA¯®=ÌÌÍA©G®=uÂA¢zá=#×
+A¡
+==áG®SloanSDSS J123453.10+640510.2NED  $@g˜sà7Ü@IljŸ™.i>h$AáHA33þz  Íÿ`ï          >\)A«¸>¸A¡\)<õÂA—…<£×
+A–(ö<£×
+A“®=#×
+SloanSDSS J123503.40+505049.5NED  %@g§ÖÀÖõD@:E¨¿ C’>¤©A33A…¼ ÷  Ñá`ï  @£×
+=p¤>hsA§™š=£×
+AšõÃ<£×
+A’áH<#×
+A\)<#×
+AŒÌÍ<£×
+SloanSDSS J123658.79+261619.5NED  &@g¯+,Ô@@·‹¼À¶U?¶®A33A
+=ä Ó  Ð·`ï  ?úáG®zá>
+=qAÌÌÍ?E¸A³G®=áG®A§…=#×
+A¢  =#×
+A {=áG®SloanSDSS J123753.76+332602.2NED  '@g°¤_ZÙj@PÃ‘Àþ’)>7éA®A(öî F  ÊË`ï          ÿÿÿÿA§×
+=£×
+AžQì<£×
+A—™š<£×
+A”£×<£×
+A’ÌÍ<õÂSloanSDSS J123804.81+670320.9NED  (@gµÊÿm3@"ëœOý†1=©ÇzA(öA(öÑ ²  Íþ`ï  ?ù¸Që…>n˜A™Â=#×
+A¸<£×
+Aˆ(ö<£×
+A„zá<£×
+A‚{<£×
+SloanSDSS J123843.44+092736.6NED  )@gÅ€+­@AÉÜb”J>$ZA33A\)Ú   Ð÷`ï  @×
+=p£×>“uA¢zá=#×
+Aš  <£×
+A“\)<£×
+A  <£×
+Ap¤<£×
+SloanSDSS J124037.83+353437.3NED  *@gÌÔ€u@NÖàŸèh3>
+ŒA®A(ö ƒ  Ì•`ï  @ÌÌÌÌÌÍ>VA“33<£×
+AŽQì<£×
+A‹p¤<£×
+Aˆ=q<£×
+A‡ë…<£×
+SloanSDSS J124136.21+614043.3NED  +@gØU H<8@(­é_3<„>ø­¬Ap¤Aë…žª  Ðà`ï  ?õG®záH>\)A¹p¤?™šA«®=LÌÍA£G®=#×
+A¸<õÂAœ{=uÂSloanSDSS J124302.48+122022.8NED  ,@gÜú 	†ÀD_ZÙji>©A{AffO #  Ë `ï          >záAªÌÍ=ÌÌÍA¢  <£×
+A–õÃ<£×
+A–{<£×
+A“G®<õÂSloanSDSS J124337.34-023200.3NED  -@gàá€/Ä¹@P_a€Äæ6=ÛW?A33AQìX}  Ì]`ï          ÿÿÿÿA   =LÌÍA—¸<õÂA‘¸<õÂAŠ\<£×
+AŠÌÍ<õÂSloanSDSS J124406.59+652925.5NED  .@gãÓ :A@Eøz}.M>yÀìA	¸A	Â]"  ÏG`ï  ?ôzáG®{>$ÝA£Â=uÂA33<õÂA–áH<£×
+A”ff<£×
+A’ff<õÂSloanSDSS J124428.67+435628.4NED  /@gåpàl¤ä@C‹.à^©Á>ø7µA33A…Á Ø  Ð·`ï  @Që…¸R>“A¸zá>æffA²¸R=£×
+A§Â=#×
+A¡
+=<õÂA =q=\)SloanSDSS J124440.80+390514.5NED  0@gè“[@B±Âzcs>„A…A®Ð   Ð÷`ï          >¸RAÄff?LÌÍA±33>k…A£Â>#×
+A¡…>™šA¢£×>™™šSloanSDSS J124504.20+372300.2NED  1@g÷ú€“÷9@?!ºå[˜|?HAÌÍA¸· )  Ñæ`ï  ?ÿ®záG®>oA«\)>¸A§ë…=#×
+A õÃ<£×
+A›\)<õÂA›×
+=\)SloanSDSS J124659.83+310754.3NED  2@gþ²ßP]@w~äâmG>c¼ÓAë…A=qOÖ  ÌÊ`ï  @£×
+=p¤>záA¡33=LÌÍA›¸<£×
+A–¸R<£×
+A’ÌÍ<£×
+A’\<õÂSloanSDSS J124750.23+052200.0NED  3@h çÿX:S@MÕ?Œä®>èðA33A…½  Ì®`ï          >™šAµ™š>ÌÌÍA°=q=£×
+A©p¤=LÌÍA \<õÂA ¸R=õÂSloanSDSS J124806.79+593957.5NED  4@hvM½ø@L|Ø;}ûÝ>é7LAÌÍAG®% m  Î`ï  @…¸Që…>™šA´Qì>\)A®\=uÂA¥\)=#×
+AŸ\)<õÂAp¤=\)SloanSDSS J124825.97+565831.2NED  5@hU H<8@FZCécÛ>iá±A£×AÌÍ] Å  ÏG`ï          >IºA§…=ÌÌÍAžáH<£×
+A—¸<£×
+A”{<õÂA‘…<õÂSloanSDSS J124854.99+444213.8NED  6@h$9Ž²@Càã{”³>øDÐAQìAzáÅ œ  Ò`ï  @eâ\(õÃ>¾wA°=q>.{A©®<õÂA {<£×
+AšáH<£×
+A˜áH=#×
+SloanSDSS J125231.66+381043.4NED  7@h,™aéZÀ˜…Ä)x?>t¢4Ap¤AÂQ -  Ë`ï  @=p£×
+=> ÄœA£…=uÂAœzá<£×
+A•…<#×
+A“G®<£×
+A{<õÂSloanSDSS J125334.49-034158.1NED  8@h0rÁ»@õ¦N„	m>æ§ðAzáAzáµ  Ë:`ï  @¸Që…¸>²-AÂ£×?ŒÌÍA¬(ö=LÌÍA¡
+=<£×
+AœQì<õÂAšff=\)SloanSDSS J125403.36+025211.8NED  9@h8|î;‚?öGÃ0i>($A(öA(ö Ñ  Ë:`ï          >°£×AªQì=õÂAž\<£×
+A–áH<£×
+A“p¤<õÂA¸R<õÂSloanSDSS J125503.63+012233.7NED  :@h9Î ”Öë@AA¯ sU?ÇzA
+ffA	™šÃq  Ò`ï  @ÌÌÌÌÌÍ>VAÁ¸?O\)A´zá=ÌÌÍAª  =LÌÍA¢{<õÂAž£×=\)SloanSDSS J125513.55+343047.3NED  ;@hAºÿ’{h@-`Ý¨EÕ?záA¸RA®ë  Ðú`ï  ?ý™™™™™š>záA±\)>B\A­G®=LÌÍA¥™š=#×
+AžõÃ<õÂAŸ\)=£×
+SloanSDSS J125612.97+144121.0NED  <@hI% ¸U@@Êv î>g°AzáAzáÖ  Ðä`ï          >$ÝA°(ö>8QìA¤áH=#×
+Ašzá<£×
+A—Â<£×
+A•…<õÂSloanSDSS J125708.58+333454.2NED  =@hQ"W@HnÞâØx>„ÐAzáA£×  ó  Î`ï  ?ýp£×
+=q>	7LAºÌÍ?
+=qA©
+=<õÂA\)<£×
+AšõÃ<õÂA—™š=#×
+SloanSDSS J125808.50+485158.2NED  >@hVÅ`Œõ@JSª†¿Ñ=beA®A(övM  Ì`ï  @ffffff>	7LA˜¸R<õÂA™š<#×
+A‹…<£×
+A‡®<£×
+A‡\)<£×
+SloanSDSS J125850.78+523913.0NED  ?@hW½ÀrÂÄ@LëuC×ù>;Í6A	G®A	¸&š  Î-`ï  @ \(õÂ>OßA¥×
+=\)Aš\=#×
+A’£×<£×
+AŽõÃ<£×
+AŒõÃ<£×
+SloanSDSS J125858.04+575022.3NED  @@he_€!É@Kt‚ß+¯=´Ö¡A=qA
+=ß  Íã`ï  @…¸Që…>záA–ÌÍ=\)A\<£×
+AŽff<£×
+AˆáH<£×
+AˆõÃ<£×
+SloanSDSS J130038.11+545437.1NED  A@hkÕÁˆp¿îøµˆãhï>{dZAë…A=q%   Éé`ï  @p£×
+=q>A©™š=¸QìA¡¸<£×
+A–=q<#×
+A–=q<£×
+A”Qì<õÂSloanSDSS J130128.77-005804.3NED  B@h ëXØ?˜2+ä
+¶>5¨A™šA{&¶  Ë`ï  @ ÌÌÌÌÌÍ>	7LA›…<õÂA–ÌÍ<£×
+A’áH<£×
+AŽ{<£×
+A33<£×
+SloanSDSS J130600.67+000125.0NED  C@hh`ñ.ÀýP)Ì"²>Ù¦µA®A(öS$  Éì`ï  ?ôQë…¸R>A¸ÌÍ?0£×AªQì=LÌÍA£ë…<õÂAœÌÍ<õÂA›
+==£×
+SloanSDSS J130740.57-021455.2NED  D@h¥ë Þ6@Fßìþ›{ñ?1A
+=A33³ p  Ï}`ï          >\)A³®>”záA®ff=£×
+A¨{=LÌÍA¢(ö=#×
+A£p¤>™šSloanSDSS J130844.39+454457.8NED  E@h¨Þ¿äžÙ@H'laR*n>v4AG®AG® ù  Î`ï          >$Ý/A°õÃ>™šA¤  <õÂAšáH<#×
+A—p¤<#×
+A”(ö<õÂSloanSDSS J130906.52+481828.8NED  F@h­° íbÍ?ý&ªŽ´b>Z†A=qA=q  ÌG`ï          >xÔþA¢\=uÂA™™š<£×
+A”\<£×
+A£×<£×
+AÂ<£×
+SloanSDSS J130942.68+014852.1NED  G@h¸ŸŒ¨@;wûVôw>uŽ"A\)A…Ã†  Ò"`ï  @ záG®{>ŽÙAüzá    Aü{    Aú¸R    Aö\    Aëp¤    SloanSDSS J131104.67+272807.2NED  H@h¼ ®x¬@Ký}¿HË>P©A¸A™š' }  Î7`ï  ?ùp£×
+=q>hsAžzá<õÂA—¸<£×
+A¸R<£×
+A£×<#×
+A™š<£×
+SloanSDSS J131130.21+555849.5NED  I@h¼ý¿HË@Fé»@< x>ìçA	p¤A
+{µ%  ÏF`ï          >záA¸áH>½p¤A®õÃ=uÂA¨zá=#×
+A¡
+=<õÂA¢  =¸QìSloanSDSS J131137.42+454933.7NED  J@hÂ9Ÿ"W¹?ßX§ØPv°>˜ºÇA
+=A…'B  Ë`ï          >VA³™š>uÂA©™š=#×
+AŸ\)<£×
+Až=q<õÂAšff=LÌÍSloanSDSS J131216.69+002923.2NED  K@hË¡[ƒ@FòMãASž?iDAÌÍA™šµ ü  ÏF`ï          >$ÝA¸£×?+…A¯\)=£×
+A¦áH=#×
+A zá=#×
+A¡p¤>¸SloanSDSS J131323.07+455334.8NED  L@hË©€g±H@-ÉÀD(Mü?®æA=qAffìx  Ïa`ï  @ffffff>‡+A³®>Š=qA¯\)=uÂA¦zá=#×
+AœõÃ<õÂA—p¤=LÌÍSloanSDSS J131327.46+145338.5NED  M@hä›`Ã@O´Jb#á…>$Ý/A¸Ap¤[1  ËX`ï  ?ô(õÂ\)>záA¨{=£×
+AŸ¸<£×
+A–  <£×
+A‘™š<£×
+A‘
+=<£×
+SloanSDSS J131634.52+632430.8NED  N@håL †ÛÇ@Fp. ¬n·=¹Œ~A	¸A
+ff_   Ï\`ï  @ë…¸Qì>
+=qAff<õÂA\)<£×
+AŠff<£×
+A„ÌÍ<£×
+A…Â<£×
+SloanSDSS J131639.74+445235.0NED  O@hôãŸ²Ð*@Mo½'=[> ªeA	¸A	p¤¿,  Ì»`ï  ?÷×
+=p£×>Až¸R<õÂA—×
+<£×
+A‘33<#×
+AŽ£×<£×
+AÂ<£×
+SloanSDSS J131836.67+580838.6NED  P@høÚ@5æ@J5Áƒcüç>ý}¿A×
+A(öƒÆ  Ð¶`ï  ?òffffff>A´=q>k…A®áH=LÌÍA¥33<õÂAžáH<£×
+A
+==LÌÍSloanSDSS J131906.39+522511.8NED  Q@hú> ‘X"@)#Ï€Û>£×A®A(ö¡p  Ï–`ï  ?øõÂ\(ö>IºAG®<õÂA—Â<£×
+A“™š<£×
+A‘p¤<£×
+AŽff<£×
+SloanSDSS J131916.81+123221.5NED  R@iàŸèh3@P™`—Ì>dÝ/A×
+AQìð ¬  Ë`ï          ÿÿÿÿA£ë…=uÂAš{<£×
+A‘…<#×
+AŽ£×<£×
+A×
+<£×
+SloanSDSS J132029.06+662333.2NED  S@i‘Àip¬@'dŒQâ3>Ov`A
+=A…¢±  Ïš`ï  @(õÂ\)>PAŸ×
+=#×
+Aš  <£×
+A“™š<£×
+A£×<£×
+A£×<õÂSloanSDSS J132156.77+114146.9NED  T@i‚íéó@	 œþÀÃ>‰ÇzA
+\A33h  ÌX`ï          >hr°A²zá>k…A§ë…=#×
+AœQì<£×
+Aš(ö<£×
+A–õÃ=#×
+SloanSDSS J132318.82+030807.1NED  U@i`M/Ô¿ÿëqPEÂi>³MjAQìA£×US  Éê`ï  ?ó×
+=p£×>²-A¬ÌÍ>\)A¥
+=<õÂAp¤<£×
+AžÌÍ<õÂA™
+==\)SloanSDSS J132323.33-015941.9NED  V@i!ß¹8š@NˆŠ¼o(=’¼AffAáH  Ìs`ï  @3(õÂ\)>Ÿ¾Aœ=q<õÂA¸R<õÂAŒzá<#×
+AˆÌÍ<#×
+Aˆ(ö<£×
+SloanSDSS J132346.00+610400.2NED  W@i"¦Þüz9@xÍ ¯¢ð>O—A×
+AõÃTo  Ì—`ï  @õÂ\(ö>C–A™G®<õÂA—™š<£×
+A“…<#×
+AG®<#×
+A33<£×
+SloanSDSS J132419.88+053704.6NED  X@i"®ßÉˆD@O×v½›™>÷ÏAp¤A=q[ À  ËX`ï  ?øQë…¸R>¬A£¸=LÌÍAšzá<£×
+A“ë…<£×
+A‘¸<#×
+Aë…<£×
+SloanSDSS J132420.11+634059.8NED  Y@i%=ßçÓ@IB6ŸWïÂ>Ã,¥AQìAzá„  Ð¹`ï          >bNA¥®=uÂA¢Qì<£×
+AŸ®<õÂA¸<£×
+A›
+==LÌÍSloanSDSS J132439.31+503102.3NED  Z@i+é@SM´@M´ý°#>Û¥ãAzáAzá¿Ô  Ì»`ï          >¾wA¸=q>Ñë…A©p¤=#×
+AG®<£×
+A—p¤<£×
+A”ff<õÂSloanSDSS J132529.33+592424.9NED  [@i/,ÀÛžP@D}–|®§G>XâA
+áHA
+áH¶ D  Ïx`ï          >OßA©33=õÂAp¤<£×
+A”ff<õÂA‘…<£×
+A®<õÂSloanSDSS J132553.81+405852.1NED  \@i7Ú è¹Á@:wêF$G>d?æA
+{A\)Ä q  Ò#`ï  @      >+A¤ÌÍ=LÌÍAš£×<£×
+A‘×
+<#×
+AŽ£×<#×
+AŒÌÍ<£×
+SloanSDSS J132658.90+262806.3NED  ]@iN(¿ C’@'V¦^Ó³?AòAÂAë…£   Ïœ`ï          >\)A¬Qì>\)A¨áH<õÂA¡p¤<õÂA›®<£×
+AœQì=uÂSloanSDSS J132946.19+114009.2NED  ^@ibþ?qFó@GE75é–>¹ÀìA¸RA…·*  ÏG`ï  @G®záH>OßA°=q>B\A¨=q=#×
+A ff<õÂA¸<õÂA™Â=LÌÍSloanSDSS J133222.45+463226.6NED  _@ilEà´á@>!Bk>>‘‚ªA	ÂA
+{>   ÐÛ`ï          ?\A¡™š=uÂAœ{<£×
+A•33<£×
+A“¸<£×
+Azá<£×
+SloanSDSS J133332.04+300744.7NED  `@ixˆßU@LŽôƒS­=>vzA™šAÂ)—  Î`ï          >1'AŸ×
+?Ê=qA×
+@\(öA’\?   A×
+?}p¤A‘×
+?úáHSloanSDSS J133503.99+570700.6NED  a@i}ª€$@O£œ‰F>-w2A
+=A…[ F  ËX`ï  @£×
+=p¤>¬A¤¸R=\)A™×
+<£×
+A‘Â<£×
+AŽ\<#×
+AŽ=q<£×
+SloanSDSS J133542.51+631641.6NED  b@i~¶¿b!Œ¿ö“$í~ÄB?ÉAzáAõÃ|  ÌË`ï  @…¸Që…>bNA¨(ö=áG®A§¸=#×
+A¡™š<õÂA
+=<õÂA›…=\)SloanSDSS J133550.35-012439.3NED  c@i„| ª¿å¸XXž>Ô‡ýA33A33* r  Êó`ï          >²-A«p¤=õÂA¤áH<õÂAšQì<õÂA—
+=<£×
+A–{<õÂSloanSDSS J133633.65-003936.3NED  d@iŒ«@öjT¿÷‰Q‚©“>¨ŒçA\)A®›  ÌË`ï  ?õÂ\(õÃ>	7LA¤áH=\)AœÌÍ<£×
+A”zá<#×
+A’zá<£×
+A33<õÂSloanSDSS J133735.01-012815.6NED  e@i“œàuöü@K¹¨8)#>•›=A£×Azá) ©  Î`ï  ?ñ¸Që…>‡+A°õÃ>aG®A¥G®<õÂAš  <£×
+A—\)<£×
+A“ë…<£×
+SloanSDSS J133827.10+552701.5NED  f@i¢^€ú~?@K¦¦ã¥†>„MA\)A  * ð  Î7`ï  ?ö=p£×
+=>²-A õÃ=#×
+A•×
+<£×
+Aë…<#×
+AŠÌÍ<#×
+A‰G®<£×
+SloanSDSS J134017.75+551807.3NED  g@i¢ÛÀ6â@L\kƒôuX?\Ap¤Aë…)D  Î`ï          >¬A¢ff=LÌÍA¡®<£×
+AŸ¸<£×
+A˜zá<£×
+AŸë…=\)SloanSDSS J134021.43+564319.5NED  h@iºcŸ²Ð*@Cå›]§‘>Fs‚A¸Ap¤a Þ  Ï:`ï  @záG®{>VAŸ™š=#×
+Ašff<£×
+A“
+=<£×
+AõÃ<õÂA‘33<£×
+SloanSDSS J134317.91+394737.7NED  i@iÂ|àÀ‡»@m­óÛŽ >BÄA\Aë…VÌ  Ì•`ï          >Ÿ¾A­G®>#×
+A¥™š<õÂA›p¤<£×
+A˜  <£×
+A”£×<õÂSloanSDSS J134418.65+053625.6NED  j@iÊ²ßP]@Fˆ&=
+Ð?äAG®AÂ¹ w  ÏZ`ï          >+A­…>#×
+A«®=LÌÍA§p¤=LÌÍAžõÃ<õÂA ¸R=õÂSloanSDSS J134520.24+450349.1NED  k@iÏãŠ	@Dé/ü¦r?5¨A®A   A Œ  ÎN`ï  @×
+=p£×>záA«ë…=ÌÌÍA¦ff<õÂA \<õÂA˜(ö<£×
+A›\)=LÌÍSloanSDSS J134559.16+414918.4NED  l@iÐa?†?¨?ÑóÆ•Kn>8~A
+=A\)+q  É×`ï          >hsA«
+==ÌÌÍAŸ…<£×
+A•\)<£×
+A“G®<£×
+A‘™š<õÂSloanSDSS J134602.85+001649.7NED  m@iÜràz @(”†hÌ=ö”FA
+ffA33¥ã  Ï–`ï  @²×TzáG®?[dZA¥…=uÂAšff<£×
+A’(ö<£×
+A‹×
+<£×
+AŒ£×<£×
+SloanSDSS J134733.36+121724.3NED  n@iÜÀ*Bø@OÞ„j> AzáAQì\ v  Ëo`ï          >¬AŸÂ=#×
+A“
+=<£×
+AŒ¸R<#×
+AŠzá<#×
+A‰33<£×
+SloanSDSS J134735.62+631400.0NED  o@iß,ÿÅ¾ê@LEi#ÇäÖ>ð-àAáHA…*A  Î7`ï  ?øÌÌÌÌÌÍ>‡+A©\)=ÌÌÍA§G®<õÂA¡
+=<õÂAœff<£×
+A™Â=LÌÍSloanSDSS J134753.82+563232.2NED  p@iâj šª:@IÀËÀÔ ¾>ª=qA
+áHA……6  Ð¹`ï  ?ô      >\)A¦¸R=£×
+A¥®<õÂA =q<£×
+A¢£×<õÂA™š=LÌÍSloanSDSS J134818.09+513022.4NED  q@iö8à¤‘s@ ƒäfíŒ¿>kA	p¤A	p¤   Ñ7`ï          >
+=qA¨  =¸QìAžff<õÂA•…<£×
+A’Qì<£×
+A£×<£×
+SloanSDSS J135046.66+081527.3NED  r@i÷	?s›y@IPY!…Æ?"ÊXA®A(ö…s  Ð¹`ï  @	333333>PA³…>…¸A«\)=#×
+A¥G®<õÂAžzá<£×
+Až  =£×
+SloanSDSS J135052.78+503739.7NED  s@iø¿3‡@([#Sb­\?&éA{A¸R¥{  Ï–`ï  @ áG®zá>j~úA­®>.{A«…=LÌÍA¦(ö=#×
+Aœ\<õÂA¢Qì>¸SloanSDSS J135100.78+121040.8NED  t@iû¿Ñúª@E­a—B>‘³AÌÍAG®B=  ÎV`ï  ?òzáG®>\)A©G®=õÂA {<£×
+A–ÌÍ<£×
+A”ff<£×
+A‘\)<£×
+SloanSDSS J135122.69+420652.8NED  u@iûÀ 2øñ¿ÅîÂ¨ýêc?ÂA33A\), o  Êç`ï  @\(õÂ\>¾wA¶õÃ>¸QìAµ×
+=áG®A©\)=LÌÍA áH<õÂAžzá=£×
+SloanSDSS J135128.15-001016.9NED  v@jSŸØ‰@	bt†>v®}A\)A
+=B  Ë:`ï          >t¼A¤ff=uÂA™
+=<£×
+A‘
+=<#×
+Aë…<#×
+A‹×
+<£×
+SloanSDSS J135239.95+030802.2NED  w@jÔ>àÎ‚@Pkø òVj>S@OA
+=A\)ñ L  Ë`ï          ÿÿÿÿAš¸R<õÂA•®<£×
+AG®<#×
+AŽ=q<£×
+AŽÌÍ<õÂSloanSDSS J135251.21+654113.4NED  x@j[ ¥&•@E|Ù¾L×H>*0UA®A®B}  ÎV`ï          >bNA¢\=LÌÍAš£×<£×
+A•G®<#×
+A’£×<#×
+A¸R<£×
+SloanSDSS J135347.69+425831.4NED  y@jŸ®'@Jæ=Ÿ>M>ÀA‰AQìA£× U  Ìñ`ï  ?ðQë…¸R>‡+A®\>aG®A¨Qì<õÂAŸp¤<£×
+A›×
+<£×
+A—Â=#×
+SloanSDSS J135400.39+520149.5NED  z@j"_?xD…À"ù<¯<i>	 'A®Azá’ l  Íñ`ï  @
+=p£×
+>Ÿ¾A¡
+==LÌÍA˜=q<£×
+A’{<£×
+AŽ=q<£×
+AÂ<£×
+SloanSDSS J135617.79-023101.5NED  {@j"éþÑú?ø£v¡T8>1A AG®AG®  Ë<`ï  ?þffffff>49XA áH=uÂA—…<£×
+A‘™š<#×
+AŽ(ö<£×
+AŒzá<£×
+SloanSDSS J135621.85+013223.6NED  |@j$ðŸÃÔ@Eˆªâ—9l>EÖ9A  AQìBt  ÎV`ï  @®záG®>A§
+==£×
+AŸ¸<õÂA•G®<£×
+A•G®<£×
+A•Â<õÂSloanSDSS J135637.04+430403.7NED  }@j&%ß@e@$ß(É|žW=üPHA
+=A\)¦ y  Ï˜`ï  @Ló33333>	7LA˜zá<õÂA•p¤<£×
+A33<#×
+A‰Â<£×
+AŠÌÍ<£×
+SloanSDSS J135646.11+102609.1NED  ~@j&µàÚ)|@EqÍ£,ð
+>G“ÞAë…A=qBÔ  ÎV`ï  ?ÿ×
+=p£×>¸Až£×<õÂA˜(ö<£×
+A’¸R<#×
+A×
+<#×
+A…<£×
+SloanSDSS J135650.32+425320.7NED  @j';ÿNè;@E~x!‘©±>Gy§AÌÍA¸B×  ÎV`ï          >bNA§\)=\)Aš¸R<£×
+A’ÌÍ<#×
+AÂ<#×
+AŽQì<£×
+SloanSDSS J135654.25+425916.9NED  €@j*š`ÔV-À›J¸[=œ>ÈðAG®A™š’ P  Íñ`ï  ?úáG®zá>PA™š=LÌÍAšáH<£×
+A˜¸R<£×
+A—
+=<£×
+A”ÌÍ=#×
+SloanSDSS J135719.51-022702.9NED  @j3	€²B@G×»²i£>¹A™šA™šå  Íó`ï  ?ôQë…¸R>	7LA¸<£×
+Aˆ£×<õÂA†õÃ<£×
+A„áH<#×
+Aƒ…<£×
+SloanSDSS J135822.78+474102.6NED  ‚@jIÕŸPò0@O7Ù 	ô>&1ùAzáA£×] ‘  Ì`ï          ?Ÿ¾A¦ff=\)Aœ{<£×
+A”\<#×
+A‘™š<#×
+Aë…<£×
+SloanSDSS J140113.74+622611.0NED  ƒ@jR¾ÁYr@ösÌhšL>G®A	G®A	™šF&  ËM`ï  ?ò=p£×
+=>“uA«…>#×
+A£ë…<õÂAš¸R<£×
+A™¸<£×
+A•ë…=#×
+SloanSDSS J140218.74+034443.2NED  „@jT6ÄJ@_::#>8GA×
+A®_  Ë`ï          >‡+A£
+==\)A—\)<£×
+A‘
+=<#×
+A33<£×
+AŒ(ö<£×
+SloanSDSS J140231.58+021546.3NED  …@jm~ŸÜQ@D8Ÿ¾vÈ³=¥A\)Azác»  Ï\`ï  @0Ï\(õÂ>“uA”õÃ<£×
+A33<£×
+AŠ£×<#×
+A†Qì<£×
+A†ÌÍ<£×
+SloanSDSS J140541.21+402632.5NED  †@jy¹ÿÖ”@Mm‡`š>.±ÄA(öAQì ã  Ìr`ï          > ÄœA£×
+=LÌÍAš=q<£×
+A’¸R<£×
+A×
+<£×
+AŽáH<£×
+SloanSDSS J140712.93+585120.4NED  ‡@j}WÀ“b@_¼lÓÍ>ži­A®A  ñ  Ë`ï  ?òffffff>OßA­G®>8QìA¦{<õÂA›\)<£×
+A
+=<õÂA—®=LÌÍSloanSDSS J140740.08+021748.1NED  ˆ@j…§¿CÖ¿@~#zÿ’>wYA¸RA¸RF w  ËM`ï          >Ÿ¾A¬£×>™šAŸ×
+<£×
+A—
+=<£×
+A“G®<#×
+AQì<õÂSloanSDSS J140842.41+043051.0NED  ‰@j†ÙBÌ@AÄì|.Ö>)^žAÌÍAõÃ/n  Ðß`ï  @(õÂ\)>	7LA
+=<õÂA”ff<£×
+A…<£×
+AˆõÃ<£×
+AˆõÃ<£×
+SloanSDSS J140845.73+353218.5NED  Š@j†qà¾35@˜nÁ~ºð?G®A\A
+=F2  ËM`ï          >™šA¯¸>LÌÍA¨ff=#×
+A¥
+==#×
+AŸ®=#×
+A¡33>\)SloanSDSS J140848.33+052355.8NED  ‹@j‡©€g±H@hOÝ¯B>9õZA®A…F i  ËM`ï          >
+=qA¨=q=õÂA™š<£×
+A•G®<#×
+A’=q<#×
+AG®<£×
+SloanSDSS J140857.47+035533.4NED  Œ@jš¼`Ÿ@Jô^N>ìcñA\A¸RJ  Íõ`ï  @Ì’³3333?öA¸Qì>ÌÌÍA¬(ö=uÂA¡¸=\)AšáH<£×
+A—\)=#×
+SloanSDSS J141120.52+521209.9NED  @j¥¼@ŽÈ@#œ—v£¿>:^5A
+=A…­  Ò"`ï  ?÷333333>™šA­×
+>#×
+AŸ×
+<£×
+A–õÃ<£×
+A“Â<£×
+A‘¸<£×
+SloanSDSS J141243.00+094821.0NED  Ž@jª
+_::¿ûKýx6‰>Â\A\AáH”#  Ìš`ï  @	®záG®>¬A¯\)>LÌÍA¦\=#×
+A¢(ö<õÂAž  <õÂA™…=LÌÍSloanSDSS J141315.30-014220.9NED  @jª‡ …±„@Dù>Õ'?ŒçAÂAffC&  ÎW`ï  ?ó
+=p£×
+>
+=qAª{=£×
+A¦ff<õÂA õÃ<£×
+A˜ÌÍ<£×
+A›®=#×
+SloanSDSS J141318.96+415658.8NED  @j²C^¾º[@I9 Lš³>ðoAzáAÌÍGÒ  ËW`ï          >“uA§®=¸QìAœ  <£×
+A”¸R<#×
+A‘G®<#×
+AÂ<£×
+SloanSDSS J141416.97+050417.4NED  ‘@jµŒ SâÕÀ¥aÛ¥N2=ì¿±A\A\)”   Ìš`ï  @Që…¸R>¾wAœ(ö=#×
+A“
+=<£×
+Ap¤<#×
+AŠzá<#×
+Aˆ(ö<õÂSloanSDSS J141441.58-024950.7NED  ’@j»nŸµ$°¿ó³yevd>XâA™šA™š0  Êõ`ï  @	ë…¸Qì>n˜A›×
+=#×
+A“ë…<£×
+AŽõÃ<£×
+A‹™š<£×
+A‰ë…<£×
+SloanSDSS J141525.73-011352.8NED  “@jÈ¼¡AE£@@žÅ"Ì>X­¬A¸RAáHM_  Ò#`ï  @G®záH>n˜A¬¸R>\)A¡™š<õÂA—Â<£×
+A“®<£×
+A‘p¤<£×
+SloanSDSS J141705.52+321239.5NED  ”@jÚ…@è+@I…±d©Vu>¥¡ËA33A   ›  Íõ`ï  ?ùë…¸Qì>PA²Qì>€  A«ë…=LÌÍA¡…<£×
+A£p¤=#×
+A…=\)SloanSDSS J141918.90+510240.1NED  •@jñSàš@9(_::">n.²AzáAÌÍTE  Ðõ`ï  @<nzáG®>¬A¡…=LÌÍAšQì<£×
+A‘¸<#×
+A{<£×
+AÂ<£×
+SloanSDSS J142209.95+250927.7NED  –@jõw
+*Ë@COM½øôr?B-A (öA £×d    Ï\`ï  @#záG®>¥ãA°\>aG®A©p¤=#×
+A¤ff<õÂA¡33<õÂA˜ff=LÌÍSloanSDSS J142240.99+383710.4NED  —@jùë âÀ@Oûß!Â˜­>ü¹Ap¤A{ó À  Ë`ï  ?û
+=p£×
+>
+=qA¨¸R=ÌÌÍAžff=uÂA”=q=#×
+Aë…=#×
+A“¸=£×
+SloanSDSS J142314.36+635803.6NED  ˜@k_èýT?òlšþ§°>”SA
+=AáH1H  É`ï          >PA»™š?&ffA«\)=#×
+A   <£×
+Až{<õÂAšQì=uÂSloanSDSS J142652.59+010905.4NED  ™@k ´¿T&h@Já}ž©,„>xºÇA£×AõÃ.å  Î`ï  ?ö¸Që…¸>#×
+A¥\)=uÂAœõÃ<£×
+A”ff<£×
+A’  <£×
+A{<£×
+SloanSDSS J142805.29+534541.9NED  š@k-N?á @Cÿ½L…º?ïžA…A(öE è  Î=`ï          >A¹ë…?®A²{=£×
+A§ë…=#×
+A¡33=#×
+A¡G®=ÌÌÍSloanSDSS J142939.80+395935.3NED  ›@k3°@9«ò¿íÿ°1EH>¢©“A¸RA
+=2 û  Éµ`ï          >¸RA¢=q=#×
+A33<£×
+A—¸<£×
+A”ÌÍ<£×
+A‘
+=<£×
+SloanSDSS J143027.66-005614.8NED  œ@k3üî;‚@+Nƒ¢çX=®HéA£×AG®¬l  Ðÿ`ï  @*úáG®{>AŒÌÍ<£×
+A†  <£×
+A„¸R<#×
+A®<#×
+A€áH<£×
+SloanSDSS J143029.88+133912.0NED  @k6O€Ü3q@N19C¬Ä?qvAffAff_ ›  Ì`ï  @õÂ\(ö>VAÅë…?uÂA³™š=¸QìA¨Qì=LÌÍA¡p¤<õÂAž(ö=\)SloanSDSS J143047.32+602304.4NED  ž@k?„_¥j(@@n#á†˜4>ÖðAQìAõÃ1ð  Ðó`ï  ?õë…¸Qì=í‘hA§…=¸QìA£p¤<£×
+A \<õÂA˜zá<£×
+A™\)=uÂSloanSDSS J143156.37+325137.6NED  Ÿ@kD÷ÿ2ñô?õ6KuŸ>jA
+=A33 ;  Ë`ï  @®záG®>hsA ff=uÂA—G®<õÂA’  <#×
+AŽõÃ<£×
+AŒáH<£×
+SloanSDSS J143237.25+012050.8NED   @kE& Yž@J~¯Jdx>M;AQìA£×#   Ñ`ï  ?ÿ…¸Që…>A™ë…<õÂA“\)<#×
+AŽÌÍ<£×
+A‹Â<#×
+AŠ\<£×
+SloanSDSS J143238.63+051921.8NED  ¡@kIà¿¡@#‡C‚ÜÖŽ>G®AÌÍAÌÍ­ „  Ñ`ï          >¥ãA¦£×=£×
+A¡p¤<£×
+Aš  <£×
+A˜{<£×
+A”¸R<õÂSloanSDSS J143314.06+094551.0NED  ¢@kPÕŸPò0@GÖÖ€Â‘°>’£AÌÍAÌÍŠ|  ÐØ`ï  @(õÂ\)>	7LA®  >#×
+A£33<õÂAš£×<£×
+A˜õÃ<£×
+A”áH<õÂSloanSDSS J143406.25+474042.3NED  £@kQœ?»@@‹ß´>®c A33A®1 u  Ðó`ï          >¾wA·™š>Ñë…AªõÃ=#×
+A®<£×
+A™×
+<£×
+A–=q=#×
+SloanSDSS J143412.07+321102.2NED  ¤@kV²€ñ,'@GFƒíé>|í‘AzáAõÃŠ Ä  ÐØ`ï  @Â\(õÃ>JA¡
+==#×
+A›×
+<£×
+A•
+=<£×
+A“×
+<£×
+A£×<£×
+SloanSDSS J143450.22+463303.1NED  ¥@k_ÀY!@KÃ„ äµ>ŽóA\A¸RŠÖ  Í¼`ï  @333333>Ÿ¾A¨ÌÍ=¸QìAœáH<£×
+A”zá<#×
+A‘®<£×
+A33<£×
+SloanSDSS J143552.64+553138.9NED  ¦@k`ö@c]@H½Ñ«Ü>oA	p¤A	Â  Íý`ï  @ÌÌÌÌÌÍ>záA¢¸R=uÂA•G®<õÂAŽff<£×
+AŠÌÍ<#×
+A‰™š<£×
+SloanSDSS J143607.21+492858.6NED  §@kkÆ?@Iáž…ç>^	AQìAÌÍ/ ›  Î-`ï          >“uA¬ÌÍ>¸A¢ÌÍ<õÂA™
+=<#×
+A•Â<£×
+A“\)<õÂSloanSDSS J143728.30+514545.5NED  ¨@km SâÕ@>/;5¿¥=¼Ó[AÌÍA¸Z´  Ñý`ï  @OôzáG®>n˜A¸<õÂA“p¤<#×
+AŽ\<#×
+A‡ë…<#×
+Aˆ£×<#×
+SloanSDSS J143737.85+301101.1NED  ©@k| ª@JÓƒ>´ˆ?%`BAG®A¸/5  Î-`ï  @\(õÂ\>hsA¼¸R?záA´=q=áG®A©®=#×
+A£33=#×
+A   =£×
+SloanSDSS J143956.14+533856.3NED  ª@k„,~bd?æŽ¡¿åT?&»™AzáA(ö +  Ë8`ï  @¸Që…¸>
+=qAµ×
+>”záA³p¤=¸QìA¨=q=LÌÍA¢Qì=#×
+AŸ
+==£×
+SloanSDSS J144031.29+004217.6NED  «@k…_€!É@JÀÂã>=PA…A
+=‹$  Í½`ï  @LË…¸Qì>bNA†£×<£×
+Ay™š<£×
+A€õÃ<£×
+A~{<#×
+A}¸<£×
+SloanSDSS J144038.10+533015.9NED  ¬@k‰ãÀçDí@I@O"}‰>·>«A
+\A
+=q  Íý`ï          >A£p¤=\)AŸ…<£×
+A˜Qì<£×
+A–{<£×
+A“
+=<õÂSloanSDSS J144114.19+503008.6NED  ­@k¢ ÷ß(@#¢3æŸ}>a|A{A\¯ ™  Ñ`ï  @¸Që…>¬A¨\=£×
+AŸp¤<£×
+A–{<#×
+A“
+=<#×
+A‘×
+<£×
+SloanSDSS J144157.24+094859.1NED  ®@k•O€Ü3q@EíÛù1>‰xÕA=qA\tK  Ïx`ï  @p£×
+=q>OßA¡\)=#×
+AšõÃ=¸QìA”õÃ>¸A•
+=>€  AQì=uÂSloanSDSS J144239.82+421141.0NED  ¯@k£]_t{+@G¨!ÀD(M>¦§ðAzáAzáŠq  ÐØ`ï  ?ÿ®záG®>1'A¥×
+=uÂAŸ33<£×
+A–õÃ<#×
+A•¸<#×
+A’ff<£×
+SloanSDSS J144425.23+471848.7NED  °@k­àÉY@@×¿Ž`€>YKA®A  n ¥  Ðú`ï  @…¸Që…>
+=qA¥33=LÌÍA™p¤<£×
+A‘\)<£×
+Aë…<£×
+AŒáH<£×
+SloanSDSS J144541.31+334107.9NED  ±@kµ£ Gñ§?ózÑ%íÐ?9Ô•A£×A£×4½  ÉÎ`ï  @      >A´  >”záA­Â=LÌÍA¦áH=#×
+A õÃ=#×
+Ašzá=uÂSloanSDSS J144642.28+011303.0NED  ²@k¹å3û@Œ²|H >ÅzxA®AQìç  Ë;`ï  ?ñÂ\(õÃ>™šA¬£×>8QìA¨\=#×
+A¡×
+<õÂAžzá<õÂA™¸=uÂSloanSDSS J144711.29+021136.2NED  ³@kÂÀ#ˆú@Cœ¬ã:V>–lôA	G®A	G®F!  Î2`ï  @
+\(õÂ>$ÝA¢zá=LÌÍAŸ
+=<£×
+A˜Qì<£×
+A–zá<£×
+A’áH<£×
+SloanSDSS J144815.22+391326.4NED  ´@kÇ\ Íí½@Eè·Ýi[´>¹‡A×
+A  	 L  Íþ`ï  ?õp£×
+=q>\)A¸zá>ë…A®  =LÌÍA¤ff<õÂA¡p¤<õÂAžzá=£×
+SloanSDSS J144855.20+434905.1NED  µ@kÊÃ€ˆP›@E,Ø¢—>6®}A™šA{
+  Íþ`ï  @câ\(õÃ>‡+A
+=<õÂA•™š<£×
+A£×<#×
+AŽ  <£×
+AŒ=q<õÂSloanSDSS J144920.72+422101.2NED  ¶@kÒ JÌ¿ñÏŸ' Æ=ô‡ýA\A¸R4   ÉÎ`ï          >¬A¥×
+=uÂA™ë…<£×
+A‘
+=<#×
+AŒáH<£×
+AŠõÃ<£×
+SloanSDSS J145019.19-010647.4NED  ·@kÜ ßüËÇ?ü•ˆNGsÒ>ˆÛŒA¸RA… %  Ë;`ï  @ÌÌÌÌÌÍ>‡+Aª¸R>\)A¤Qì<õÂAž  <£×
+AG®<õÂA™¸=uÂSloanSDSS J145134.73+014711.4NED  ¸@kõ9Ž²@Ö´À~ib>öÕÐA×
+AÌÍÍ  Ë=`ï  ?ö¸Që…¸>¸RA°õÃ>…¸A­¸=uÂA¥33=#×
+A =q<õÂA\)=ÌÌÍSloanSDSS J145439.15+022117.6NED  ¹@kú–€Â‘°@@7ˆb/ˆ=²ÊXA	™šA
+=qo   Ñ`ï  @záG®>$ÝA\)<õÂA“\)<õÂA=q<£×
+A‹33<£×
+AŠzá<£×
+SloanSDSS J145519.41+322601.8NED  º@ký÷ ªùã@N±d©Vu>;Í6AzáAQìc.  ËW`ï          >záA¥ë…=£×
+A™™š<£×
+A‘ë…<#×
+A
+=<#×
+AŒÌÍ<£×
+SloanSDSS J145544.75+605951.3NED  »@kþ— ëXØ@Ht~|á›>|žíAp¤A=qù  Î `ï  @ffffff>¸Aë…=#×
+Ašzá<£×
+A”zá<£×
+A•33<#×
+A”=q<õÂSloanSDSS J145549.42+485436.3NED  ¼@l``þG˜@IW×¡³sG>³ØA  A£×0   Î2`ï  ?û®záG®> ÄœA«
+==õÂA¥™š<£×
+AG®<£×
+A›p¤<£×
+A—™š=LÌÍSloanSDSS J145702.81+504110.6NED  ½@l
+äA@M¿n‚”šU>‹¬A×
+A®b™  ËX`ï          >>vÉA¤{=LÌÍA˜Qì<#×
+A£×<£×
+A33<#×
+A‹¸<£×
+SloanSDSS J145721.67+592943.8NED  ¾@l€uL?ÿ#‹™ÌÝ>‡®A	ë…A
+¸RQ  Ë=`ï  @      >	7LA³…>Ç®A¨ff=#×
+A™š<£×
+Ažff<õÂA˜áH=\)SloanSDSS J145826.23+015646.2NED  ¿@l*eâ©@KuûœÛÌê>­\ûAQìAQìb  Ì’`ï  @3Ñë…¸R>bNA¤zá=\)AŸÂ<£×
+A”ff<#×
+A‘®<#×
+AŽáH<£×
+SloanSDSS J150117.98+545518.3NED  À@l,¡ÀD(M@KeybóC>'ïžA¸RAáH 4  Ì`ï              A­p¤>aG®AŸ®=uÂA•×
+=LÌÍA’(ö=LÌÍA‘…=\)SloanSDSS J150134.72+544734.3NED  Á@l.	^è«Æ@AØÜFL?
+¬A¸A™šh W  Ï`ï  @záG®{>hsA³p¤>W
+=A¯G®=LÌÍA§
+=<õÂAž¸R<õÂA£™š=¸QìSloanSDSS J150145.27+340312.5NED  Â@l/rŸ;ù{¿Õ¸Që…¸>`A ÌÍA £×6 ð  Ë`ï          >PA³p¤>aG®A¦£×<õÂAœff<£×
+A™
+=<£×
+A–ff<õÂSloanSDSS J150155.86-002021.6NED  Ã@l2M Øj@C¦\->q&éAQìAzáH£  ÎS`ï  ?ð£×
+=p¤>hsA¨ÌÍ=£×
+A £×<õÂA—™š<£×
+A–(ö<õÂA”¸R=#×
+SloanSDSS J150217.26+380307.0NED  Ä@l;E€*B@F½L;*?zxA®A®Œ8  Ï›`ï  @€ip£×
+=>OßA¿…?.{A³p¤=¸QìA¦õÃ=#×
+A¢{=#×
+Ažzá=uÂSloanSDSS J150324.54+452844.0NED  Å@lBÉà;µç?ýÝ7N|>:ûA
+=A…(  Ë1`ï  @G®záH>C–A®=#×
+A”\<£×
+AŽÌÍ<#×
+A‹33<£×
+AŠff<£×
+SloanSDSS J150420.90+015159.3NED  Æ@lCZ ¿ò™@C’[Ù»ø>i­CA
+{A
+=qv m  Ïš`ï  @ ffffff>“uA áH=#×
+A˜\<#×
+A’õÃ<£×
+A  <#×
+AŽ=q<£×
+SloanSDSS J150425.13+390828.9NED  Ç@lD¨`¡ª@AáÒ@’7Õ>ØEAÌÍAõÃh]  Ï`ï          >IºAªQì=£×
+A¢=q<£×
+A™Â<£×
+A˜(ö<£×
+A“33<õÂSloanSDSS J150434.93+354551.2NED  È@lQ –.ÀUêvÑ>àù	AffA\š ›  ÌÊ`ï          >IºA´ff>£×
+A«×
+=LÌÍA¨£×=LÌÍA×
+<õÂA¢(ö=ÌÌÍSloanSDSS J150608.08-020744.1NED  É@lSWéÝ@D«âèÇ¼>€N¥A
+áHA\)vK  Ïš`ï  @0c×
+=p¤>1'A¬{>¸A¢=q<£×
+A˜(ö<#×
+A–(ö<#×
+A“\)<õÂSloanSDSS J150625.06+401354.5NED  Ê@lZ¨Ÿ‹3E?ßÌQM‰>:CþA®A£×6M  Ë`ï  @Â\(õÃ>‡+A¢zá=#×
+Aš¸R<£×
+A‘®<£×
+AŽõÃ<£×
+A
+=<£×
+SloanSDSS J150719.94+002905.0NED  Ë@leÓ?$a®@A8àÅ0Ç?‘ A¸AÂiÓ  Ït`ï          >™šA¶ÌÍ?   A¬  =LÌÍA§\)=#×
+A Qì<õÂA¡™š>™šSloanSDSS J150843.68+342617.1NED  Ì@lhOÇí@P'Ã¢Q=ä%¯AQìAõÃNp  ËY`ï  @3€     >²-AšQì=#×
+A’õÃ<#×
+AŽ  <#×
+A‰G®<£×
+AˆõÃ<£×
+SloanSDSS J150904.21+043441.8NED  Í@lj‘ÿS‘G@F²Öþ–Òå>ÿ|îA{A=q*  Íñ`ï  @OHõÂ\)>hsA ¸R=#×
+AžáH<õÂA™p¤<£×
+A—G®<£×
+A•p¤<õÂSloanSDSS J150919.27+452349.8NED  Î@lw``þG˜?ÕÒQ# >ö_ÙA…A¸R7Ò  ÉÑ`ï          > ÄœA®zá>\)A¥ë…<õÂAš=q<£×
+A–\<#×
+A•\)=#×
+SloanSDSS J151055.32+002027.3NED  Ï@l€à€sWå@Fæ›bP'w?IAzáAQì »  Íñ`ï  @5Â\(õÃ>Ÿ¾A½×
+?\(öA¸ff>B\A«®=£×
+A¤Qì=LÌÍA¡ë…>¸SloanSDSS J151206.58+454805.7NED  Ð@lƒ+,Ô@C[à¹Š)?¾AzáA£×w ´  Ï´`ï  ?÷\(õÂ\>¸A´\>\)A¯ë…=uÂA¨£×=#×
+AŸ®<õÂA¢  =õÂSloanSDSS J151223.76+380932.6NED  Ñ@l†Iÿ°Æ5¿ûÖUñtcÞ>A33AQì›Ù  Ì´`ï          >¥ãA õÃ=\)Aœ  <£×
+A–(ö<#×
+A“®<£×
+A“ë…=#×
+SloanSDSS J151247.17-014423.4NED  Ò@lŠ¡ Î@Eª¨]"I¾>T¯OAÌÍA¸ t  Ïœ`ï  ?þffffff>PA¢zá=LÌÍAš£×<£×
+A’ÌÍ<#×
+A¸R<£×
+Ap¤<£×
+SloanSDSS J151315.07+431959.8NED  Ó@l‹XÀOÎë@Jà÷ãÑÌ?H€A\)A£× 3  Ì’`ï  ?øQë…¸R>¥ãA´áH>ÌÌÍA¬Qì=uÂA¤(ö=#×
+Až¸R<õÂA…=¸QìSloanSDSS J151325.10+534527.2NED  Ô@l©:`‰Åo@@ñò‡Éu>
+ŒAë…A\j  Ï|`ï  @Z¬ÌÌÌÌÍ>hsAªÌÍ=£×
+Až£×<£×
+A”ÌÍ<£×
+Ap¤<#×
+A™š<£×
+SloanSDSS J151709.20+335324.7NED  Õ@l©‡ß˜™G@"=ƒHŸ?àvA™šAë…O ¦  Ë6`ï          >™šA±G®>€  A²zá=áG®A¬Qì=\)A¢=q=#×
+A¥\)>.{SloanSDSS J151711.47+033100.2NED  Ö@l¸ú__‚u@JŸh?l>qAë…Affu  Íß`ï  @=p£×
+=>
+=qAœ=q=LÌÍA“G®<£×
+A‹Â<£×
+A‡®<#×
+A†(ö<£×
+SloanSDSS J151907.33+520606.1NED  ×@l¼àŠï²@Aá0`Ø>LcñAzáA£×j_  Ï|`ï  ?øQë…¸R>Ÿ¾A±p¤>.{A¡™š<£×
+A—p¤<#×
+A“33<#×
+A‘p¤<£×
+SloanSDSS J151933.74+340635.1NED  Ø@lÓ$_ZÙi@Eì^¢—>A:“A
+ffA
+¸R  Ìô`ï          >AŸ33=#×
+A™
+=<£×
+A”=q<£×
+A‘Â<£×
+A{<£×
+SloanSDSS J152223.57+435051.5NED  Ù@làÈÿôYa@C4Î£~~[?A
+=A¸R ú  Î`ï  ?ü(õÂ\)>™šA¾ff>æffA®£×=£×
+A¥Â=#×
+A {<õÂA™š=¸QìSloanSDSS J152405.89+382445.2NED  Ú@lãØÀOÎë@Dc­­ó>féyA
+¸RA
+áH¡  Î`ï          >“A¡ë…=LÌÍA™G®<#×
+A˜\<£×
+A—ë…<£×
+A™G®=uÂSloanSDSS J152428.83+400759.6NED  Û@lä0 Ä›¥@@P»&!?!³A{A¸Rkî  Ï~`ï          >“A´{>uÂA¯Â=LÌÍAª  =#×
+A¡®<£×
+A¤(ö>\)SloanSDSS J152431.41+323750.6NED  Ü@m(€"÷@Ed">iƒ>°£×A	G®A	G® ð  Ìò`ï  @záG®>1'A«®>\)A£ë…<õÂAš\<#×
+A˜=q<£×
+A“Â<õÂSloanSDSS J153031.18+424656.2NED  Ý@m5aFƒÐ@KÜ”=!j>×ÛõA
+=AáHfå  Ð½`ï  @
+=p£×
+>“uA°(ö>#×
+A¦áH<õÂA›×
+<£×
+A—ë…<õÂA•ë…=#×
+SloanSDSS J153046.55+554323.7NED  Þ@m`<à*@Jï¯CfæŽ>”`ªAzáAõÃh  Ì–`ï          >t¼A±33>€  A«×
+=LÌÍA¡®<õÂA {<õÂAšáH=LÌÍSloanSDSS J153111.70+535221.2NED  ß@m £@)\I@GëŒâZ£Ò>KC–AG®Ap¤+  Î`ï  ?÷333333>	7LA¬Qì>.{A¡…<õÂA—…<£×
+A“…<#×
+A‘33<£×
+SloanSDSS J153204.78+475025.0NED  à@m$`M/Ô@BFˆÞ¿äž>à·€A33A…yÃ  Ï˜`ï  ?ô£×
+=p¤>+A±Â>W
+=A®zá=LÌÍA¦  <õÂAŸ
+=<£×
+Až{=\)SloanSDSS J153230.83+363303.7NED  á@m-ßÞ€ù@AùãC¨%5>¯¸A  AõÃy  Ï˜`ï          >n˜A¢Qì=uÂAš\<£×
+A”Qì<£×
+A‘®<£×
+A‘G®<õÂSloanSDSS J153338.03+355708.1NED  â@m09 ¡À@ùÌ¢Ûa>1ø¡A(öA(öQ —  Ë:`ï  ?òffffff>n˜A¦\=ÌÌÍA›™š<£×
+A“Â<#×
+A(ö<#×
+AŽ\<£×
+SloanSDSS J153401.66+025217.7NED  ã@m4"ßu¥n@
+Çv£k>RˆÎA×
+A  Q ‘  Ë:`ï  @Që…¸R>1'A£×
+=\)A™G®<#×
+A\<#×
+AŒ(ö<#×
+AŠáH<£×
+SloanSDSS J153431.01+031527.7NED  ä@mBOß;dY@G:Ì>¨áó>½!ÿA™šAë…4â  Î-`ï  @p+×
+=p¤>™šA²£×>B\A§™š<õÂAž{<£×
+Aš£×<£×
+A˜ff<õÂSloanSDSS J153617.34+462733.8NED  å@mFW@ÿ¼l@BÏ__‚vO>àvAG®Ap¤   Î`ï          >bNA©
+==¸QìAœ  <õÂA“\)<#×
+A\<£×
+A¸<£×
+SloanSDSS J153647.56+373712.4NED  æ@mLˆ¿ßõÍ@I›±{ö‘ñ>ãŠA=qAffk  Ì±`ï  ?ò\(õÂ>+Aµë…>Â\A±®=¸QìA§ë…=LÌÍA¢(ö=#×
+Ažff=ÌÌÍSloanSDSS J153734.00+511258.9NED  ç@m]Ô¿	•ª@IÚY!…Æ?¼A	p¤A	G®€  Ì±`ï  @+¨õÂ\)>C–AµG®>ž¸RA®ff=uÂA£×
+<õÂAž  <£×
+Aœ  =LÌÍSloanSDSS J153943.73+514221.0NED  è@m]â X‹á@AJÎÄÑ¡?(A(öAG®z î  Îˆ`ï          >bNA¨õÃ=£×
+A¥¸<õÂA¡
+=<õÂA˜áH<£×
+Aœff=uÂSloanSDSS J153944.12+343503.9NED  é@muåÀõ@@=¹[#û(Y>éº^AG®Ap¤m ^  Ï`ï  @	…¸Që…>hsA¸Qì>£×
+A°ff=uÂA¨  <õÂA õÃ<õÂAŸp¤=\)SloanSDSS J154244.23+294326.5NED  ê@mvB @ô@Hv&Ä0uÑ>ñ·AÌÍA¸E  Î`ï          >OßA»×
+?xQìA±…=¸QìA£™š<õÂA¸<£×
+A™p¤=LÌÍSloanSDSS J154246.95+485523.0NED  ë@my± x@AÒ÷"j^Z>Ý/A×
+AQìz;  Îˆ`ï          >™šA¸zá?O\)A°ff=\)A£ë…=#×
+A…<õÂAšff=LÌÍSloanSDSS J154312.68+353853.4NED  ì@m|9`87@C0ª[pàl?tTA33A® y  Ï³`ï          >
+=qA³×
+>³33A©p¤=LÌÍA¤£×=#×
+Aë…<õÂA £×=áG®SloanSDSS J154331.68+382248.7NED  í@m} —v¿ç¤ÎžÕru>žùÛA(öAQìV+  Éë`ï  ?ó×
+=p£×>\)A®ff>aG®A£Â<õÂA™¸<£×
+A–=q<£×
+A”¸R<õÂSloanSDSS J154337.82-004419.9NED  î@m}V@®.@HËá 9ö?þÅA
+=A® ¹  Ì±`ï          >OßA°=q>…¸A°(ö=£×
+A©®=uÂA \=#×
+A¢õÃ>™šSloanSDSS J154340.02+493512.6NED  ï@m~™¿wA@Cwƒ„œ;?„MA	¸A×
+ †  Ï³`ï  @g      >1'A·33>Â\A°Qì=£×
+A¤áH<õÂAžÌÍ<õÂAœ  =\)SloanSDSS J154349.50+385601.3NED  ð@mÖ@®.@B…‡[n‹>pU2AÂAë…ˆ—  Î‹`ï          >záA¨ÌÍ=áG®AG®<£×
+A”¸R<£×
+A‘33<õÂA×
+<õÂSloanSDSS J154413.76+370235.5NED  ñ@m“.`5â˜@BÛ<r¦Î>¢©“A\)A…ˆ r  Î‹`ï          >²-A²ÌÍ>…¸A¨áH=#×
+Až(ö<£×
+A›G®<£×
+A—×
+=#×
+SloanSDSS J154623.85+360629.7NED  ò@m›ÇA%Ë@H™³9Ø>Yè>A¸A¸,Ž  Ì€`ï          >OßA­Â>B\AŸ…<£×
+A•\)<£×
+A‘ë…<#×
+A®<£×
+SloanSDSS J154728.33+491202.7NED  ó@m£xßzNz?è«m<[Y’?jèA¸RA(öVþ  Éë`ï  @p£×
+=q>záA±…>uÂA¬(ö=LÌÍA¡×
+<õÂA33<õÂAšÌÍ=\)SloanSDSS J154826.05+004615.3NED  ô@m¤PÞ÷Ñ-¿ò/q¶ÌÈ#=øÔþA×
+AQìV Q  Éë`ï          >¸RA“×
+<£×
+A=q<#×
+AŽ=q<#×
+AŠ£×<#×
+AŒáH<£×
+SloanSDSS J154832.37-010811.8NED  õ@m²©`ò ú@8‹JCÙ2>n˜A£×AõÃ: Ñ  Ò`ï  @¸Që…>hsA—®<£×
+A”£×<£×
+A(ö<#×
+AŽ(ö<#×
+A‘p¤<£×
+SloanSDSS J155019.95+243238.7NED  ö@m½Ú è¹Á@EæU\Rç-?ƒäA\)A  6  Î`ï  @ffffff>VA²=q>k…A®{=uÂA§®=#×
+A Qì<õÂA¦ff>k…SloanSDSS J155143.89+434758.2NED  ÷@mÃl?ˆ”.@;å9©ž²~=˜“uAffAffo  ÎQ`ï          >Ÿ¾A›p¤<õÂA‘¸<£×
+A‹ë…<£×
+Aˆff<#×
+A†ff<£×
+SloanSDSS J155225.66+275343.4NED  ø@mÊÿµoA@F° %H^>I…ðA
+=A336ÿ  Î`ï  @G®záH>
+=qA¤\=uÂAš  <õÂA’(ö<£×
+A®<£×
+AŽ(ö<£×
+SloanSDSS J155315.94+440749.3NED  ù@mÕÑ_ ˜U@AF^‰"R>W?A®A£×‰ |  Ï•`ï  ?ü(õÂ\)>hsA®=#×
+A•™š<£×
+AŽ(ö<#×
+A‹™š<£×
+AŠÌÍ<£×
+SloanSDSS J155443.61+340228.3NED  ú@mÚð`Øÿ9@<9œ
+Ó>âA{A¸Ro×  ÎQ`ï  @,×
+=p£×>IºAŸ×
+=#×
+A–áH<£×
+AŽ{<#×
+A‹×
+<#×
+AŠzá<£×
+SloanSDSS J155522.04+281323.1NED  û@mÛD`Ï­!@DÀ–Äêß­>?|îAáHA
+=6 Æ  Î`ï          >+A¡™š=LÌÍAš(ö<£×
+A”{<£×
+A‘G®<£×
+A33<£×
+SloanSDSS J155524.50+413016.5NED  ü@måJßø"»@EóêÝY
+?0hÜA
+¸RA336T  Î`ï  @6ýp£×
+=>oA®Qì>™šA«33=#×
+A¤¸R<õÂAžQì<£×
+Aœ¸R=LÌÍSloanSDSS J155639.68+435420.2NED  ý@móê Ãqb@AœÀƒn—=ô¼jA®AQìŠr  Ï–`ï  @(õÂ\)>záAŸ…=#×
+A˜ff<õÂA’  <#×
+AŽáH<£×
+Ap¤<£×
+SloanSDSS J155829.36+351328.6NED  þ@müŸ®'@CqÞi­B>_U›A\A¸R8  Î`ï  @™™™™™š>$ÝA¨  =áG®AŸ¸<£×
+A˜zá<#×
+A–õÃ<£×
+A”ÌÍ<õÂSloanSDSS J155930.39+380838.7NED  ÿ@nÃ€ˆP›@I¼-¿mÈ*>Aò@þff@þ¸RlÒ  Ì—`ï          >\)A©…=ÌÌÍA¡®<£×
+A™ë…<£×
+A–õÃ<£×
+A”£×<õÂSloanSDSS J160028.23+512812.8NED   @nßG
+÷@?;™,>mBÄAp¤A¸}  ÎZ`ï          >   A¢¸R=LÌÍAž(ö<£×
+A™p¤<£×
+A–õÃ<#×
+A”£×<õÂSloanSDSS J160052.70+311350.8NED  @nšŸ¾vÈ@æ,ºs-ô>¸†YA…A…À =  Ïì`ï  ?ö¸Që…¸>“uA¶{>½p¤A¦£×<õÂAœ£×<£×
+A˜áH<£×
+A”\<õÂSloanSDSS J160219.52+071329.2NED  @n/»ÿNè;@Î_oÒ>¬²–A
+ffA
+áHÂ6  Ðú`ï  ?ñp£×
+=q>n˜A¯G®>…¸A¦  <õÂAœ\<£×
+AšõÃ<£×
+A–£×=#×
+SloanSDSS J160558.00+074204.3NED  @n4. ßg©@;œ¨ZÍÃË>"3œA¸RA33pb  ÎV`ï  @
+=p£×
+>PA£
+==LÌÍAšõÃ<£×
+A‘33<#×
+Aff<£×
+A(ö<£×
+SloanSDSS J160631.37+273643.0NED  @n5…þÿ®q@;n·vâUú?
+…ˆA\)A…)  Ð÷`ï  @(õÂ\)>t¼Aª£×=¸QìA¨(ö<õÂA¡ë…<£×
+Aœ(ö<£×
+A¸=uÂSloanSDSS J160641.42+272556.9NED  @n>œ?»@DCý&¨9?(A=qAff7 :  ÎX`ï  @¸Që…>+A²áH>…¸A¬\=LÌÍA¢(ö<õÂA
+=<£×
+AšÌÍ=LÌÍSloanSDSS J160749.57+403125.7NED  @ngú__‚u@E)÷›•“ª>o A(öA¸“E  Î`ï  @…¸Që…>OßA•ë…<£×
+A’(ö<#×
+AG®<#×
+AG®<£×
+AŽ(ö<£×
+SloanSDSS J161259.83+421940.3NED  @njŸZDH@>é …±„>Æ?A…A×
+Œ  Ïš`ï  @p£×
+=q>	7LA õÃ=uÂA™G®<£×
+A‘Â<£×
+AŽ£×<#×
+A¸<õÂSloanSDSS J161318.79+305436.9NED  @nkh@–àà@G3}Ãñ‹>Æ?A¸RA¸R.Å  ÌÛ`ï  @(õÂ\)>
+=qA¢¸R=LÌÍA•\)<£×
+AŽ  <#×
+A‹\)<£×
+AŠ(ö<£×
+SloanSDSS J161325.55+460033.6NED  	@noì?ˆ”.@5*ÈÛ_?ÌA	™šA	Â=  Ñ>`ï  ?÷…¸Që…>‡+A¾zá?°£×A­\)=£×
+A£p¤=#×
+AŸG®=#×
+A›p¤=\)SloanSDSS J161359.42+211001.6NED  
+@np7Ÿ©~@CU¤“>³&A=qAff8 â  Î`ï          >A¯33>™šAª\=LÌÍA¡…<õÂA¡¸<õÂA\)=\)SloanSDSS J161401.63+380807.5NED  @nps@™5f@G'/ü¦r>õY´A¸RA\.  ÌÛ`ï  ?ð£×
+=p¤>IºA­
+=>\)A¦(ö<õÂAœáH<£×
+A˜áH<£×
+A•™š<õÂSloanSDSS J161403.38+461822.0NED  @nvuß¯æ‚@5
+2Üû>ÙrGAzáAõÃ= Þ  Ñ>`ï  ?ø(õÂ\)>	7LA¶áH?\(öA­
+==\)A¢£×=#×
+Aë…<õÂAšõÃ=\)SloanSDSS J161448.45+210222.3NED  @n†O ³lI@B¢ã>ÿP>‹¬AzáA£× i  Î`ï          >¸A—…<£×
+A=q<#×
+A‰™š<#×
+A‡Â<#×
+A‡¸<£×
+SloanSDSS J161647.31+371621.2NED  @n‡U H<7@E­â¼Ì5>>ÅmA£×AG®/d  Ì–`ï  ?òzáG®>PA¤  =uÂAœzá<£×
+A”£×<#×
+A’(ö<#×
+A¸R<£×
+SloanSDSS J161654.98+432130.5NED  @n”´?À€½@3:þ„.¶m?¼A
+=AQìž   Ò#`ï  @)ÌÌÌÌÌÍ>n˜AÆzá?c×
+A®(ö=uÂA¨  =LÌÍA¡p¤=#×
+AžÌÍ=ÌÌÍSloanSDSS J161835.27+191349.5NED  @n˜o¿{ÃM@=$kZ
+F>à  AáHA¸Rê  Î–`ï  ?ñë…¸Qì>C–A«
+==áG®A¥×
+<£×
+Až£×<£×
+A›®<£×
+Aš  =LÌÍSloanSDSS J161903.28+290832.1NED  @n§ãà\U;@=g¿ëœk?
+uA
+=A
+=h  Î–`ï  @1TzáG®>
+=qAµ
+=>Š=qA®£×=LÌÍA£p¤<õÂAžzá<£×
+AG®=uÂSloanSDSS J162059.18+292415.4NED  @n¨tßóy¯@D5Zâ¼Ë>E9A…A…“ ~  Î`ï  ?òzáG®>Ÿ¾A áH=#×
+A—®<#×
+A’{<£×
+A  <õÂAŽ  <£×
+SloanSDSS J162103.43+402500.6NED  @n«Ø¦IÚ@–YJôð×>ªW¨A	¸A	™šÄ   Ðý`ï  ?ó®záG®>záA°zá>™™šA¦£×=#×
+A™š<£×
+A×
+<õÂA™Â=LÌÍSloanSDSS J162128.83+060848.5NED  @n±Avô@A­€˜ E>ˆ>BAQìAõÃ!  Í*`ï  @(õÂ\)>$ÝA¡™š=uÂAG®<£×
+A”áH<£×
+A—…<£×
+A“33=#×
+SloanSDSS J162209.42+352107.4NED  @nÄÚÀ]Ê@@Þ}+ß=ú¬ÚAQìAõÃ”n  Ï÷`ï  @×
+=p£×>VAŸp¤=#×
+A˜=q<õÂA’¸R=#×
+AG®<£×
+A×
+=#×
+SloanSDSS J162436.40+334406.7NED  @nÇõ‘Q$@@°Ô_€!É?%AzáA£×"0  Í(`ï  ?ù™™™™™š>	7LA»×
+?p£×A³¸=õÂA«¸=\)A¡G®=#×
+A¡×
+>™šSloanSDSS J162459.69+332253.4NED  @nÊ@¿¨	>@:àO_1>Øï5A£×A£×€  ÎV`ï          >t¼A¶ff>õÂA«Â=#×
+A¡33<£×
+Aš¸R<£×
+A—
+=<õÂSloanSDSS J162516.89+265234.3NED  @nÎÿ†ÔÊ@?ã<ª“\>Áÿ.A¸RA
+=•Z  Ð×`ï  ?ó…¸Që…>	7LA²\>”záA©×
+=#×
+A£p¤<õÂAžÌÍ<õÂAš(ö=#×
+SloanSDSS J162545.12+310632.1NED  @nät`_Ô@Aäî¢	>:)ÇA
+=qA
+=q: Ä  Î`ï  @G®záH>1'A˜õÃ<£×
+A’{<#×
+AÂ<#×
+A‹p¤<#×
+AŠ  <£×
+SloanSDSS J162833.40+354708.3NED  @nõ‡ß˜™G@>Æ
+?Å)É?ÿ.AzáA£×•ì  Ð×`ï  ?òzáG®>\)A¶£×>®{A®ff=LÌÍA©…=#×
+A¡Â<õÂA¡Â=ÌÌÍSloanSDSS J163041.47+304624.9NED  @nþ·>õÇ7@Fs
+ÑP>d%¯A  AQìr  ËY`ï  @£×
+=p¤>VA ¸R=#×
+A—Â<£×
+A(ö<#×
+AŽ  <£×
+AŒõÃ<£×
+SloanSDSS J163150.37+445355.4NED  @oÿ¾ÁYq@B²Q ,Eð>2þÅAÂA=q• Š  Î6`ï  ?ñ™™™™™š>VA¢Qì=uÂA™G®<£×
+A“Â<#×
+AáH<#×
+A¸<õÂSloanSDSS J163344.99+372335.1NED  @oÿÌ¼|@GfvžÂÎE>\Æ?A¸AG®sÄ  Ë°`ï          >™šA¬{=õÂA¡…<£×
+A—\)<£×
+A”zá<#×
+A’=q<õÂSloanSDSS J163419.15+464801.8NED  @o%&^Ó³@1tÜû×á>ÔÖ¡AÌÍA=qŸc  Ñ6`ï  @ë…¸Qì>A {=uÂAG®<£×
+AšÌÍ<£×
+A—®<£×
+A•™š=#×
+SloanSDSS J163638.62+172723.4NED  @o%· ¦@/öôÞ49>µA®A
+=qŸ   Ñ6`ï          >¥ãA°áH>¨õÃA¨=q=#×
+A¢  <õÂA©33=£×
+A¢zá>.{SloanSDSS J163642.85+155856.4NED   @o'à2cÏ@8ö€½è¤È?¨XAffAáH 6  ÎX`ï  @ÌÌÌÌÌÍ>hsA¯p¤>.{A«ë…=#×
+A¦  <õÂAŸG®<£×
+A¤=q>\)SloanSDSS J163653.37+245746.4NED  !@o.ÿaŒj@>»@aHØV?ÿ.A=qA=q•p  Ð×`ï  ?ôzáG®{>™šA¸(ö>õÂAµ®=áG®A©…=LÌÍA¢(ö=#×
+Aë…=¸QìSloanSDSS J163745.58+304353.2NED  "@o.™ d2@?'r=ó!#>=ÙA(öA£×< ¡  Î-`ï  ?ü(õÂ\)>
+=qA©™š>\)AŸ™š<£×
+A—®<£×
+A•®<£×
+A•G®=LÌÍSloanSDSS J163749.48+310914.7NED  #@oBŸŸ¸f@DP„aùð>Ô,Aë…A=q1\  Ì`ï          >‡+A¥Â=£×
+Aœ  <£×
+A”{<#×
+A‘Â<£×
+A33<£×
+SloanSDSS J164019.66+403744.5NED  $@oB¡@a%@CxÌ¢Ûaº>ÕéâA\)A®2}  Ì«`ï  ?ðõÂ\(ö>	7LA¶¸R>³33A®õÃ=\)A¥\)<õÂA zá<õÂAžQì=¸QìSloanSDSS J164019.71+385637.5NED  %@oK– 7¡ý@E­‘‚qŽ>bMÓA	p¤A
+{t  Ës`ï  @;½p£×
+=>+AŸ33=#×
+Až£×<£×
+A—ë…<#×
+A•33<£×
+A”õÃ<õÂSloanSDSS J164126.91+432121.5NED  &@oL:àk@C}/^2êö?ÌA £×A!¸2¯  Ì«`ï  @Që…¸R>A©×
+=¸QìA¦(ö<õÂA áH<£×
+A˜áH<£×
+A ÌÍ=õÂSloanSDSS J164131.72+385840.9NED  '@oSC _‰s@B½N"+t9>N!–AQìAzá2  Ì«`ï          >=p¤A¡Â=LÌÍAšáH<£×
+A”ÌÍ<£×
+A‘ë…<#×
+A\<£×
+SloanSDSS J164224.45+372844.1NED  (@oTJ@ZKE@Ež}#)qB>R½A£×A	p¤u ñ  ËS`ï  @õÂ\(ö>VAŸ…=#×
+A˜{<£×
+A’ff<£×
+A\)<£×
+AŽ¸R<£×
+SloanSDSS J164232.16+431417.4NED  )@o^Ú@5æ@Bú[Ÿzãœ?+A¸AÂ2 ž  Ì«`ï          > ÄœAµ
+=>£×
+A±G®=\)A§Â=#×
+A¡Â=#×
+A¢Qì>¸SloanSDSS J164351.40+375721.3NED  *@ocG`š@Acr¤z&Ý?8†AõÃAG®—V  Î7`ï          >n˜A³
+=>k…A¨=q<õÂA¢=q<£×
+A
+=<£×
+Až{=\)SloanSDSS J164424.58+344636.9NED  +@od·€¶ê@E#c²V>YKA33A…t G  Ës`ï  ?üzáG®{>záA£®=LÌÍA™33<£×
+A‘×
+<£×
+AŽ¸R<#×
+AŽ{<£×
+SloanSDSS J164435.37+420029.9NED  ,@oz8?GU‡@C\·€4mÅ=ù=ÙA™šAë…v ñ  ËR`ï  ?þffffff>™šA¢Qì=LÌÍAšõÃ<£×
+A“…<£×
+Aff<#×
+AŽáH<£×
+SloanSDSS J164716.65+384327.6NED  -@oªÀŽ¹@7ÔßîÐ£=ÓÃaA
+=A    Î°`ï  @¸Që…¸>n˜A—Â<õÂA\<£×
+AŒÌÍ<#×
+Aˆ  <£×
+Aˆ{<£×
+SloanSDSS J165315.05+234942.9NED  .@oÃ£_žl–@Aíà¢<î?-ÒòA	ë…A	p¤4 ˆ  ÌÖ`ï  ?ñ¸Që…>hsA·™š>£×
+A°{=uÂA¦ÌÍ<õÂAŸ®<õÂA›\)=#×
+SloanSDSS J165627.28+351401.7NED  /@oæ²ßP]@3Ü® !>A‰7AffA\‘)  Î±`ï          >n˜A§G®=¸QìAŸp¤<õÂA–ff<#×
+A’õÃ<#×
+A’  <õÂSloanSDSS J170050.24+195143.3NED  0@oêÁ [À@5àü6¦U>V»™A(öA  ‡ (  Î•`ï          >VA«ë…>.{A¡33<õÂA˜=q<õÂA”\<õÂA’ff=#×
+SloanSDSS J170120.66+215231.8NED  1@oîî€@b@C}êÃ·Jœ?ŒçA…Azáy ’  Ëo`ï          >™šA¯…>€  A¯\)=LÌÍA©¸=#×
+A ÌÍ<õÂA£¸>\)SloanSDSS J170151.98+385901.4NED  2@pÆŸ¸@8¸hšMã?OË’AQìAQì—t  Ð`ï  ?øzáG®{>‡+A­¸>Š=qAªõÃ=uÂA¦¸R=LÌÍAŸ™š=#×
+Aœ=q=¸QìSloanSDSS J170811.61+244313.3NED  3@p§ßã*@?áSF·>FÜ]Aë…A{Ïn  Ì»`ï          >‡+A¤\=uÂAš¸R<£×
+A•
+=<#×
+A‘™š<£×
+Ap¤<£×
+SloanSDSS J171139.83+315248.7NED  4@p#àe§S@=I ¼sÑ=×
+=A\)A…Ò ü  ÌÏ`ï          >n˜A¦zá=\)Aš=q<#×
+A“™š<#×
+A…<#×
+AŽ(ö<£×
+SloanSDSS J171245.92+291715.3NED  5@p'ZÀ]Ê@L¿Ñ^‹vØ=ç°A33A×
+cÛ  ÊL`ï  @záG®{>t¼Ašff<õÂA‘™š<#×
+AŠ\<#×
+A†£×<£×
+A‡\)<£×
+SloanSDSS J171350.31+572954.8NED  6@p.ïŸ¼"B@NU\Rç-> .A	ë…A
+=qa8  É÷`ï  @*p£×
+=q>VA¥
+==\)A™ë…<£×
+A‘®<#×
+AŽ=q<#×
+AŒ¸R<£×
+SloanSDSS J171544.02+600835.4NED  7@p/ü?cKÏ@<D?A®AzáÑ b  Ìº`ï  ?ùp£×
+=q>IºA³™š>\)A­ë…=LÌÍA¨ff=#×
+Až\<£×
+A˜ff=LÌÍSloanSDSS J171559.79+280716.8NED  8@p1õ`@Ø@><çx1áR>øüPA	G®A	™šÑ>  Ìº`ï  @7½p£×
+=>²-A·™š>½p¤A±Â=£×
+A¦õÃ<õÂA áH<õÂA   =£×
+SloanSDSS J171629.38+301416.5NED  9@pX4ŠS“@N-[ÿW|>ªÀƒA
+¸RA
+=b Ÿ  ÊP`ï          > ÄœA¶õÃ>ë…Aª¸R=LÌÍA zá<£×
+AŸ33<õÂAš¸R=\)SloanSDSS J172603.07+602115.6NED  :@pŽ“€c<@KYçálÿ>ÄoA®A  h+  Êh`ï  ?ô      >záAµ…>õÂAª  =LÌÍA¡33<õÂAœ£×<õÂA™33=uÂSloanSDSS J173938.64+544208.6NED  ;@sg"Ÿ«Ò˜¿áâ¬2"‘û>õA
+=A\)] Ž  Î•`ï          ÿÿÿÿA¶áH?\A­ë…=uÂA¨  =#×
+AŸ×
+<õÂA×
+=£×
+SloanSDSS J204147.03-003332.1NED  <@stßËÜÊ?Ñã¾›>ôFtA¸Ap¤\¦  ÎÄ`ï          ÿÿÿÿA°áH>…¸A¬Qì=LÌÍA¨(ö=#×
+A £×<õÂA¡G®>™šSloanSDSS J204501.51+001646.1NED  =@sšr?ýXÀwŒÍaîI> 4nA×
+AQì|š  ËÐ`ï          ÿÿÿÿAšáH<õÂA˜  <£×
+A•™š<£×
+AáH<#×
+A‘¸<£×
+SloanSDSS J205436.69-053700.2NED  >@s›`H"¿µïÚGÇ¶<>î—A33A\)[    Î²`ï          ÿÿÿÿA³™š>®{A­×
+=uÂA¦áH=#×
+AÂ<£×
+A\)=£×
+SloanSDSS J205446.07-000508.4NED  ?@s ±ÀßîÀ
+Ãï7+&>5%FA™šA™š| ±  ËÐ`ï          ÿÿÿÿA¤Qì=\)A›33<#×
+A–=q<#×
+A‘™š<#×
+A{<£×
+SloanSDSS J205610.41-063037.8NED  @@s¡ýŸÓo~?îÞ(nœ6[>Þ¸RA{A\ZP  Ï»`ï          ÿÿÿÿA±×
+>®{A­¸=uÂA§Â=uÂAŸ…<õÂAŸ¸=¸QìSloanSDSS J205629.85+005752.6NED  A@sªª@º‡?å¾"åÞ>SZ†A…A×
+×}  ÌÛ`ï          ÿÿÿÿA¥ë…=\)A›Â<#×
+A”£×<#×
+A‘×
+<#×
+A(ö<£×
+SloanSDSS J205839.97+003931.1NED  B@sö×ŸLH?îxœ|Cw5>ø“uAzáA£×ÚK  ÌÛ`ï          ÿÿÿÿA¹33?5ÂA°{=¸QìA¦{=#×
+AžáH<õÂA›ë…=\)SloanSDSS J211742.59+005708.0NED  C@tl?Ó$í¿Ð è¹Â0>õÏ«AffAffÜ ó  Í(`ï          >“uA»¸?#×
+A±Â=¸QìA¦¸R=#×
+AŸ®<õÂAœQì=\)SloanSDSS J212651.33-001535.3NED  D@t– 7¡ý?ã#[Š‚.>p‰ A
+=A33Ûa  Í+`ï          >A‰7A©×
+=áG®A¢  <£×
+A˜Qì<£×
+A–  <£×
+A”ff<õÂSloanSDSS J212653.82+003553.0NED  E@t6¸ßzNz@$PõPµ›> \A
+=A33Û Î  Ìì`ï          ÿÿÿÿA×
+=#×
+A•®<#×
+AŽ¸R<#×
+AŠzá<#×
+A‰…<£×
+SloanSDSS J213340.86+100929.0NED  F@t8
+`ìQÀPhÛ‹¬p=µsëA¸Ap¤   Ëç`ï  @p£×
+=q>¸RAŸ®=#×
+A•¸<£×
+AáH<#×
+AŒff<£×
+AŠÌÍ<£×
+SloanSDSS J213400.60-074942.6NED  G@t;uZÝ¿ÜíÝ#t >œ¹$A™šA¸Ü   Í(`ï          >™šA¶  >£×
+A¦\<õÂA33<£×
+A™…<£×
+A•™š<õÂSloanSDSS J213446.02-002707.1NED  H@t[1?öÆ? ¢ ÷ß(À>,qA\A\)Þ ©  Ìñ`ï  @
+=p£×
+>™šA«×
+>™šA¡G®<£×
+A˜ff<#×
+A—33<£×
+A•®=#×
+SloanSDSS J214247.88+000156.9NED  I@ta³¿—¹•À Yƒ,Xû>!aåA £×A¸™ J  ÎX`ï          >%ãTA­…>B\A¢{<£×
+Aš\<£×
+A—…<£×
+A•p¤=#×
+SloanSDSS J214425.51-081029.3NED  J@thG€%f¿¹RöE¨?C–A  A(öS3  Îè`ï          >záA¯ë…>€  A­\)=uÂA¨õÃ=uÂAŸÂ<õÂA£p¤>™šSloanSDSS J214604.19-000556.0NED  K@tp_ÝV·¿Þy ¸õ$?ê³A™šAõÃs8  Ën`ï  @;W
+=p£×>
+=qAº\?G®A¯G®=¸QìA¤\=#×
+AŸ…<õÂA\)=£×
+SloanSDSS J214800.73-002834.1NED  L@t‰·_•~@'¹Hêû£=ß¤@AzáA£×Ý A  Ëï`ï          ÿÿÿÿAÂ=#×
+A•G®<#×
+A¸<£×
+AŠ£×<£×
+AŠ{<£×
+SloanSDSS J215425.74+113129.4NED  M@t–¦IÚ?ä=š•B>ÇÕgA…Afft¦  ËÍ`ï          >$Ý/Aµ®>³33A­…=uÂA¡\)<õÂAšõÃ<£×
+A˜{=#×
+SloanSDSS J215731.43+003757.0NED  N@tš —v?ãÐÝ8l·‰>ëC–Aë…A=qRÙ  Î°`ï  ?ñë…¸Qì>VA®{>.{A«®=LÌÍA¤{<õÂAŸ\)<õÂA\)=\)SloanSDSS J215830.64+003709.3NED  O@t– 7¡ý¿ñ¼x/ŒÍa>EÖ9A×
+A(öt ‹  ËÍ`ï  @G®záH>¬A¢\>¸A™ë…<õÂA”=q<£×
+A‘G®<#×
+A33<õÂSloanSDSS J215923.83-010630.6NED  P@tž`ßüËÇ?ïZ
+×>àÑ·AQìAzáR¼  Î°`ï  ?ñÂ\(õÃ>¥ãA¦£×=¸QìA£G®<õÂAœ(ö<£×
+A—™š<£×
+A•™š=#×
+SloanSDSS J215935.67+005814.1NED  Q@t²¶ß¶ä?ì(¾<?ÅmA×
+A  Q{  ÎÉ`ï          >!ÊÁA®  >.{A¬=q=LÌÍA¨zá=LÌÍAŸÂ<õÂA£G®>\)SloanSDSS J220440.71+005232.3NED  R@tÑ1ÿè²ÄÀ#x•‘UÎ€>8ÔþA
+áHA
+=Î &  Ëî`ï          >¥ãA¢\=£×
+A™
+=<£×
+A‘×
+<£×
+AŽÌÍ<£×
+A…<õÂSloanSDSS J221217.92-094407.8NED  S@tû!Æž@+R£F‘Ì¤>^Ò‰Aë…A=qá¯  Í&`ï          ÿÿÿÿA§33=¸QìAž=q<£×
+A—33<£×
+A”{<£×
+A’£×<õÂSloanSDSS J222246.94+133941.0NED  T@tü² ˆ
+¿ç4ežfØ>üÓ[A®A(öw ¼  Ë¬`ï          >“uA»×
+@QìA¬(ö=áG®A¦\=\)AŸ\)=#×
+AG®>¸SloanSDSS J222310.44-004330.5NED  U@tþ^Ð;E?ç8Uÿo‡Ž?@N¥AG®Aë…Oõ  Î‰`ï  ?û
+=p£×
+>PA­®>B\A©¸=#×
+A¤\<õÂA¢¸R=#×
+A˜(ö=#×
+SloanSDSS J222335.55+004332.2NED  V@u8Ÿeêæ¿ã€Ñ·Xá?šÔAë…A™šO D  Î‰`ï          >²-A·™š?(õÃA§…=#×
+A£™š=#×
+Až¸R<õÂAžff=£×
+SloanSDSS J222433.31-003634.1NED  W@uDßÎ1PÀ!Ÿ×um‚>pŽA…A×
+Ð t  Ëî`ï          >“uA¦\=áG®Až\<£×
+A–õÃ<#×
+A“™š<£×
+A’{<õÂSloanSDSS J222604.03-084842.2NED  X@u
+€c<¿ð=wëù á?Á¾AõÃAzá¡)  ËÂ`ï          >™šA­\)>B\AªáH=\)A£33=#×
+Aë…=#×
+Ašff=£×
+SloanSDSS J222631.14-010054.0NED  Y@u,±ðx¿ìË–N0O>§â‚A™šA{y&  Ë±`ï          >™šA¦{=¸QìAŸë…<£×
+A™¸<£×
+A–õÃ<£×
+A“¸=#×
+SloanSDSS J223508.41-005359.3NED  Z@u;§`óœ¿ÞWÄ§L>IÔ•Aë…A{y ›  Ë±`ï  ?ó
+=p£×
+>bNA«ë…>.{A…<£×
+A•…<£×
+A’{<£×
+A\)<õÂSloanSDSS J223854.79-002826.8NED  [@u>_±Æ?ñG2”¿>ôFtA×
+A®M  Í`ï          >¬A­\)>LÌÍA¬(ö=uÂA¤(ö<õÂAŸ¸<õÂAG®=\)SloanSDSS J223931.61+010549.0NED  \@uAÎ M;?çZüód·Q>à4nA
+=A®£W  Ín`ï          >\)Aª\>™šA¨áH=LÌÍA£33=#×
+Aš(ö<£×
+Aœ{=ÌÌÍSloanSDSS J224027.05+004347.4NED  ]@uKÄÛ—R?ë°Ð²¾«>ÖâëA(öA™šm—  Ð`ï          >Ÿ¾A¦¸R=¸QìA¡¸<£×
+Až(ö<£×
+A—×
+<£×
+A˜{=#×
+SloanSDSS J224256.47+005155.1NED  ^@uP¡ÀD(MÀ!+f·ô¶—?í)A×
+A£×Òw  Ì `ï          >¥ãA´áH?®A®ff=¸QìA§®=LÌÍA¡×
+=LÌÍA¢ÌÍ>\)SloanSDSS J224409.48-083505.1NED  _@u_ /z(?ñi‰·t?€4AffAff£3  Ín`ï  ?ð(õÂ\)>™šA´(ö?\AªõÃ=\)A¤=q=#×
+A›®<õÂAë…>¸SloanSDSS J224745.94+010517.4NED  `@uf|`Ÿ¿À,ÊÂ×˜a?{³A
+{A	ë…£   Ín`ï  @C«…¸Qì>VA¸zá?=p¤A¬ÌÍ=£×
+A¤õÃ=#×
+Až£×<õÂA33>¸SloanSDSS J224937.28-000734.9NED  a@ug\€Ðà¿ëµwþÐw?ÁUA
+\A
+=¤ õ  ËÒ`ï          >¬A¬ÌÍ>ð£×A´áH>uÂA«G®=¸QìA¢áH=uÂA£™š>uÂSloanSDSS J224950.42-005157.2NED  b@u|¬¿±[VÀ kJðGÌ_>âA(öAÌÍÔ•  Ì`ï  ?ô      >¾wA¤õÃ=¸QìAœõÃ<£×
+A•p¤<£×
+A‘ë…<£×
+A‘
+=<õÂSloanSDSS J225510.11-081234.2NED  c@u€Ïàe§S¿ñ^ŠÃl¹?%ÜÆAë…A\¤ 
+  ËÒ`ï  @(õÂ\)>AÅ™š?Š=qA´ÌÍ>W
+=A«G®=uÂA£×
+=#×
+A¢ÌÍ>™šSloanSDSS J225612.18-010508.1NED  d@uŠ#À’³?òKóƒ>o A
+=A\)¥t  Í~`ï          >C–A®õÃ>”záA¡×
+<õÂA–ÌÍ<£×
+A“®<£×
+A‘¸=#×
+SloanSDSS J225832.09+010836.0NED  e@u‡`šÀ ­„Ž?á>9rGA×
+AQìÕL  Ì"`ï  @¸Që…>C–A¬{>aG®AžáH<õÂA•×
+<£×
+A‘™š<õÂAp¤<õÂSloanSDSS J230007.92-082020.1NED  f@u¥!Ÿ¤Õ?ò_P]¥>:áHA\AáH¦q  Î”`ï  @ë…¸Qì>™šA õÃ=uÂAš=q<£×
+A“p¤<#×
+AŽ{<£×
+AŽáH<õÂSloanSDSS J230516.97+010853.5NED  g@u¦Ÿzã›@.m¡V>Y>h	ÕA¸RA¸RçM  Ì&`ï          ÿÿÿÿA¦ÌÍ>™šAœõÃ<£×
+A”zá<£×
+A‘¸<#×
+A™š<õÂSloanSDSS J230531.63+151247.3NED  h@u¨Ü?ømL¿ï”3ÏRA»>€'RA{Aff¦ Ê  Î”`ï          >t¼Aœ¸R=#×
+A›33<£×
+A•p¤<#×
+A“G®<#×
+Azá<õÂSloanSDSS J230612.91-005912.5NED  i@uÂ @^ôR¿ê·ðq½É>õY´A£×A
+=q§ þ  ËÑ`ï          >‡+A»™š?^¸RA³®>¸A­G®=£×
+A£¸=#×
+A¤¸R>#×
+SloanSDSS J231239.37-005005.4NED  j@uÐ2?ýXÀ%5`fÑ–w>c¢œA\)A×
+…(  Ëë`ï          >t¼A¼ff?8QìA¡33<õÂA˜Qì<£×
+A”õÃ<£×
+A’\=#×
+SloanSDSS J231602.92-103615.2NED  k@uÐuŸæ­¿Û†M¤W2>þi­A(öAÌÍ§ •  ËÑ`ï          >Ÿ¾A´{>Ñë…AªÌÍ=uÂA¤õÃ=#×
+Aë…<õÂA›×
+=¸QìSloanSDSS J231606.90-002519.0NED  l@vcà\U;@.ùÆ÷)gï>_¾wA£×AõÃêc  Ì`ï          ÿÿÿÿAªõÃ=õÂA   <£×
+A–õÃ<£×
+A”{<£×
+A‘×
+<õÂSloanSDSS J233220.86+152916.2NED  m@và€sWæ?ê=sÅk>-àA
+=qA
+\€›  Êm`ï          >
+=qA¢£×=uÂA˜ff<£×
+A‘\)<£×
+A®<#×
+A‹™š<£×
+SloanSDSS J233313.17+004911.8NED  n@väú,°¿êª¼¹¸Ä>àƒA33A×
+ª Ø  Í-`ï  @Â\(õÃ>IºAªzá>\)A¥®=#×
+A \<õÂAš\<õÂA™33=£×
+SloanSDSS J233558.39-005000.0NED  o@v @`i&À%ŽAØq>xï5AáHA
+=‡ Ø  ÍI`ï          >záA­×
+>.{A (ö<õÂA—G®<£×
+A“Â<£×
+A£×=#×
+SloanSDSS J233603.76-104640.3NED  p@v$h@LP"¿°XíÀé§?
+=A{A\Ï7  Îä`ï          >‡+A´zá>”záA®  =uÂA¨Qì=#×
+AŸÂ<õÂA¤ÌÍ>™šSloanSDSS J233706.08-000349.9NED  q@vF’ŸÑ÷¿ðqˆRð?Æ?A	p¤A	G®Ï 
+  Îä`ï          >Ÿ¾A¿\)?E¸A´Qì>\)A¨zá=#×
+A¢\=#×
+Ap¤=\)SloanSDSS J234538.58-010139.3NED  r@vIÎÿÓº¿è'Ô<ŒH?4nA×
+A…« Œ  Í,`ï          >VA¯\)>W
+=A­33=£×
+A ÌÍ<õÂA›33<õÂA—p¤=LÌÍSloanSDSS J234627.12-004517.5NED  s@vWÚ k0À!â¨hÈç|?4!A…A×
+ˆj  ÍO`ï          >VA­¸>W
+=A¨  =LÌÍA£ë…=#×
+A¡×
+=LÌÍAš=q=£×
+SloanSDSS J234957.77-085633.7NED  t@vZîÀTw÷À">LTËÚv>‰­CAp¤AÂˆ`  ÍO`ï  ?ð£×
+=p¤>+A¨zá=ÌÌÍA¢õÃ=LÌÍAšÌÍ<£×
+A—ë…<£×
+A”Qì=#×
+SloanSDSS J235044.02-090718.2NED  u@vhÝ¿Ý¡G?ò
+…¬Ü<Ä>×€4A	¸AõÃÐ^  Îå`ï          >A²£×>ÌÌÍA¯ë…=\)A¥\)=#×
+AŸ33<õÂA×
+=£×
+SloanSDSS J235413.00+010739.2NED  v@vyB ,í¿Ãä_ïúç>Î{AQìA£×ƒ ß  ÊO`ï          >	7LA¨zá=ÌÌÍA¢ÌÍ<õÂAœ£×<£×
+A—ë…<£×
+A–{=LÌÍSloanSDSS J235818.86-000919.4NED  w@vz¶Nó¿×ð#®CW? °òAáHA®­ Ê  Ëë`ï          >n˜A¨ff=áG®A§®=LÌÍA¤  >¸AÂ=#×
+A¤=q>LÌÍSloanSDSS J235831.16-002226.5NED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
